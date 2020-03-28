@@ -176,7 +176,8 @@ router.post('/', createReportRateLimit, async (req, res) => {
     isolationStatus: toIsolationStatus(req.body['isolation-status']),
     diagnosedWithOtherConditions:
       req.body['diagnosed-other-conditions'] === 'yes',
-    submissionTimestamp: new Date().getTime()
+    submissionTimestamp: new Date().getTime(),
+    phone: req.body['phone-number']
   };
 
   const passcode = req.body['passcode'] || passcodeCreator.createPasscode();

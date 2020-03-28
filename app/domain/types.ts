@@ -13,6 +13,7 @@ export interface CovidReport {
   smokingHabit?: SmokingHabit;
   isolationStatus?: IsolationStatus;
   diagnosedWithOtherConditions?: boolean;
+  phone: string;
 }
 
 export type Symptoms = {
