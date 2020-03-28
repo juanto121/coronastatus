@@ -11,6 +11,7 @@
 
 <% if (typeof show === 'undefined' || typeof show === 'boolean' && show == true) { %>
 <footer class="custom-section custom-section-footer p-8 pt-32">
+  <!-- GITHUB LOGO
   <div
     class="custom-section-content mx-auto custom-section-footer-content flex flex-col items-center"
   >
@@ -25,16 +26,17 @@
         class="footer-logo-link__img mt-12 h-12 w-12 lg:h-16 lg:w-16"
       />
     </a>
+  --> 
     <div
       class="flex flex-row justify-between flex-wrap items-center self-stretch mt-8 text-base lg:text-xl text-center"
-    >
+    ><!-- Twitter screen
       <% if (locals.twitter) { %>
       <a
         class="text-cvs-green-dark font-medium whitespace-no-wrap"
         href="https://twitter.com/intent/user?screen_name=<%= locals.twitter %>"
         target="_blank"
         >@<%= locals.twitter %></a
-      >
+      >  --> 
       <% } %>
       <span
         class="text-cvs-green-dark font-medium text-left md:text-center md:whitespace-no-wrap"
@@ -43,18 +45,17 @@
         <a target="_blank" class="font-bold hover:text-cvs-red hover:underline" href="https://bustbyte.no"
           ><%= __('BustByte AS')%></a
         >
-        <%= __('and') %>
-        <a class="font-bold hover:text-cvs-red hover:underline" href="<%= urls.contributors %>">
-          <%= __('volunteers')%>
-        </a>
       </span>
+      <!-- Twitter screen
       <a
         class="text-cvs-green-dark hover:text-cvs-red font-bold hover:underline whitespace-no-wrap"
         href="<%= urls.privacyPolicy %>"
         ><%= __('Privacy Policy')%></a
       >
+      -->
     </div>
 
+<!-- Statistics
     <div
       class="flex items-center justify-center self-stretch mt-4 mb-8 text-sm lg:text-base text-center"
     >
@@ -63,6 +64,7 @@
         ><%= __('View Website Statistics')%></a
       >
     </div>
+  -->
 
   </div>
 </footer>
