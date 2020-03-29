@@ -10,6 +10,11 @@ router.get(`${urls.privacyPolicy}`, (req, res) => {
   );
 });
 
+router.get(`${urls.help}`, (req, res) => {
+  return res.render('pages/help'
+  );
+});
+
 router.get(`${urls.contributors}`, (req, res) => {
   return res.render('pages/contributors');
 });
