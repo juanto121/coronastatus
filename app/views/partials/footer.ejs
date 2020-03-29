@@ -29,14 +29,14 @@
   --> 
     <div
       class="flex flex-row justify-between flex-wrap items-center self-stretch mt-8 text-base lg:text-xl text-center"
-    ><!-- Twitter screen
+    >
       <% if (locals.twitter) { %>
       <a
         class="text-cvs-green-dark font-medium whitespace-no-wrap"
         href="https://twitter.com/intent/user?screen_name=<%= locals.twitter %>"
         target="_blank"
         >@<%= locals.twitter %></a
-      >  --> 
+      >
       <% } %>
       <span
         class="text-cvs-green-dark font-medium text-left md:text-center md:whitespace-no-wrap"
@@ -46,7 +46,7 @@
           ><%= __('BustByte AS')%></a
         >
       </span>
-      <!-- Twitter screen
+      <!-- Privacy policies
       <a
         class="text-cvs-green-dark hover:text-cvs-red font-bold hover:underline whitespace-no-wrap"
         href="<%= urls.privacyPolicy %>"
