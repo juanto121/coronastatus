@@ -12,6 +12,7 @@
   const hasBeenInContactWithInfected = profile && locals.profile.hasBeenInContactWithInfected;
   const symptomStart = profile && locals.profile.symptomStart;
   const testResult = profile && locals.profile.testResult;
+  const phone = profile && locals.profile.phone;
   const bodyTemperature = profile && locals.profile.bodyTemperature;
   const isolationStatus = profile && locals.profile.isolationStatus;
   const smokingHabit = profile && locals.profile.smokingHabit;
@@ -476,6 +477,16 @@
       value="<%= bodyTemperature %>"
     >
 
+      <label class="mb-0" for="phone-number"><%= __('What is your phone number') %></label>
+      <input
+              required
+              type="text"
+              class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              step="0.1"
+              value="<%=phone%>"
+              name="phone-number"
+              id="phone-number"
+      >
 
     <h3 class="text-cvs-red text-xl font-bold m-4 ml-0 mt-8 mb-0"><%= __("How will my data be used?") %></h3>
 

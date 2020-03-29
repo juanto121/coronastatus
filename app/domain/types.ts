@@ -14,6 +14,8 @@ export interface CovidReport {
   isolationStatus?: IsolationStatus;
   diagnosedWithOtherConditions?: boolean;
   diagnosedWith: DiagnosedWith;
+  phone: string;
+  score?: number;
 }
 // Added
 export type DiagnosedWith = {
