@@ -192,7 +192,9 @@ router.post('/', createReportRateLimit, async (req, res) => {
       [Diagnosed.AUTOIMMUNEDISEASE]: req.body['diagnosed-autoimmune-disease'] === 'on'
     },
     submissionTimestamp: new Date().getTime(),
-    phone: req.body['phone-number']
+    phone: req.body['phone-number'],
+    name: req.body['name-value'],
+    nationalId: req.body['national-id']
   };
 
   const passcode = req.body['passcode'] || passcodeCreator.createPasscode();

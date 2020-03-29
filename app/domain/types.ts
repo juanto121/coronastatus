@@ -15,6 +15,8 @@ export interface CovidReport {
   diagnosedWithOtherConditions?: boolean;
   diagnosedWith: DiagnosedWith;
   phone: string;
+  name: string;
+  nationalId: number;
   score?: number;
 }
 // Added

@@ -13,6 +13,10 @@
   const symptomStart = profile && locals.profile.symptomStart;
   const testResult = profile && locals.profile.testResult;
   const phone = profile && locals.profile.phone;
+  <!--Adding Name and National ID-->
+  const name = profile && locals.profile.name;
+  const nationalId = profile && locals.profile.nationalId;
+  <!---->
   const bodyTemperature = profile && locals.profile.bodyTemperature;
   const isolationStatus = profile && locals.profile.isolationStatus;
   const smokingHabit = profile && locals.profile.smokingHabit;
@@ -285,12 +289,6 @@
       <span class="checkmark"></span>
     </label>
 
-    <label class="checkbox" for="symptom-fatigue">
-      <input type="checkbox" id="symptom-fatigue" name="symptom-fatigue" <%= symptomFatigue ? 'checked' : '' %>>
-      <span><%= __('Fatigue and exhaustion') %></span>
-      <span class="checkmark"></span>
-    </label>
-
     <label class="checkbox" for="symptom-fever">
       <input type="checkbox" id="symptom-fever" name="symptom-fever" <%= symptomFever ? 'checked' : '' %>>
       <span><%= __('Fever') %></span>
@@ -300,6 +298,12 @@
     <label class="checkbox" for="symptom-heavy-breath">
       <input type="checkbox" id="symptom-heavy-breath" name="symptom-heavy-breath" <%= symptomHeavyBreathing ? 'checked' : '' %>>
       <span><%= __('Shortness of breath') %></span>
+      <span class="checkmark"></span>
+    </label>
+
+    <label class="checkbox" for="symptom-fatigue">
+      <input type="checkbox" id="symptom-fatigue" name="symptom-fatigue" <%= symptomFatigue ? 'checked' : '' %>>
+      <span><%= __('Fatigue and exhaustion') %></span>
       <span class="checkmark"></span>
     </label>
 
@@ -381,7 +385,7 @@
   
       <label class="checkbox" for="diagnosed-ischemic-heart-disease">
         <input type="checkbox" id="diagnosed-ischemic-heart-disease" name="diagnosed-ischemic-heart-disease" <%= diagnosedWithIschemicHeartDisease ? 'checked' : '' %>>
-        <span><%= __('Ischemic Heart Diasease') %></span>
+        <span><%= __('Ischemic Heart Disease') %></span>
         <span class="checkmark"></span>
       </label>
   
@@ -476,17 +480,39 @@
       id="body-temperature"
       value="<%= bodyTemperature %>"
     >
-
-      <label class="mb-0" for="phone-number"><%= __('What is your phone number') %></label>
+    
+    <label class="mb-0" for="name-value"><%= __('What is your name?') %></label>
       <input
-              required
-              type="text"
-              class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              step="0.1"
-              value="<%=phone%>"
-              name="phone-number"
-              id="phone-number"
-      >
+            required
+            type="text"
+            class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            step="0.1"
+            value="<%=name%>"
+            name="name-value"
+            id="name-value"
+    >
+
+    <label class="mb-0" for="national-id"><%= __('What is your National ID?') %></label>
+      <input
+            required
+            type="number"
+            class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            step="0.1"
+            value="<%=nationalId%>"
+            name="national-id"
+            id="national-id"
+    >
+    
+    <label class="mb-0" for="phone-number"><%= __('What is your phone number?') %></label>
+      <input
+            required
+            type="text"
+            class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            step="0.1"
+            value="<%=phone%>"
+            name="phone-number"
+            id="phone-number"
+    >
 
     <h3 class="text-cvs-red text-xl font-bold m-4 ml-0 mt-8 mb-0"><%= __("How will my data be used?") %></h3>
 

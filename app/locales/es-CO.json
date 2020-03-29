@@ -175,7 +175,7 @@
   "I used to smoke": "Solía fumar",
   "I have never smoked": "Nunca he fumado",
   "What is your current body temperature? (Celcius)": "¿Cuál es su temperatura corporal actual? (Celsius)",
-  "What is your phone number": "¿Cuál es su número telefonico?",
+  "What is your phone number?": "¿Cuál es su número telefonico?",
   "This field is optional": "Este campo es opcional",
   "Close": "Cerrar",
   "Report your health status now": "Reporte su estado de salud ahora",
@@ -192,5 +192,15 @@
   "Health Department": "Instituto Nacional de Salud",
   "url_health_department": "https://www.ins.gov.co/Noticias/Paginas/Coronavirus.aspx",
   "website.": "",
-  "National line": "Línea Nacional 123 o desde el celular 192"
+  "National line": "Línea Nacional 123 o desde el celular 192",
+  "Select only the options with which you have been diagnosed": "Seleccione sólo las opciones en las que ha sido diagnosticado",
+  "Diabetes": "Diabetes",
+  "Hypertension": "Hipertensión",
+  "Ischemic Heart Disease": "Enfermedad isquémica del corazón",
+  "Asthma": "Asma",
+  "Chronic Lung Disease": "Enfermedad pulmonar crónica",
+  "Chronic Kidney Disease": "Enfermedad renal crónica",
+  "Autoimmune Disease": "Enfermedad autoinmune",
+  "What is your name?": "¿Cuál es su nombre?",
+  "What is your National ID?": "¿Cuál es su número de cédula?"
 }
