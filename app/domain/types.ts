@@ -13,7 +13,12 @@ export interface CovidReport {
   smokingHabit?: SmokingHabit;
   isolationStatus?: IsolationStatus;
   diagnosedWithOtherConditions?: boolean;
+  diagnosedWith: DiagnosedWith;
 }
+// Added
+export type DiagnosedWith = {
+  [key in Diagnosed]: boolean;
+};
 
 export type Symptoms = {
   [key in Symptom]: boolean;
@@ -59,6 +64,17 @@ export enum Symptom {
   SLIME_COUGH = 'SLIME_COUGH',
   RUNNY_NOSE = 'RUNNY_NOSE',
   NAUSEA_OR_VOMITING = 'NAUSEA_OR_VOMITING'
+}
+
+//Added
+export enum Diagnosed {
+  DIABETES = 'DIABETES',
+  HYPERTENSION = 'HYPERTENSION',
+  ISCHEMICHEARTDISEASE = 'ISCHEMICHEARTDISEASE',
+  ASTHMA = 'ASTHMA',
+  CHRONICLUNGDISEASE = 'CHRONICLUNGDISEASE',
+  CHRONICKIDNEYDISEASE = 'CHRONICKIDNEYDISEASE',
+  AUTOIMMUNEDISEASE = 'AUTOIMMUNEDISEASE'
 }
 
 export interface AggregatedCovidReportData {

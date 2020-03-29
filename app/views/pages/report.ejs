@@ -16,7 +16,15 @@
   const isolationStatus = profile && locals.profile.isolationStatus;
   const smokingHabit = profile && locals.profile.smokingHabit;
   const diagnosedWithOtherConditions = profile && locals.profile.diagnosedWithOtherConditions;
-  <!-- New added-->
+  <!-- New added -->
+  const diagnosedWith = profile && locals.profile.diagnosedWith;
+  const diagnosedWithDiabetes = profile && diagnosedWith['DIABETES'];
+  const diagnosedWithHyperTension = profile && diagnosedWith['HYPERTENSION']
+  const diagnosedWithIschemicHeartDisease = profile && diagnosedWith['ISCHEMICHEARTDISEASE']
+  const diagnosedWithAsthma = profile && diagnosedWith['ASTHMA']
+  const diagnosedWithChronicLungDisease = profile && diagnosedWith['CHRONICLUNGDISEASE']
+  const diagnosedWithChronicKidneyDisease = profile && diagnosedWith['CHRONICKIDNEYDISEASE']
+  const diagnosedWithAutoimmuneDisease = profile && diagnosedWith['AUTOIMMUNEDISEASE']
   <!---->
   const symptoms = profile && locals.profile.symptoms;
   const symptomDryCough = symptoms && symptoms['DRY_COUGH'];
@@ -353,6 +361,54 @@
         value="<%= symptomStart %>">
     </div>
 
+    <!--diagnosedWith-->
+    <fieldset>
+      <legend class="mb-0"><%= __('Have you been diagnosed with any of the following conditions?') %></legend>
+      <p class="mb-4"><%- __('Select only the options with which you have been diagnosed') %></p>
+
+      <label class="checkbox" for="diagnosed-diabetes">
+        <input type="checkbox" id="diagnosed-diabetes" name="diagnosed-diabetes" <%= diagnosedWithDiabetes ? 'checked' : '' %>>
+        <span><%= __('Diabetes') %></span>
+        <span class="checkmark"></span>
+      </label>
+  
+      <label class="checkbox" for="diagnosed-hyper-tension">
+        <input type="checkbox" id="diagnosed-hyper-tension" name="diagnosed-hyper-tension" <%= diagnosedWithHyperTension ? 'checked' : '' %>>
+        <span><%= __('Hypertension') %></span>
+        <span class="checkmark"></span>
+      </label>
+  
+      <label class="checkbox" for="diagnosed-ischemic-heart-disease">
+        <input type="checkbox" id="diagnosed-ischemic-heart-disease" name="diagnosed-ischemic-heart-disease" <%= diagnosedWithIschemicHeartDisease ? 'checked' : '' %>>
+        <span><%= __('Ischemic Heart Diasease') %></span>
+        <span class="checkmark"></span>
+      </label>
+  
+      <label class="checkbox" for="diagnosed-asthma">
+        <input type="checkbox" id="diagnosed-asthma" name="diagnosed-asthma" <%= diagnosedWithAsthma ? 'checked' : '' %>>
+        <span><%= __('Asthma') %></span>
+        <span class="checkmark"></span>
+      </label>
+  
+      <label class="checkbox" for="diagnosed-chronic-lung-disease">
+        <input type="checkbox" id="diagnosed-chronic-lung-disease" name="diagnosed-chronic-lung-disease" <%= diagnosedWithChronicLungDisease ? 'checked' : '' %>>
+        <span><%= __('Chronic Lung Disease') %></span>
+        <span class="checkmark"></span>
+      </label>
+  
+      <label class="checkbox" for="diagnosed-chronic-kidney-disease">
+        <input type="checkbox" id="diagnosed-chronic-kidney-disease" name="diagnosed-chronic-kidney-disease" <%= diagnosedWithChronicKidneyDisease ? 'checked' : '' %>>
+        <span><%= __('Chronic Kidney Disease') %></span>
+        <span class="checkmark"></span>
+      </label>
+  
+      <label class="checkbox" for="diagnosed-autoimmune-disease">
+        <input type="checkbox" id="diagnosed-autoimmune-disease" name="diagnosed-autoimmune-disease" <%= diagnosedWithAutoimmuneDisease ? 'checked' : '' %>>
+        <span><%= __('Autoimmune Disease') %></span>
+        <span class="checkmark"></span>
+      </label>
+    </fieldset>
+    <!--Previous Diagnosed with Deprecated
     <fieldset>
     <legend class="mb-0"><%= __('Have you been diagnosed with any of the following conditions?')%></legend>
     <p class="mb-4"><%= __('Diabetes mellitus, Hypertension, Ischemic heart disease, Asthma, Chronic lung disease, Chronic kidney disease') %></p>
@@ -364,6 +420,7 @@
         <label for="diagnosed-other-conditions-no"><%= __('No')%></label>
     </p>
     </fieldset>
+    -->
 
     <fieldset>
     <legend><%= __('I am currently:')%></legend>
