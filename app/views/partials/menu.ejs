@@ -5,6 +5,8 @@ locals.activePage === urls.profile; %>
 <!---->
 <% const isOnMap = locals.activePage === urls.map; %>
 <!---->
+<% const isOnHelp = locals.activePage === urls.help; %>
+<!---->
 <% const isOnPrivacyPolicy = locals.activePage === urls.privacyPolicy; %>
 <!---->
 <% const isOnStats = locals.activePage === urls.statistics; %>
@@ -40,14 +42,13 @@ locals.activePage === urls.profile; %>
   >
     <% if (!home) { %>
     <li class="mr-3 rounded">
-      <!-- Contribute now
+      <!-- Contribute now-->
       <a
         id="nav-cta-button"
         href="<%= urls.submitReport %>#contribute"
         class="opacity-0 custom-nav-link text-center whitespace-no-wrap block text-xl py-4 lg:text-base text-white font-medium lg:py-4 px-4 rounded-full <%= isOnProfile ? 'active' : '' %>"
-        ><%= __("Contribute now") %></a
+        ><%= __("Report your health condition") %></a
       >
-      -->
     </li>
     <% } %>
     <li class="mr-3 rounded hover:bg-cvs-red">
@@ -58,6 +59,14 @@ locals.activePage === urls.profile; %>
         ><%= __("Map") %></a
       >
       -->
+    </li>
+    <li class="mr-3 rounded hover:bg-cvs-red">
+      <!-- Help-->
+      <a
+        href="<%= urls.help %>"
+        class="whitespace-no-wrap block text-white text-xl py-4 lg:text-base font-medium lg:py-4 px-4 <%= isOnHelp ? 'active' : '' %>"
+        ><%= __("Help") %></a
+      >
     </li>
     <li class="mr-3 rounded hover:bg-cvs-red">
       <!-- Estadisticas
