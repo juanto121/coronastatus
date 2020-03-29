@@ -6,7 +6,8 @@ import {
   Sex,
   TestResult,
   SmokingHabit,
-  IsolationStatus
+  IsolationStatus,
+  Diagnosed
 } from '../domain/types';
 import { CovidReportRepository } from '../repository/CovidReportRepository';
 import { getPasscodeCreator } from '../util/passcode-creator';
@@ -180,8 +181,20 @@ router.post('/', createReportRateLimit, async (req, res) => {
     isolationStatus: toIsolationStatus(req.body['isolation-status']),
     diagnosedWithOtherConditions:
       req.body['diagnosed-other-conditions'] === 'yes',
+    //Added
+    diagnosedWith: {
+      [Diagnosed.DIABETES]: req.body['diagnosed-diabetes'] === 'on',
+      [Diagnosed.HYPERTENSION]: req.body['diagnosed-hyper-tension'] === 'on',
+      [Diagnosed.ISCHEMICHEARTDISEASE]: req.body['diagnosed-ischemic-heart-disease'] === 'on',
+      [Diagnosed.ASTHMA]: req.body['diagnosed-asthma'] === 'on',
+      [Diagnosed.CHRONICLUNGDISEASE]: req.body['diagnosed-chronic-lung-disease'] === 'on',
+      [Diagnosed.CHRONICKIDNEYDISEASE]: req.body['diagnosed-chronic-kidney-disease'] === 'on',
+      [Diagnosed.AUTOIMMUNEDISEASE]: req.body['diagnosed-autoimmune-disease'] === 'on'
+    },
     submissionTimestamp: new Date().getTime(),
-    phone: req.body['phone-number']
+    phone: req.body['phone-number'],
+    name: req.body['name-value'],
+    nationalId: req.body['national-id']
   };
 
   const passcode = req.body['passcode'] || passcodeCreator.createPasscode();

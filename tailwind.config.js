@@ -2,9 +2,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'cvs-red': '#A44342',
-        'cvs-green-light': '#e7f4f7',
-        'cvs-green': '#cde2e2',
+        'cvs-red': '#7d24ff',
+        'cvs-green-light': '#304044',
+        'cvs-green': '#4d646a',
         'cvs-green-dark': '#2B7889',
         'cvs-gold': '#F2CC20'
       }

@@ -13,12 +13,24 @@
   const symptomStart = profile && locals.profile.symptomStart;
   const testResult = profile && locals.profile.testResult;
   const phone = profile && locals.profile.phone;
+  <!--Adding Name and National ID-->
+  const name = profile && locals.profile.name;
+  const nationalId = profile && locals.profile.nationalId;
+  <!---->
   const bodyTemperature = profile && locals.profile.bodyTemperature;
   const isolationStatus = profile && locals.profile.isolationStatus;
   const smokingHabit = profile && locals.profile.smokingHabit;
   const diagnosedWithOtherConditions = profile && locals.profile.diagnosedWithOtherConditions;
-  <!-- New added-->
-  <!---->
+  <!-- New added -->
+  const diagnosedWith = profile && locals.profile.diagnosedWith;
+  const diagnosedWithDiabetes = profile && diagnosedWith['DIABETES'];
+  const diagnosedWithHyperTension = profile && diagnosedWith['HYPERTENSION']
+  const diagnosedWithIschemicHeartDisease = profile && diagnosedWith['ISCHEMICHEARTDISEASE']
+  const diagnosedWithAsthma = profile && diagnosedWith['ASTHMA']
+  const diagnosedWithChronicLungDisease = profile && diagnosedWith['CHRONICLUNGDISEASE']
+  const diagnosedWithChronicKidneyDisease = profile && diagnosedWith['CHRONICKIDNEYDISEASE']
+  const diagnosedWithAutoimmuneDisease = profile && diagnosedWith['AUTOIMMUNEDISEASE']
+
   const symptoms = profile && locals.profile.symptoms;
   const symptomDryCough = symptoms && symptoms['DRY_COUGH'];
   const symptomFatigue = symptoms && symptoms['EXHAUSTION'];
@@ -49,7 +61,6 @@
     </header>
     <div class="my-8 flex flex-row flex-wrap justify-between">
       <%- include('partials/cta') -%>
-
       <%- include('partials/app-feature-block', {
         image: '/static/images/hospital.svg',
         title: __('Health centers'),
@@ -57,9 +68,9 @@
       }) -%>
 
       <%- include('partials/app-feature-block', {
-        image: '/static/images/doctor.svg',
-        title: __('Contribute'),
-        description: __('Report your health condition')
+        image: '/static/images/mobile.svg',
+        title: __("It's free"),
+        description: __('In case you need it, a doctor will make your assessment at no cost.')
       }) -%>
 
       <%- include('partials/app-feature-block', {
@@ -69,53 +80,23 @@
       }) -%>
 
       <%- include('partials/app-feature-block', {
-        image: '/static/images/mobile.svg',
-        title: __("It's free"),
-        description: __('In case you need it, a doctor will make your assessment at no cost.')
+        image: '/static/images/doctor.svg',
+        title: __('Contribute'),
+        description: __('Report your health condition')
       }) -%>
+
     </div>
   </div>
 </section>
 
-<section class="custom-section p-4">
-  <div class="custom-section-content mx-auto">
-    <h2 class="sr-only"><%= __('Numbers') %></h2>
-    <ul class="my-8 flex flex-row flex-wrap justify-between">
-      <%- include('partials/app-stats-block', {
-        image: '/static/images/napkin.svg',
-        title: __('Total reports'),
-        number: numberWithSpaces(aggregated.numberOfReports)
-      }) -%>
-      <!-- Contacted / Reported Fix equiation --> 
-      <%- include('partials/app-stats-block', {
-        image: '/static/images/temperature-check.svg',
-        title: __('Contacted / Reported'),
-        number: `${numberWithSpaces(aggregated.numberOfConfirmedInfected)}/${numberWithSpaces(aggregated.numberOfTested)}`
-      }) -%>
 
-      <%- include('partials/app-stats-block', {
-        image: '/static/images/transfer.svg',
-        title: __(`In close contact with someone who's infected`),
-        number: numberWithSpaces(aggregated.numberOfContacts)
-      }) -%>
-
-      <%- include('partials/app-stats-block', {
-        image: '/static/images/symptoms.svg',
-        title: __('Has symptoms'),
-        number: numberWithSpaces(aggregated.numberOfPeopleShowingSymptoms)
-      }) -%>
-    </ul>
-  </div>
-</section>
 
 <% if(locals.didNotAcceptPrivacyPolicy) {%>
   <div class="" role="alert">
     <%= __("You must approve the privacy statement to report your data.") %>
   </div>
 <% } %>
-<section class="w-full self-center text-center m-8">
-<%- include('partials/share') -%>
-</section>
+
 <section class="custom-section-content mx-auto p-4 pb-24 w-full">
   <form id="contribute" method="post" action="/" class="custom-form p-6 py-6 lg:p-24 lg:py-12 my-4 rounded-lg flex flex-col items-start">
     <h3 class="text-2xl md:text-3xl lg:text-5xl text-center font-bold text-cvs-red m-2 self-center">
@@ -170,7 +151,7 @@
       }) -%>
     <% } else { %>
       <p class="text-center text-base lg:text-xl font-medium m-4 mt-0 self-center">
-        <!-- 
+        <!--
         <%= __("Are you from") %> <%= __(locals.country) %>?
         -->
         <%- __("Collecting data from healthy people is just as important as it helps to size the current situation and make better decisions.") %></p>
@@ -277,12 +258,6 @@
       <span class="checkmark"></span>
     </label>
 
-    <label class="checkbox" for="symptom-fatigue">
-      <input type="checkbox" id="symptom-fatigue" name="symptom-fatigue" <%= symptomFatigue ? 'checked' : '' %>>
-      <span><%= __('Fatigue and exhaustion') %></span>
-      <span class="checkmark"></span>
-    </label>
-
     <label class="checkbox" for="symptom-fever">
       <input type="checkbox" id="symptom-fever" name="symptom-fever" <%= symptomFever ? 'checked' : '' %>>
       <span><%= __('Fever') %></span>
@@ -292,6 +267,12 @@
     <label class="checkbox" for="symptom-heavy-breath">
       <input type="checkbox" id="symptom-heavy-breath" name="symptom-heavy-breath" <%= symptomHeavyBreathing ? 'checked' : '' %>>
       <span><%= __('Shortness of breath') %></span>
+      <span class="checkmark"></span>
+    </label>
+
+    <label class="checkbox" for="symptom-fatigue">
+      <input type="checkbox" id="symptom-fatigue" name="symptom-fatigue" <%= symptomFatigue ? 'checked' : '' %>>
+      <span><%= __('Fatigue and exhaustion') %></span>
       <span class="checkmark"></span>
     </label>
 
@@ -354,6 +335,54 @@
         value="<%= symptomStart %>">
     </div>
 
+    <!--diagnosedWith-->
+    <fieldset>
+      <legend class="mb-0"><%= __('Have you been diagnosed with any of the following conditions?') %></legend>
+      <p class="mb-4"><%- __('Select only the options with which you have been diagnosed') %></p>
+
+      <label class="checkbox" for="diagnosed-diabetes">
+        <input type="checkbox" id="diagnosed-diabetes" name="diagnosed-diabetes" <%= diagnosedWithDiabetes ? 'checked' : '' %>>
+        <span><%= __('Diabetes') %></span>
+        <span class="checkmark"></span>
+      </label>
+
+      <label class="checkbox" for="diagnosed-hyper-tension">
+        <input type="checkbox" id="diagnosed-hyper-tension" name="diagnosed-hyper-tension" <%= diagnosedWithHyperTension ? 'checked' : '' %>>
+        <span><%= __('Hypertension') %></span>
+        <span class="checkmark"></span>
+      </label>
+
+      <label class="checkbox" for="diagnosed-ischemic-heart-disease">
+        <input type="checkbox" id="diagnosed-ischemic-heart-disease" name="diagnosed-ischemic-heart-disease" <%= diagnosedWithIschemicHeartDisease ? 'checked' : '' %>>
+        <span><%= __('Ischemic Heart Disease') %></span>
+        <span class="checkmark"></span>
+      </label>
+
+      <label class="checkbox" for="diagnosed-asthma">
+        <input type="checkbox" id="diagnosed-asthma" name="diagnosed-asthma" <%= diagnosedWithAsthma ? 'checked' : '' %>>
+        <span><%= __('Asthma') %></span>
+        <span class="checkmark"></span>
+      </label>
+
+      <label class="checkbox" for="diagnosed-chronic-lung-disease">
+        <input type="checkbox" id="diagnosed-chronic-lung-disease" name="diagnosed-chronic-lung-disease" <%= diagnosedWithChronicLungDisease ? 'checked' : '' %>>
+        <span><%= __('Chronic Lung Disease') %></span>
+        <span class="checkmark"></span>
+      </label>
+
+      <label class="checkbox" for="diagnosed-chronic-kidney-disease">
+        <input type="checkbox" id="diagnosed-chronic-kidney-disease" name="diagnosed-chronic-kidney-disease" <%= diagnosedWithChronicKidneyDisease ? 'checked' : '' %>>
+        <span><%= __('Chronic Kidney Disease') %></span>
+        <span class="checkmark"></span>
+      </label>
+
+      <label class="checkbox" for="diagnosed-autoimmune-disease">
+        <input type="checkbox" id="diagnosed-autoimmune-disease" name="diagnosed-autoimmune-disease" <%= diagnosedWithAutoimmuneDisease ? 'checked' : '' %>>
+        <span><%= __('Autoimmune Disease') %></span>
+        <span class="checkmark"></span>
+      </label>
+    </fieldset>
+    <!--Previous Diagnosed with Deprecated
     <fieldset>
     <legend class="mb-0"><%= __('Have you been diagnosed with any of the following conditions?')%></legend>
     <p class="mb-4"><%= __('Diabetes mellitus, Hypertension, Ischemic heart disease, Asthma, Chronic lung disease, Chronic kidney disease') %></p>
@@ -365,6 +394,7 @@
         <label for="diagnosed-other-conditions-no"><%= __('No')%></label>
     </p>
     </fieldset>
+    -->
 
     <fieldset>
     <legend><%= __('I am currently:')%></legend>
@@ -420,16 +450,38 @@
       value="<%= bodyTemperature %>"
     >
 
-      <label class="mb-0" for="phone-number"><%= __('What is your phone number') %></label>
+    <label class="mb-0" for="name-value"><%= __('What is your name?') %></label>
       <input
-              required
-              type="text"
-              class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              step="0.1"
-              value="<%=phone%>"
-              name="phone-number"
-              id="phone-number"
-      >
+            required
+            type="text"
+            class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            step="0.1"
+            value="<%=name%>"
+            name="name-value"
+            id="name-value"
+    >
+
+    <label class="mb-0" for="national-id"><%= __('What is your National ID?') %></label>
+      <input
+            required
+            type="number"
+            class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            step="0.1"
+            value="<%=nationalId%>"
+            name="national-id"
+            id="national-id"
+    >
+
+    <label class="mb-0" for="phone-number"><%= __('What is your phone number?') %></label>
+      <input
+            required
+            type="text"
+            class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            step="0.1"
+            value="<%=phone%>"
+            name="phone-number"
+            id="phone-number"
+    >
 
     <h3 class="text-cvs-red text-xl font-bold m-4 ml-0 mt-8 mb-0"><%= __("How will my data be used?") %></h3>
 
@@ -460,6 +512,41 @@
       </li>
     </ul>
   </form>
+</section>
+
+<section class="w-full self-center text-center m-8">
+  <%- include('partials/share') -%>
+</section>
+
+<section class="custom-section p-4">
+  <div class="custom-section-content mx-auto">
+    <h2 class="sr-only"><%= __('Numbers') %></h2>
+    <ul class="my-8 flex flex-row flex-wrap justify-between">
+      <%- include('partials/app-stats-block', {
+      image: '/static/images/napkin.svg',
+      title: __('Total reports'),
+      number: numberWithSpaces(aggregated.numberOfReports)
+      }) -%>
+      <!-- Contacted / Reported Fix equiation -->
+      <%- include('partials/app-stats-block', {
+      image: '/static/images/temperature-check.svg',
+      title: __('Contacted / Reported'),
+      number: `${numberWithSpaces(aggregated.numberOfConfirmedInfected)}/${numberWithSpaces(aggregated.numberOfTested)}`
+      }) -%>
+
+      <%- include('partials/app-stats-block', {
+      image: '/static/images/transfer.svg',
+      title: __(`In close contact with someone who's infected`),
+      number: numberWithSpaces(aggregated.numberOfContacts)
+      }) -%>
+
+      <%- include('partials/app-stats-block', {
+      image: '/static/images/symptoms.svg',
+      title: __('Has symptoms'),
+      number: numberWithSpaces(aggregated.numberOfPeopleShowingSymptoms)
+      }) -%>
+    </ul>
+  </div>
 </section>
 
 <section class="custom-section custom-section-about px-6 lg:px-0 py-12 lg:py-24 bg-white">

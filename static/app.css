@@ -5,8 +5,8 @@ body {
 }
 
 html {
-  background-color: #e7f4f7;
-  font-family: 'Helvetica Neue', system-ui, -apple-system, BlinkMacSystemFont,
+  background-color: #ffffff;
+  font-family: 'Roboto', sans-serif, 'Open Sans', sans-serif, 'Helvetica Neue', system-ui, -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   font-size: 16px;
@@ -47,7 +47,7 @@ canvas {
 
 h1 {
   font-size: 3rem;
-  color: #d36767;
+  color: #a17de0;
   margin: 1rem 0;
   font-weight: 700;
   line-height: 120%;
@@ -55,14 +55,14 @@ h1 {
 
 h2 {
   font-size: 1.875rem;
-  color: #d36767;
+  color: #a17de0;
   margin: 0.5rem 0;
   font-weight: 600;
 }
 
 h3 {
   font-size: 1.5rem;
-  color: #d36767;
+  color: #a17de0;
   margin: 0.5rem 0;
   font-weight: 500;
 }
@@ -164,21 +164,21 @@ legend {
   max-width: 68rem;
 }
 .custom-hero {
-  background: #5d7979 linear-gradient(118.81deg, #5d7979 22.4%, #56beab 105.76%);
+  background: #76e8e8 linear-gradient(118.81deg, #faffff 22.4%, #fde0ff 105.76%);
 }
 .custom-nav-link {
-  background: #d36767 linear-gradient(131.3deg, #aa494a 22.4%, #d17c0c 105.76%);
+  background: #5ab4b7 linear-gradient(131.3deg, #6bb5ba 22.4%, #9c7fc2 105.76%);
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1), 0px 2px 4px rgba(0, 0, 0, 0.06);
   -webkit-transition: 0.3s ease-in-out box-shadow;
   transition: 0.3s ease-in-out box-shadow;
 }
 .custom-nav-link:hover,
 .custom-nav-link:focus {
-  background: #d36767;
+  background: #5ab4b7;
   box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.1), 0px 4px 8px rgba(0, 0, 0, 0.06);
 }
 .custom-form {
-  background-color: #cde2e2;
+  background-color: #f6f5f6;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.06);
 }
 .custom-facebook-button {
