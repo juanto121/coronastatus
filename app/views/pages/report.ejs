@@ -61,7 +61,6 @@
     </header>
     <div class="my-8 flex flex-row flex-wrap justify-between">
       <%- include('partials/cta') -%>
-
       <%- include('partials/app-feature-block', {
         image: '/static/images/hospital.svg',
         title: __('Health centers'),
@@ -69,9 +68,9 @@
       }) -%>
 
       <%- include('partials/app-feature-block', {
-        image: '/static/images/doctor.svg',
-        title: __('Contribute'),
-        description: __('Report your health condition')
+        image: '/static/images/mobile.svg',
+        title: __("It's free"),
+        description: __('In case you need it, a doctor will make your assessment at no cost.')
       }) -%>
 
       <%- include('partials/app-feature-block', {
@@ -81,53 +80,23 @@
       }) -%>
 
       <%- include('partials/app-feature-block', {
-        image: '/static/images/mobile.svg',
-        title: __("It's free"),
-        description: __('In case you need it, a doctor will make your assessment at no cost.')
+        image: '/static/images/doctor.svg',
+        title: __('Contribute'),
+        description: __('Report your health condition')
       }) -%>
+
     </div>
   </div>
 </section>
 
-<section class="custom-section p-4">
-  <div class="custom-section-content mx-auto">
-    <h2 class="sr-only"><%= __('Numbers') %></h2>
-    <ul class="my-8 flex flex-row flex-wrap justify-between">
-      <%- include('partials/app-stats-block', {
-        image: '/static/images/napkin.svg',
-        title: __('Total reports'),
-        number: numberWithSpaces(aggregated.numberOfReports)
-      }) -%>
-      <!-- Contacted / Reported Fix equiation --> 
-      <%- include('partials/app-stats-block', {
-        image: '/static/images/temperature-check.svg',
-        title: __('Contacted / Reported'),
-        number: `${numberWithSpaces(aggregated.numberOfConfirmedInfected)}/${numberWithSpaces(aggregated.numberOfTested)}`
-      }) -%>
 
-      <%- include('partials/app-stats-block', {
-        image: '/static/images/transfer.svg',
-        title: __(`In close contact with someone who's infected`),
-        number: numberWithSpaces(aggregated.numberOfContacts)
-      }) -%>
-
-      <%- include('partials/app-stats-block', {
-        image: '/static/images/symptoms.svg',
-        title: __('Has symptoms'),
-        number: numberWithSpaces(aggregated.numberOfPeopleShowingSymptoms)
-      }) -%>
-    </ul>
-  </div>
-</section>
 
 <% if(locals.didNotAcceptPrivacyPolicy) {%>
   <div class="" role="alert">
     <%= __("You must approve the privacy statement to report your data.") %>
   </div>
 <% } %>
-<section class="w-full self-center text-center m-8">
-<%- include('partials/share') -%>
-</section>
+
 <section class="custom-section-content mx-auto p-4 pb-24 w-full">
   <form id="contribute" method="post" action="/" class="custom-form p-6 py-6 lg:p-24 lg:py-12 my-4 rounded-lg flex flex-col items-start">
     <h3 class="text-2xl md:text-3xl lg:text-5xl text-center font-bold text-cvs-red m-2 self-center">
@@ -182,7 +151,7 @@
       }) -%>
     <% } else { %>
       <p class="text-center text-base lg:text-xl font-medium m-4 mt-0 self-center">
-        <!-- 
+        <!--
         <%= __("Are you from") %> <%= __(locals.country) %>?
         -->
         <%- __("Collecting data from healthy people is just as important as it helps to size the current situation and make better decisions.") %></p>
@@ -376,37 +345,37 @@
         <span><%= __('Diabetes') %></span>
         <span class="checkmark"></span>
       </label>
-  
+
       <label class="checkbox" for="diagnosed-hyper-tension">
         <input type="checkbox" id="diagnosed-hyper-tension" name="diagnosed-hyper-tension" <%= diagnosedWithHyperTension ? 'checked' : '' %>>
         <span><%= __('Hypertension') %></span>
         <span class="checkmark"></span>
       </label>
-  
+
       <label class="checkbox" for="diagnosed-ischemic-heart-disease">
         <input type="checkbox" id="diagnosed-ischemic-heart-disease" name="diagnosed-ischemic-heart-disease" <%= diagnosedWithIschemicHeartDisease ? 'checked' : '' %>>
         <span><%= __('Ischemic Heart Disease') %></span>
         <span class="checkmark"></span>
       </label>
-  
+
       <label class="checkbox" for="diagnosed-asthma">
         <input type="checkbox" id="diagnosed-asthma" name="diagnosed-asthma" <%= diagnosedWithAsthma ? 'checked' : '' %>>
         <span><%= __('Asthma') %></span>
         <span class="checkmark"></span>
       </label>
-  
+
       <label class="checkbox" for="diagnosed-chronic-lung-disease">
         <input type="checkbox" id="diagnosed-chronic-lung-disease" name="diagnosed-chronic-lung-disease" <%= diagnosedWithChronicLungDisease ? 'checked' : '' %>>
         <span><%= __('Chronic Lung Disease') %></span>
         <span class="checkmark"></span>
       </label>
-  
+
       <label class="checkbox" for="diagnosed-chronic-kidney-disease">
         <input type="checkbox" id="diagnosed-chronic-kidney-disease" name="diagnosed-chronic-kidney-disease" <%= diagnosedWithChronicKidneyDisease ? 'checked' : '' %>>
         <span><%= __('Chronic Kidney Disease') %></span>
         <span class="checkmark"></span>
       </label>
-  
+
       <label class="checkbox" for="diagnosed-autoimmune-disease">
         <input type="checkbox" id="diagnosed-autoimmune-disease" name="diagnosed-autoimmune-disease" <%= diagnosedWithAutoimmuneDisease ? 'checked' : '' %>>
         <span><%= __('Autoimmune Disease') %></span>
@@ -480,7 +449,7 @@
       id="body-temperature"
       value="<%= bodyTemperature %>"
     >
-    
+
     <label class="mb-0" for="name-value"><%= __('What is your name?') %></label>
       <input
             required
@@ -502,7 +471,7 @@
             name="national-id"
             id="national-id"
     >
-    
+
     <label class="mb-0" for="phone-number"><%= __('What is your phone number?') %></label>
       <input
             required
@@ -543,6 +512,41 @@
       </li>
     </ul>
   </form>
+</section>
+
+<section class="w-full self-center text-center m-8">
+  <%- include('partials/share') -%>
+</section>
+
+<section class="custom-section p-4">
+  <div class="custom-section-content mx-auto">
+    <h2 class="sr-only"><%= __('Numbers') %></h2>
+    <ul class="my-8 flex flex-row flex-wrap justify-between">
+      <%- include('partials/app-stats-block', {
+      image: '/static/images/napkin.svg',
+      title: __('Total reports'),
+      number: numberWithSpaces(aggregated.numberOfReports)
+      }) -%>
+      <!-- Contacted / Reported Fix equiation -->
+      <%- include('partials/app-stats-block', {
+      image: '/static/images/temperature-check.svg',
+      title: __('Contacted / Reported'),
+      number: `${numberWithSpaces(aggregated.numberOfConfirmedInfected)}/${numberWithSpaces(aggregated.numberOfTested)}`
+      }) -%>
+
+      <%- include('partials/app-stats-block', {
+      image: '/static/images/transfer.svg',
+      title: __(`In close contact with someone who's infected`),
+      number: numberWithSpaces(aggregated.numberOfContacts)
+      }) -%>
+
+      <%- include('partials/app-stats-block', {
+      image: '/static/images/symptoms.svg',
+      title: __('Has symptoms'),
+      number: numberWithSpaces(aggregated.numberOfPeopleShowingSymptoms)
+      }) -%>
+    </ul>
+  </div>
 </section>
 
 <section class="custom-section custom-section-about px-6 lg:px-0 py-12 lg:py-24 bg-white">
