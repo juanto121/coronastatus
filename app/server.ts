@@ -16,7 +16,7 @@ import config from './config';
 import { ensureAllLocalesAreValidJSON } from './util/locale-validation';
 
 const app = express();
-const port = process.env.PORT || 7272;
+const port = process.env.PORT || 80;
 const isDevelopmentEnv = process.env.NODE_ENV === 'dev';
 
 i18n.configure({
