@@ -194,7 +194,8 @@ router.post('/', createReportRateLimit, async (req, res) => {
     submissionTimestamp: new Date().getTime(),
     phone: req.body['phone-number'],
     name: req.body['name-value'],
-    nationalId: req.body['national-id']
+    nationalId: req.body['national-id'],
+    videoUrl: req.body['video-url']
   };
 
   const passcode = req.body['passcode'] || passcodeCreator.createPasscode();

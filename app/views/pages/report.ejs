@@ -13,6 +13,7 @@
   const symptomStart = profile && locals.profile.symptomStart;
   const testResult = profile && locals.profile.testResult;
   const phone = profile && locals.profile.phone;
+  const videoUrl = profile && locals.profile.videoUrl;
   <!--Adding Name and National ID-->
   const name = profile && locals.profile.name;
   const nationalId = profile && locals.profile.nationalId;
@@ -223,7 +224,7 @@
         <input required type="radio" id="been-tested-no" name="been-tested" value="no" onclick="changeTestResultDisplay(false)" <%= hasBeenTested === false ? 'checked' : '' %>>
         <label for="been-tested-no"><%= __('No')%></label>
     </p>
-    <fieldset>
+    <input>
 
     <div id="test-result-question" style="display: none;">
       <fieldset>
@@ -483,6 +484,25 @@
             id="phone-number"
     >
 
+      <div class="video-container">
+        <div>
+          <span id="video-upload-progress"></span>
+          <label class="mb-0" for="video-file">OPCIONAL - Sube un video siguiendo</label>
+          <a style="color:blue" href="youtube.com/">estas instrucciones</a>
+          <input
+                  required
+                  type="file"
+                  class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  step="0.1"
+                  name="video-file"
+                  id="video-file"
+          >
+        </div>
+        <video id="video-element" controls></video>
+      </div>
+
+      <input name="video-url" type="hidden" id="video-url" value="<%=videoUrl%>"/>
+
     <h3 class="text-cvs-red text-xl font-bold m-4 ml-0 mt-8 mb-0"><%= __("How will my data be used?") %></h3>
 
     <p class="mt-0 mb-4"><%= __('Your data will be stored with all the privacy and necessary requirements. They will only be shared with doctors in order to make a proper diagnosis.')%><br />
@@ -614,6 +634,54 @@
 
   var hasPasscodeCookie = document.cookie.includes('passcode');
   document.getElementById('accept-remember').checked = hasPasscodeCookie;
+  var videoElement = document.getElementById('video-element')
+  var videoInputElement = document.getElementById('video-file')
+  var uploadProgressElement = document.getElementById('video-upload-progress')
+  var videoUrlElement = document.getElementById('video-url')
+  var uploadedUrl = ""
+  var uploadProgress = (progress) => {
+    uploadProgressElement.innerText = "Cargando archivo " + progress + "%"
+  }
+
+  videoInputElement.onchange = () => {
+    const files = videoInputElement.files
+    if(files && files.length > 0){
+      videoElement.src = URL.createObjectURL(files[0]);
+      UploadApi.uploadMedia(files[0], uploadProgress).then((response) => {
+        videoUrlElement.value = response.file
+        debugger
+      }, uploadProgress)
+              .catch((err) => {
+                console.log(err)
+              })
+    }
+  }
+
+  class UploadApi {
+    static async uploadMedia(file, progressCallback) {
+      const postFileAsForm = function postFile(fileAsForm) {
+        return new Promise((res, rej) => {
+          let req = new XMLHttpRequest();
+          req.onload = () => {
+            res(JSON.parse(req.responseText));
+          };
+          req.onerror = (err) => {console.log('error file upload', err)};
+          req.upload.onprogress = (e) => {
+            if(e.lengthComputable) {
+              const percent = Math.round((e.loaded / e.total) * 100);
+              progressCallback(percent);
+            }
+          };
+          req.open("POST", `http://api.flipook.com/media/upload`);
+          req.send(fileAsForm);
+        });
+      };
+      const data = new FormData();
+      data.append('file', file);
+      const resp = await postFileAsForm(data);
+      return resp;
+    }
+  }
 </script>
 
 <script>
