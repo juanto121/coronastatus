@@ -59,7 +59,7 @@
   "Data privacy": "Privacidad de los datos",
   "The registered data will be treated with a strict privacy policy. We are thinking about your health and the other Colombians health.": "Los datos registrados serán tratados con una estricta política de privacidad. Estamos pensando en tu salud y en la de todos los Colombianos.",
   "It's free": "Es gratis",
-  "In case you need it, a doctor will make your assessment at no cost.": "En caso de que lo necesite un médico realizará su valoración sin ningún costo.",
+  "In case you need it, a doctor will make your assessment at no cost.": "En caso de que lo necesite, un médico realizará su valoración sin ningún costo.",
   "Total reports": "Reportes totales",
   "Contacted / Reported": "Contactados / Reportados",
   "In close contact with someone who's infected": "En contacto cercano con alguien infectado",
@@ -179,7 +179,8 @@
   "This field is optional": "Este campo es opcional",
   "Close": "Cerrar",
   "Report your health status now": "Reporte su estado de salud ahora",
-  "Help us to decongest health centers. Report your state of health, a doctor will contact you. It is free.": "Ayúdanos a descongestionar los centros de salud. Reporta tu estado de salud, un médico te contactará. Es gratis.",
+  "Help us to decongest health centers.": "Descongestionemos los centros de salud.",
+  "Report your state of health, a doctor will contact you. It is free.": "Reporta tu estado de salud en linea, un médico te contactará. Es gratis.",
   "Numbers": "Números",
   "In isolation due to orders from the government": "En aislamiento por orden del gobierno",
   "In isolation due to COVID-19 infection": "En aislamiento por contagio de COVID-19",
@@ -202,5 +203,9 @@
   "Chronic Kidney Disease": "Enfermedad renal crónica",
   "Autoimmune Disease": "Enfermedad autoinmune",
   "What is your name?": "¿Cuál es su nombre?",
-  "What is your National ID?": "¿Cuál es su número de cédula?"
+  "What is your National ID?": "¿Cuál es su número de cédula?",
+  "This system was carried out for the": "Este sistema se realizó para la",
+  "COVID-19 Global Hackathon": "COVID-19 Global Hackathon",
+  "https://devpost.com/software/5vid-co": "https://devpost.com/software/5vid-co",
+  "in just 2 days. It is a system that is under construction at the moment and we hope to have a stable version soon. Thanks for your understanding.": "en cuestión de 2 días. Es un sistema que está en construcción en este momento y esperamos tener pronto una versión estable. Gracias por su comprensión."
 }

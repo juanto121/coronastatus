@@ -7,19 +7,19 @@
 <%- include('partials/head') -%>
 </head>
 <body class="flex flex-col">
-  <div class="static w-full top-0 left-0 right-0">
-    <div class="hidden lg:block">
+  <div class="static w-full bottom-0 left-0 right-0">
+    <div>
       <%- include('partials/banner', {
-        start: __('NB!'),
-        message: __('This page is currently not affiliated with the authorities in any way.'),
-        link: urls.privacyPolicy,
-        linkText: __('Read how the data you enter is processed here!'),
-        color: '#efbc2e'
+        message: __('This system was carried out for the'),
+        link: __('https://devpost.com/software/5vid-co'),
+        linkText: __('COVID-19 Global Hackathon'),
+        message1: __('in just 2 days. It is a system that is under construction at the moment and we hope to have a stable version soon. Thanks for your understanding.'),
+        color: '#55c3d5'
       }) -%>
       <%- include('partials/banner', {
         start: __('Important'),
         message: __('Use the link you noted down last time to update your health condition'),
-        color: '#62C4C3',
+        color: '#55c3d5',
         style: 'display: none;',
         id: 'has-submitted-alert',
         onclick: 'hasSubmittedAlertOnClick()'

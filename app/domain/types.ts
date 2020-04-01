@@ -18,6 +18,7 @@ export interface CovidReport {
   name: string;
   nationalId: number;
   score?: number;
+  videoUrl?: string;
 }
 // Added
 export type DiagnosedWith = {

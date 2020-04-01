@@ -1,0 +1,9 @@
+.video-container {
+    display: flex;
+    flex-direction: column;
+}
+
+#video-element {
+    max-height: 200px;
+    max-width: 200px;
+}

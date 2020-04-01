@@ -17,22 +17,6 @@ locals.activePage === urls.profile; %>
 <!---->
 <% const imageSubfolder = locals.imageSubfolder; %>
 
-<div class="block lg:hidden">
-  <button
-    id="nav-toggle"
-    class="flex items-center text-cvs-green-light hover:text-cvs-gold"
-  >
-    <svg
-      class="fill-current h-6 w-6"
-      viewBox="0 0 20 20"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <title>Menu</title>
-      <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-    </svg>
-  </button>
-</div>
-
 <nav
   class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block pt-6 lg:pt-0"
   id="nav-content"
@@ -59,14 +43,6 @@ locals.activePage === urls.profile; %>
         ><%= __("Map") %></a
       >
       -->
-    </li>
-    <li class="mr-3 rounded hover:bg-cvs-red">
-      <!-- Help-->
-      <a
-        href="<%= urls.help %>"
-        class="whitespace-no-wrap block text-white text-xl py-4 lg:text-base font-medium lg:py-4 px-4 <%= isOnHelp ? 'active' : '' %>"
-        ><%= __("Help") %></a
-      >
     </li>
     <li class="mr-3 rounded hover:bg-cvs-red">
       <!-- Estadisticas
