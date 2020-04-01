@@ -427,8 +427,8 @@ button,
 input[type='submit']:hover,
 input[type='submit']:focus {
   color: #fff;
-  background: #d36767;
-  border-color: #000;
+  background: #873ddb;
+  border-color: #fff;
 }
 
 .contributor-list::before {

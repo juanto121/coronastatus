@@ -1,23 +1,30 @@
-<% const { id = null, link = null, start = null, close = false, onclick = null, style = ''} = locals; %>
+<% const { id = null, link = null, start = null, message1 = null, close = false, onclick = null, style = ''} = locals; %>
 
 <div
-  class="w-full py-4 px-12 flex flex-row justify-between bg-blue-200 relative"
-  style="background-color: <%= color %>; <%= style %>"
+  class="w-screen py-4 flex-row text-center"
+  background: rgb(45,209,231);
+background: linear-gradient(93deg, rgba(45,209,231,1) 0%, rgba(218,240,240,1) 100%);
+  style="background-color: rgb(45,209,231); 
+  background: linear-gradient(93deg, rgba(45,209,231,1) 0%, rgba(218,240,240,1) 100%);
+  <%= style %>"
   <%= id ? `id=${id}` : '' %>
 >
-  <div class="font-medium">
-    <b><%= start ? start : 'Important:' %></b>
-    <%= message %>
-  </div>
-
-  <% if (link) { %>
-  <div class="text-gray-900">
-    <a target="_blank" href="<%= link %>"><%= linkText %></a>
-  </div>
+<div class="font-medium">
+  <% if (start) { %>
+      <b><%= start ? start : 'Important:' %></b>  
   <% } %>
-
+  <%= message %>
+  <% if (link) { %>
+    <a style="margin-left: 3px; margin-right: 3px; text-decoration: underline;" 
+    target="_blank" href="<%= link %>"><%= linkText %></a>
+  <% } %>
+  <% if (message1) { %>
+      <%= message1 %>  
+  <% } %>
+</div>  
+<div>
   <% if (onclick) { %>
-    <span class="absolute top-0 bottom-0 right-0 px-4 pt-4"></span>
+    <span class="absolute top-0 bottom-0 right-0"></span>
       <svg
         class="fill-current h-6 w-6 text-<%= color %>-400"
         role="button"
@@ -32,4 +39,5 @@
       </svg>
     </span>
   <% }%>
+</div>
 </div>

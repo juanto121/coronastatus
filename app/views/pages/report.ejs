@@ -56,7 +56,7 @@
 
 <section class="custom-section custom-hero p-4">
   <div class="custom-section-content mx-auto">
-    <header class="py-2 flex justify-between items-center flex-wrap">
+    <header class="py-2 flex justify-center sm:justify-between items-center flex-wrap">
       <%- include('partials/logo') -%>
       <%- include('partials/menu', { home: true }) -%>
     </header>
@@ -484,7 +484,7 @@
       <div class="video-container">
         <div>
           <span id="video-upload-progress"></span>
-          <label class="mb-0" for="video-file">OPCIONAL - Sube un video siguiendo</label>
+          <label class="mb-0" for="video-file">OPCIONAL - Sube un video de tu dedo presionando el lente de la camara con una fuente de luz (Puede ser el flash)</label>
           <input
                   type="file"
                   class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -594,12 +594,12 @@
       <div class="hashtag-item text-center flex flex-col items-center w-1/2">
         <div class="hashtag-item__title text-cvs-red font-medium text-lg md:text-3xl uppercase m-2"><%- __('#lavatusmanos') %></div>
         <img src="/static/images/washing-hands.svg" alt=""
-          class="hashtag-item__img h-48 w-48 lg:h-64 lg:w-64 m-2">
+          class="hashtag-item__img h-35 w-35 lg:h-40 lg:w-40 m-2">
       </div>
       <div class="hashtag-item text-center flex flex-col items-center w-1/2">
         <div class="hashtag-item__title text-cvs-red font-medium text-lg md:text-3xl uppercase m-2"><%- __('#quedateencasa') %></div>
         <img src="/static/images/stay-home.svg" alt=""
-          class="hashtag-item__img h-48 w-48 lg:h-64 lg:w-64 m-2">
+          class="hashtag-item__img h-35 w-35 lg:h-40 lg:w-40 m-2">
       </div>
     </div>
   </div>
