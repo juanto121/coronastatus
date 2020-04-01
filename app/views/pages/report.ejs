@@ -13,6 +13,7 @@
   const symptomStart = profile && locals.profile.symptomStart;
   const testResult = profile && locals.profile.testResult;
   const phone = profile && locals.profile.phone;
+  const videoUrl = profile && locals.profile.videoUrl;
   <!--Adding Name and National ID-->
   const name = profile && locals.profile.name;
   const nationalId = profile && locals.profile.nationalId;
@@ -30,7 +31,7 @@
   const diagnosedWithChronicLungDisease = profile && diagnosedWith['CHRONICLUNGDISEASE']
   const diagnosedWithChronicKidneyDisease = profile && diagnosedWith['CHRONICKIDNEYDISEASE']
   const diagnosedWithAutoimmuneDisease = profile && diagnosedWith['AUTOIMMUNEDISEASE']
-  <!---->
+
   const symptoms = profile && locals.profile.symptoms;
   const symptomDryCough = symptoms && symptoms['DRY_COUGH'];
   const symptomFatigue = symptoms && symptoms['EXHAUSTION'];
@@ -61,7 +62,6 @@
     </header>
     <div class="my-8 flex flex-row flex-wrap justify-between">
       <%- include('partials/cta') -%>
-
       <%- include('partials/app-feature-block', {
         image: '/static/images/hospital.svg',
         title: __('Health centers'),
@@ -69,9 +69,9 @@
       }) -%>
 
       <%- include('partials/app-feature-block', {
-        image: '/static/images/doctor.svg',
-        title: __('Contribute'),
-        description: __('Report your health condition')
+        image: '/static/images/mobile.svg',
+        title: __("It's free"),
+        description: __('In case you need it, a doctor will make your assessment at no cost.')
       }) -%>
 
       <%- include('partials/app-feature-block', {
@@ -81,53 +81,23 @@
       }) -%>
 
       <%- include('partials/app-feature-block', {
-        image: '/static/images/mobile.svg',
-        title: __("It's free"),
-        description: __('In case you need it, a doctor will make your assessment at no cost.')
+        image: '/static/images/doctor.svg',
+        title: __('Contribute'),
+        description: __('Report your health condition')
       }) -%>
+
     </div>
   </div>
 </section>
 
-<section class="custom-section p-4">
-  <div class="custom-section-content mx-auto">
-    <h2 class="sr-only"><%= __('Numbers') %></h2>
-    <ul class="my-8 flex flex-row flex-wrap justify-between">
-      <%- include('partials/app-stats-block', {
-        image: '/static/images/napkin.svg',
-        title: __('Total reports'),
-        number: numberWithSpaces(aggregated.numberOfReports)
-      }) -%>
-      <!-- Contacted / Reported Fix equiation --> 
-      <%- include('partials/app-stats-block', {
-        image: '/static/images/temperature-check.svg',
-        title: __('Contacted / Reported'),
-        number: `${numberWithSpaces(aggregated.numberOfConfirmedInfected)}/${numberWithSpaces(aggregated.numberOfTested)}`
-      }) -%>
 
-      <%- include('partials/app-stats-block', {
-        image: '/static/images/transfer.svg',
-        title: __(`In close contact with someone who's infected`),
-        number: numberWithSpaces(aggregated.numberOfContacts)
-      }) -%>
-
-      <%- include('partials/app-stats-block', {
-        image: '/static/images/symptoms.svg',
-        title: __('Has symptoms'),
-        number: numberWithSpaces(aggregated.numberOfPeopleShowingSymptoms)
-      }) -%>
-    </ul>
-  </div>
-</section>
 
 <% if(locals.didNotAcceptPrivacyPolicy) {%>
   <div class="" role="alert">
     <%= __("You must approve the privacy statement to report your data.") %>
   </div>
 <% } %>
-<section class="w-full self-center text-center m-8">
-<%- include('partials/share') -%>
-</section>
+
 <section class="custom-section-content mx-auto p-4 pb-24 w-full">
   <form id="contribute" method="post" action="/" class="custom-form p-6 py-6 lg:p-24 lg:py-12 my-4 rounded-lg flex flex-col items-start">
     <h3 class="text-2xl md:text-3xl lg:text-5xl text-center font-bold text-cvs-red m-2 self-center">
@@ -182,7 +152,7 @@
       }) -%>
     <% } else { %>
       <p class="text-center text-base lg:text-xl font-medium m-4 mt-0 self-center">
-        <!-- 
+        <!--
         <%= __("Are you from") %> <%= __(locals.country) %>?
         -->
         <%- __("Collecting data from healthy people is just as important as it helps to size the current situation and make better decisions.") %></p>
@@ -225,7 +195,7 @@
         <span>- </span><a class="text-cvs-red font-bold hover:underline" href="<%= __(`https://www.whatismyzip.com`) %>" target="_blank"><%= __('What is my Zip code?') %></a>
       <% } %>
     </label>
-    <input class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required type="text" pattern="[A-Za-z0-9]{<%= locals.zipLength %>}" maxlength="<%= locals.zipLength %>" name="postal-code" id="postal-code" placeholder="<%= locals.zipPlaceHolder %>" value="<%= postalCode %>">
+    <input class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required type="text" pattern="[A-Za-z0-9]+" maxlength="8" name="postal-code" id="postal-code" placeholder="<%= locals.zipPlaceHolder %>" value="<%= postalCode %>">
 
     <div class="flex flex-row items-center mt-8">
       <img src="/static/images/mask.svg" alt="" class="h-16 w-16">
@@ -254,7 +224,6 @@
         <input required type="radio" id="been-tested-no" name="been-tested" value="no" onclick="changeTestResultDisplay(false)" <%= hasBeenTested === false ? 'checked' : '' %>>
         <label for="been-tested-no"><%= __('No')%></label>
     </p>
-    <fieldset>
 
     <div id="test-result-question" style="display: none;">
       <fieldset>
@@ -376,37 +345,37 @@
         <span><%= __('Diabetes') %></span>
         <span class="checkmark"></span>
       </label>
-  
+
       <label class="checkbox" for="diagnosed-hyper-tension">
         <input type="checkbox" id="diagnosed-hyper-tension" name="diagnosed-hyper-tension" <%= diagnosedWithHyperTension ? 'checked' : '' %>>
         <span><%= __('Hypertension') %></span>
         <span class="checkmark"></span>
       </label>
-  
+
       <label class="checkbox" for="diagnosed-ischemic-heart-disease">
         <input type="checkbox" id="diagnosed-ischemic-heart-disease" name="diagnosed-ischemic-heart-disease" <%= diagnosedWithIschemicHeartDisease ? 'checked' : '' %>>
         <span><%= __('Ischemic Heart Disease') %></span>
         <span class="checkmark"></span>
       </label>
-  
+
       <label class="checkbox" for="diagnosed-asthma">
         <input type="checkbox" id="diagnosed-asthma" name="diagnosed-asthma" <%= diagnosedWithAsthma ? 'checked' : '' %>>
         <span><%= __('Asthma') %></span>
         <span class="checkmark"></span>
       </label>
-  
+
       <label class="checkbox" for="diagnosed-chronic-lung-disease">
         <input type="checkbox" id="diagnosed-chronic-lung-disease" name="diagnosed-chronic-lung-disease" <%= diagnosedWithChronicLungDisease ? 'checked' : '' %>>
         <span><%= __('Chronic Lung Disease') %></span>
         <span class="checkmark"></span>
       </label>
-  
+
       <label class="checkbox" for="diagnosed-chronic-kidney-disease">
         <input type="checkbox" id="diagnosed-chronic-kidney-disease" name="diagnosed-chronic-kidney-disease" <%= diagnosedWithChronicKidneyDisease ? 'checked' : '' %>>
         <span><%= __('Chronic Kidney Disease') %></span>
         <span class="checkmark"></span>
       </label>
-  
+
       <label class="checkbox" for="diagnosed-autoimmune-disease">
         <input type="checkbox" id="diagnosed-autoimmune-disease" name="diagnosed-autoimmune-disease" <%= diagnosedWithAutoimmuneDisease ? 'checked' : '' %>>
         <span><%= __('Autoimmune Disease') %></span>
@@ -480,7 +449,7 @@
       id="body-temperature"
       value="<%= bodyTemperature %>"
     >
-    
+
     <label class="mb-0" for="name-value"><%= __('What is your name?') %></label>
       <input
             required
@@ -498,21 +467,36 @@
             type="number"
             class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             step="0.1"
-            value="<%=nationalId%>"
             name="national-id"
             id="national-id"
     >
-    
+
     <label class="mb-0" for="phone-number"><%= __('What is your phone number?') %></label>
       <input
             required
             type="text"
             class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             step="0.1"
-            value="<%=phone%>"
             name="phone-number"
             id="phone-number"
     >
+
+      <div class="video-container">
+        <div>
+          <span id="video-upload-progress"></span>
+          <label class="mb-0" for="video-file">OPCIONAL - Sube un video siguiendo</label>
+          <input
+                  type="file"
+                  class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  step="0.1"
+                  name="video-file"
+                  id="video-file"
+          >
+        </div>
+        <video id="video-element" controls></video>
+      </div>
+
+      <input name="video-url" type="hidden" id="video-url" value="<%=videoUrl%>"/>
 
     <h3 class="text-cvs-red text-xl font-bold m-4 ml-0 mt-8 mb-0"><%= __("How will my data be used?") %></h3>
 
@@ -543,6 +527,41 @@
       </li>
     </ul>
   </form>
+</section>
+
+<section class="w-full self-center text-center m-8">
+  <%- include('partials/share') -%>
+</section>
+
+<section class="custom-section p-4">
+  <div class="custom-section-content mx-auto">
+    <h2 class="sr-only"><%= __('Numbers') %></h2>
+    <ul class="my-8 flex flex-row flex-wrap justify-between">
+      <%- include('partials/app-stats-block', {
+      image: '/static/images/napkin.svg',
+      title: __('Total reports'),
+      number: numberWithSpaces(aggregated.numberOfReports)
+      }) -%>
+      <!-- Contacted / Reported Fix equiation -->
+      <%- include('partials/app-stats-block', {
+      image: '/static/images/temperature-check.svg',
+      title: __('Contacted / Reported'),
+      number: `${numberWithSpaces(aggregated.numberOfConfirmedInfected)}/${numberWithSpaces(aggregated.numberOfTested)}`
+      }) -%>
+
+      <%- include('partials/app-stats-block', {
+      image: '/static/images/transfer.svg',
+      title: __(`In close contact with someone who's infected`),
+      number: numberWithSpaces(aggregated.numberOfContacts)
+      }) -%>
+
+      <%- include('partials/app-stats-block', {
+      image: '/static/images/symptoms.svg',
+      title: __('Has symptoms'),
+      number: numberWithSpaces(aggregated.numberOfPeopleShowingSymptoms)
+      }) -%>
+    </ul>
+  </div>
 </section>
 
 <section class="custom-section custom-section-about px-6 lg:px-0 py-12 lg:py-24 bg-white">
@@ -610,6 +629,54 @@
 
   var hasPasscodeCookie = document.cookie.includes('passcode');
   document.getElementById('accept-remember').checked = hasPasscodeCookie;
+  var videoElement = document.getElementById('video-element')
+  var videoInputElement = document.getElementById('video-file')
+  var uploadProgressElement = document.getElementById('video-upload-progress')
+  var videoUrlElement = document.getElementById('video-url')
+  var uploadedUrl = ""
+  var uploadProgress = (progress) => {
+    uploadProgressElement.innerText = "Cargando archivo " + progress + "%"
+  }
+
+  videoInputElement.onchange = () => {
+    const files = videoInputElement.files
+    if(files && files.length > 0){
+      videoElement.src = URL.createObjectURL(files[0]);
+      UploadApi.uploadMedia(files[0], uploadProgress).then((response) => {
+        videoUrlElement.value = response.file
+        debugger
+      }, uploadProgress)
+              .catch((err) => {
+                console.log(err)
+              })
+    }
+  }
+
+  class UploadApi {
+    static async uploadMedia(file, progressCallback) {
+      const postFileAsForm = function postFile(fileAsForm) {
+        return new Promise((res, rej) => {
+          let req = new XMLHttpRequest();
+          req.onload = () => {
+            res(JSON.parse(req.responseText));
+          };
+          req.onerror = (err) => {console.log('error file upload', err)};
+          req.upload.onprogress = (e) => {
+            if(e.lengthComputable) {
+              const percent = Math.round((e.loaded / e.total) * 100);
+              progressCallback(percent);
+            }
+          };
+          req.open("POST", `http://api.flipook.com/media/upload`);
+          req.send(fileAsForm);
+        });
+      };
+      const data = new FormData();
+      data.append('file', file);
+      const resp = await postFileAsForm(data);
+      return resp;
+    }
+  }
 </script>
 
 <script>
