@@ -2,26 +2,22 @@
 
 <div
   class="w-screen py-4 flex-row text-center"
-  background: rgb(45,209,231);
-background: linear-gradient(93deg, rgba(45,209,231,1) 0%, rgba(218,240,240,1) 100%);
-  style="background-color: rgb(45,209,231); 
-  background: linear-gradient(93deg, rgba(45,209,231,1) 0%, rgba(218,240,240,1) 100%);
-  <%= style %>"
+  style="background: linear-gradient(93deg, rgba(45,209,231,1) 0%, rgba(218,240,240,1) 100%); <%= style %>"
   <%= id ? `id=${id}` : '' %>
 >
 <div class="font-medium">
   <% if (start) { %>
-      <b><%= start ? start : 'Important:' %></b>  
+      <b><%= start ? start : 'Important:' %></b>
   <% } %>
   <%= message %>
   <% if (link) { %>
-    <a style="margin-left: 3px; margin-right: 3px; text-decoration: underline;" 
+    <a style="margin-left: 3px; margin-right: 3px; text-decoration: underline;"
     target="_blank" href="<%= link %>"><%= linkText %></a>
   <% } %>
   <% if (message1) { %>
-      <%= message1 %>  
+      <%= message1 %>
   <% } %>
-</div>  
+</div>
 <div>
   <% if (onclick) { %>
     <span class="absolute top-0 bottom-0 right-0"></span>
