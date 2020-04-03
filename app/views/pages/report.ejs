@@ -483,7 +483,6 @@
 
       <div class="video-container">
         <div>
-          <span id="video-upload-progress"></span>
           <label class="mb-0" for="video-file">OPCIONAL - Sube un video de tu dedo presionando el lente de la camara con una fuente de luz (Puede ser el flash)</label>
           <input
                   type="file"
@@ -494,6 +493,7 @@
           >
         </div>
         <video id="video-element" controls></video>
+        <span id="video-upload-progress"></span>
       </div>
 
       <input name="video-url" type="hidden" id="video-url" value="<%=videoUrl%>"/>
@@ -644,7 +644,6 @@
       videoElement.src = URL.createObjectURL(files[0]);
       UploadApi.uploadMedia(files[0], uploadProgress).then((response) => {
         videoUrlElement.value = response.file
-        debugger
       }, uploadProgress)
               .catch((err) => {
                 console.log(err)
@@ -653,28 +652,58 @@
   }
 
   class UploadApi {
-    static async uploadMedia(file, progressCallback) {
-      const postFileAsForm = function postFile(fileAsForm) {
+    static async getUploadUrl(filename) {
+      const getUrl = (filename) => {
         return new Promise((res, rej) => {
-          let req = new XMLHttpRequest();
+          let req = new XMLHttpRequest()
+          req.open("POST", "https://86pw37zri7.execute-api.us-west-2.amazonaws.com/prod/file/urls")
+          req.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
+          req.send(JSON.stringify({ filename: filename }))
           req.onload = () => {
-            res(JSON.parse(req.responseText));
-          };
-          req.onerror = (err) => {console.log('error file upload', err)};
-          req.upload.onprogress = (e) => {
-            if(e.lengthComputable) {
-              const percent = Math.round((e.loaded / e.total) * 100);
-              progressCallback(percent);
-            }
-          };
-          req.open("POST", `http://api.flipook.com/media/upload`);
-          req.send(fileAsForm);
-        });
-      };
+            res(JSON.parse(req.responseText))
+          }
+          req.onerror = (err) => {
+            console.log('error getting file url', err)
+          }
+        })
+      }
+      const resp = await getUrl(filename)
+      return resp
+    }
+
+    static async uploadMedia(file, progressCallback) {
+
+      const onProgress = (e) => {
+        if(e.lengthComputable) {
+          const percent = Math.round((e.loaded / e.total) * 100);
+          progressCallback(percent);
+        }
+      }
+
       const data = new FormData();
+
+      const s3Params = await UploadApi.getUploadUrl(file.name)
+      Object.keys(s3Params.fields).forEach(key=>{
+        data.set(key, s3Params.fields[key])
+      })
+
       data.append('file', file);
-      const resp = await postFileAsForm(data);
-      return resp;
+
+      let upload = {}
+
+
+      try {
+        upload = await axios({
+          url: s3Params.url,
+          method: 'POST',
+          data: data,
+          onUploadProgress: onProgress
+        })
+      } catch(err) {
+        console.log(err)
+      }
+
+      return upload.data
     }
   }
 </script>
