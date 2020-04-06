@@ -1,6 +1,7 @@
 export interface CovidReport {
   yearOfBirth?: string; // Deprecated
   sex: Sex;
+  isPregnant: boolean; //Added
   postalCode: string;
   hasBeenTested: boolean;
   hasBeenInContactWithInfected: boolean;
@@ -74,12 +75,13 @@ export enum Symptom {
 //Added
 export enum Diagnosed {
   DIABETES = 'DIABETES',
-  HYPERTENSION = 'HYPERTENSION',
-  ISCHEMICHEARTDISEASE = 'ISCHEMICHEARTDISEASE',
+  HYPERTENSIONARTERIAL = 'HYPERTENSIONARTERIAL',
+  CORONARYHEARTDISEASE = 'CORONARYHEARTDISEASE',
   ASTHMA = 'ASTHMA',
   CHRONICLUNGDISEASE = 'CHRONICLUNGDISEASE',
-  CHRONICKIDNEYDISEASE = 'CHRONICKIDNEYDISEASE',
-  AUTOIMMUNEDISEASE = 'AUTOIMMUNEDISEASE'
+  KIDNEYDISEASE = 'KIDNEYDISEASE',
+  AUTOIMMUNEDISEASE = 'AUTOIMMUNEDISEASE',
+  IMMUNOSUPRESSION = 'IMMUNOSUPRESSION'
 }
 
 export interface AggregatedCovidReportData {

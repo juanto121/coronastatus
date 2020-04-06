@@ -8,6 +8,8 @@
   const age = profile && locals.profile.age;
   const postalCode = profile && locals.profile.postalCode;
   const sex = profile && locals.profile.sex;
+  <!-- Adding pregnant-->
+  const isPregnant = profile && locals.profile.isPregnant;
   const hasBeenTested = profile && locals.profile.hasBeenTested;
   const hasBeenInContactWithInfected = profile && locals.profile.hasBeenInContactWithInfected;
   const symptomStart = profile && locals.profile.symptomStart;
@@ -25,12 +27,13 @@
   <!-- New added -->
   const diagnosedWith = profile && locals.profile.diagnosedWith;
   const diagnosedWithDiabetes = profile && diagnosedWith['DIABETES'];
-  const diagnosedWithHyperTension = profile && diagnosedWith['HYPERTENSION']
-  const diagnosedWithIschemicHeartDisease = profile && diagnosedWith['ISCHEMICHEARTDISEASE']
+  const diagnosedWithHypertensionArterial = profile && diagnosedWith['HYPERTENSIONARTERIAL']
+  const diagnosedWithCoronaryHeartDisease = profile && diagnosedWith['CORONARYHEARTDISEASE']
   const diagnosedWithAsthma = profile && diagnosedWith['ASTHMA']
   const diagnosedWithChronicLungDisease = profile && diagnosedWith['CHRONICLUNGDISEASE']
-  const diagnosedWithChronicKidneyDisease = profile && diagnosedWith['CHRONICKIDNEYDISEASE']
+  const diagnosedWithKidneyDisease = profile && diagnosedWith['KIDNEYDISEASE']
   const diagnosedWithAutoimmuneDisease = profile && diagnosedWith['AUTOIMMUNEDISEASE']
+  const diagnosedWithImmunosupression = profile && diagnosedWith['IMMUNOSUPRESSION']
 
   const symptoms = profile && locals.profile.symptoms;
   const symptomDryCough = symptoms && symptoms['DRY_COUGH'];
@@ -51,7 +54,6 @@
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 }
 %>
-
 <%- include('partials/header', { home: true, menu: false }) -%>
 
 <section class="custom-section custom-hero p-4">
@@ -189,7 +191,17 @@
       <label for="gender-other"><%= __("Other") %></label>
     </p>
     </fieldset>
-
+    <!-- Adding is Pregnant-->
+    <fieldset>
+      <legend><%= __("Are you pregnant?") %></legend>
+      <p>
+        <input required type="radio" id="is-pregnant-yes" name="is-pregnant" value="yes" <%= isPregnant ? 'checked' : '' %>>
+        <label class="mr-4" for="is-pregnant-yes"><%= __('Yes') %></label>
+  
+        <input required type="radio" id="is-pregnant-no" name="is-pregnant" value="no" <%= isPregnant === false ? 'checked' : '' %>>
+        <label for="is-pregnant-no"><%= __('No') %></label>
+      </p>
+    </fieldset>
     <label for="postal-code"><%= __('Zip code') %>
       <% if (locals.zipGuide) { %>
         <span>- </span><a class="text-cvs-red font-bold hover:underline" href="<%= __(`https://www.whatismyzip.com`) %>" target="_blank"><%= __('What is my Zip code?') %></a>
@@ -346,15 +358,15 @@
         <span class="checkmark"></span>
       </label>
 
-      <label class="checkbox" for="diagnosed-hyper-tension">
-        <input type="checkbox" id="diagnosed-hyper-tension" name="diagnosed-hyper-tension" <%= diagnosedWithHyperTension ? 'checked' : '' %>>
-        <span><%= __('Hypertension') %></span>
+      <label class="checkbox" for="diagnosed-hypertension-arterial">
+        <input type="checkbox" id="diagnosed-hypertension-arterial" name="diagnosed-hypertension-arterial" <%= diagnosedWithHypertensionArterial ? 'checked' : '' %>>
+        <span><%= __('Hypertension Arterial') %></span>
         <span class="checkmark"></span>
       </label>
 
-      <label class="checkbox" for="diagnosed-ischemic-heart-disease">
-        <input type="checkbox" id="diagnosed-ischemic-heart-disease" name="diagnosed-ischemic-heart-disease" <%= diagnosedWithIschemicHeartDisease ? 'checked' : '' %>>
-        <span><%= __('Ischemic Heart Disease') %></span>
+      <label class="checkbox" for="diagnosed-coronary-heart-disease">
+        <input type="checkbox" id="diagnosed-coronary-heart-disease" name="diagnosed-coronary-heart-disease" <%= diagnosedWithCoronaryHeartDisease ? 'checked' : '' %>>
+        <span><%= __('Coronary Heart Disease') %></span>
         <span class="checkmark"></span>
       </label>
 
@@ -370,15 +382,21 @@
         <span class="checkmark"></span>
       </label>
 
-      <label class="checkbox" for="diagnosed-chronic-kidney-disease">
-        <input type="checkbox" id="diagnosed-chronic-kidney-disease" name="diagnosed-chronic-kidney-disease" <%= diagnosedWithChronicKidneyDisease ? 'checked' : '' %>>
-        <span><%= __('Chronic Kidney Disease') %></span>
+      <label class="checkbox" for="diagnosed-kidney-disease">
+        <input type="checkbox" id="diagnosed-kidney-disease" name="diagnosed-kidney-disease" <%= diagnosedWithKidneyDisease ? 'checked' : '' %>>
+        <span><%= __('Kidney Disease') %></span>
         <span class="checkmark"></span>
       </label>
 
       <label class="checkbox" for="diagnosed-autoimmune-disease">
         <input type="checkbox" id="diagnosed-autoimmune-disease" name="diagnosed-autoimmune-disease" <%= diagnosedWithAutoimmuneDisease ? 'checked' : '' %>>
         <span><%= __('Autoimmune Disease') %></span>
+        <span class="checkmark"></span>
+      </label>
+
+      <label class="checkbox" for="diagnosed-immunosupression">
+        <input type="checkbox" id="diagnosed-immunosupression" name="diagnosed-immunosupression" <%= diagnosedWithImmunosupression ? 'checked' : '' %>>
+        <span><%= __('Immunosupression Disease') %></span>
         <span class="checkmark"></span>
       </label>
     </fieldset>

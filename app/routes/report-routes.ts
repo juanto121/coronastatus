@@ -157,6 +157,7 @@ router.post('/', createReportRateLimit, async (req, res) => {
     postalCode: req.body['postal-code'].toUpperCase(),
     hasBeenTested: req.body['been-tested'] === 'yes',
     testResult: extractTestResult(req),
+    isPregnant: req.body['is-pregnant'] === 'on',
     sex: toSex(req.body['gender']),
     symptoms: {
       [Symptom.DRY_COUGH]: req.body['symptom-cough'] === 'on',
@@ -184,12 +185,13 @@ router.post('/', createReportRateLimit, async (req, res) => {
     //Added
     diagnosedWith: {
       [Diagnosed.DIABETES]: req.body['diagnosed-diabetes'] === 'on',
-      [Diagnosed.HYPERTENSION]: req.body['diagnosed-hyper-tension'] === 'on',
-      [Diagnosed.ISCHEMICHEARTDISEASE]: req.body['diagnosed-ischemic-heart-disease'] === 'on',
+      [Diagnosed.HYPERTENSIONARTERIAL]: req.body['diagnosed-hypertension-arterial'] === 'on',
+      [Diagnosed.CORONARYHEARTDISEASE]: req.body['diagnosed-coronary-heart-disease'] === 'on',
       [Diagnosed.ASTHMA]: req.body['diagnosed-asthma'] === 'on',
       [Diagnosed.CHRONICLUNGDISEASE]: req.body['diagnosed-chronic-lung-disease'] === 'on',
-      [Diagnosed.CHRONICKIDNEYDISEASE]: req.body['diagnosed-chronic-kidney-disease'] === 'on',
-      [Diagnosed.AUTOIMMUNEDISEASE]: req.body['diagnosed-autoimmune-disease'] === 'on'
+      [Diagnosed.KIDNEYDISEASE]: req.body['diagnosed-kidney-disease'] === 'on',
+      [Diagnosed.AUTOIMMUNEDISEASE]: req.body['diagnosed-autoimmune-disease'] === 'on',
+      [Diagnosed.IMMUNOSUPRESSION]: req.body['diagnosed-immunosupression'] === 'on'
     },
     submissionTimestamp: new Date().getTime(),
     phone: req.body['phone-number'],
