@@ -26,14 +26,17 @@
   const diagnosedWithOtherConditions = profile && locals.profile.diagnosedWithOtherConditions;
   <!-- New added -->
   const diagnosedWith = profile && locals.profile.diagnosedWith;
-  const diagnosedWithDiabetes = profile && diagnosedWith['DIABETES'];
-  const diagnosedWithHypertensionArterial = profile && diagnosedWith['HYPERTENSIONARTERIAL']
-  const diagnosedWithCoronaryHeartDisease = profile && diagnosedWith['CORONARYHEARTDISEASE']
-  const diagnosedWithAsthma = profile && diagnosedWith['ASTHMA']
-  const diagnosedWithChronicLungDisease = profile && diagnosedWith['CHRONICLUNGDISEASE']
-  const diagnosedWithKidneyDisease = profile && diagnosedWith['KIDNEYDISEASE']
-  const diagnosedWithAutoimmuneDisease = profile && diagnosedWith['AUTOIMMUNEDISEASE']
-  const diagnosedWithImmunosupression = profile && diagnosedWith['IMMUNOSUPRESSION']
+  const diagnosedWithDiabetes = diagnosedWith && diagnosedWith['DIABETES'];
+  const diagnosedWithHypertensionArterial = diagnosedWith && diagnosedWith['HYPERTENSIONARTERIAL']
+  const diagnosedWithCoronaryHeartDisease = diagnosedWith && diagnosedWith['CORONARYHEARTDISEASE']
+  const diagnosedWithAsthma = diagnosedWith && diagnosedWith['ASTHMA']
+  const diagnosedWithChronicLungDisease = diagnosedWith && diagnosedWith['CHRONICLUNGDISEASE']
+  const diagnosedWithKidneyDisease = diagnosedWith && diagnosedWith['KIDNEYDISEASE']
+  const diagnosedWithAutoimmuneDisease = diagnosedWith && diagnosedWith['AUTOIMMUNEDISEASE']
+  const diagnosedWithVIH = diagnosedWith && diagnosedWith['VIH']
+  const diagnosedWithCancer = diagnosedWith && diagnosedWith['CANCER']
+  const diagnosedWithObesityOrMalnutrition = diagnosedWith && diagnosedWith['OBESITY_OR_MALNUTRITION']
+  const diagnosedWithImmunosupression = diagnosedWith && diagnosedWith['IMMUNOSUPRESSION']
 
   const symptoms = profile && locals.profile.symptoms;
   const symptomDryCough = symptoms && symptoms['DRY_COUGH'];
@@ -48,6 +51,7 @@
   const symptomNoTaste = symptoms && symptoms['NO_TASTE'];
   const symptomSlimeCough = symptoms && symptoms['SLIME_COUGH'];
   const symptomRunnyNose = symptoms && symptoms['RUNNY_NOSE'];
+  const symptomChestPain = symptoms && symptoms['CHEST_PAIN'];
   const symptomNauseaOrVomiting = symptoms && symptoms['NAUSEA_OR_VOMITING'];
   <!-- Ages New-->
   const newAges = ['0 - 5', '6 - 11', '12 - 18', '19 - 26', '27 - 59', '>60'];
@@ -299,6 +303,12 @@
       <span class="checkmark"></span>
     </label>
 
+    <label class="checkbox" for="symptom-chest-pain">
+      <input type="checkbox" id="symptom-chest-pain" name="symptom-chest-pain" <%= symptomChestPain ? 'checked' : '' %>>
+      <span><%= __('Chest pain') %></span>
+      <span class="checkmark"></span>
+    </label>
+
     <label class="checkbox" for="symptom-diarrhea">
       <input type="checkbox" id="symptom-diarrhea" name="symptom-diarrhea" <%= symptomDiarrhea ? 'checked' : '' %>>
       <span><%= __('Diarrhea') %></span>
@@ -402,6 +412,24 @@
       <label class="checkbox" for="diagnosed-immunosupression">
         <input type="checkbox" id="diagnosed-immunosupression" name="diagnosed-immunosupression" <%= diagnosedWithImmunosupression ? 'checked' : '' %>>
         <span><%= __('Immunosupression Disease') %></span>
+        <span class="checkmark"></span>
+      </label>
+
+      <label class="checkbox" for="diagnosed-cancer">
+        <input type="checkbox" id="diagnosed-cancer" name="diagnosed-cancer" <%= diagnosedWithCancer ? 'checked' : '' %>>
+        <span><%= __('Cancer') %></span>
+        <span class="checkmark"></span>
+      </label>
+
+      <label class="checkbox" for="diagnosed-vih">
+        <input type="checkbox" id="diagnosed-vih" name="diagnosed-vih" <%= diagnosedWithVIH ? 'checked' : '' %>>
+        <span><%= __('HIV') %></span>
+        <span class="checkmark"></span>
+      </label>
+
+      <label class="checkbox" for="diagnosed-obesity-or-malnutrition">
+        <input type="checkbox" id="diagnosed-obesity-or-malnutrition" name="diagnosed-obesity-or-malnutrition" <%= diagnosedWithObesityOrMalnutrition ? 'checked' : '' %>>
+        <span><%= __('Obesity or Malnutrition') %></span>
         <span class="checkmark"></span>
       </label>
     </fieldset>

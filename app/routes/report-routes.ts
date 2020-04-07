@@ -172,6 +172,7 @@ router.post('/', createReportRateLimit, async (req, res) => {
       [Symptom.NO_SMELL]: req.body['symptom-no-smell'] === 'on',
       [Symptom.SLIME_COUGH]: req.body['symptom-slime-cough'] === 'on',
       [Symptom.RUNNY_NOSE]: req.body['symptom-runny-nose'] === 'on',
+      [Symptom.CHEST_PAIN]: req.body['symptom-chest-pain'] === 'on',
       [Symptom.NAUSEA_OR_VOMITING]:
         req.body['symptom-nausea-or-vomiting'] === 'on'
     },
@@ -191,6 +192,9 @@ router.post('/', createReportRateLimit, async (req, res) => {
       [Diagnosed.CHRONICLUNGDISEASE]: req.body['diagnosed-chronic-lung-disease'] === 'on',
       [Diagnosed.KIDNEYDISEASE]: req.body['diagnosed-kidney-disease'] === 'on',
       [Diagnosed.AUTOIMMUNEDISEASE]: req.body['diagnosed-autoimmune-disease'] === 'on',
+      [Diagnosed.CANCER]: req.body['diagnosed-cancer'] === 'on',
+      [Diagnosed.VIH]: req.body['diagnosed-vih'] === 'on',
+      [Diagnosed.OBESITY_OR_MALNUTRITION]: req.body['diagnosed-obesity-or-malnutrition'] === 'on',
       [Diagnosed.IMMUNOSUPRESSION]: req.body['diagnosed-immunosupression'] === 'on'
     },
     submissionTimestamp: new Date().getTime(),

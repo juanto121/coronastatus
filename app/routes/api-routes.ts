@@ -114,6 +114,7 @@ const extractSymptomsAsZeroOrOne = (
   [Symptom.NO_SMELL]: toZeroOrOne(symptoms.NO_SMELL),
   [Symptom.SLIME_COUGH]: toZeroOrOne(symptoms.SLIME_COUGH),
   [Symptom.RUNNY_NOSE]: toZeroOrOne(symptoms.RUNNY_NOSE),
+  [Symptom.CHEST_PAIN]: toZeroOrOne(symptoms.RUNNY_NOSE),
   [Symptom.NAUSEA_OR_VOMITING]: toZeroOrOne(symptoms.NAUSEA_OR_VOMITING)
 });
 
