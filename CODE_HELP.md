@@ -1,6 +1,10 @@
 ## 5vid.co
 
-# Tailwind build
+# CSS build
+
+npm run build:css
+
+npm run dev:css
 
 ## Add or change symptoms
 - types.ts : Define types of covid report
