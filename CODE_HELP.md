@@ -1,5 +1,7 @@
 ## 5vid.co
 
+# Tailwind build
+
 ## Add or change symptoms
 - types.ts : Define types of covid report
 - report-routes.ejs : Connection between types or CodivReport and the object in reports.ejs

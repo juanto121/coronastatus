@@ -1,3 +1,6 @@
+# 5vid.co 
+This repo holds the basic scafolding of the coronastatus repo but it is heavily modified to fulfil the use case requirements for the 5vid.co project.
+
 # Coronastatus
 
 ![](https://github.com/BustByte/coronastatus/workflows/test/badge.svg)

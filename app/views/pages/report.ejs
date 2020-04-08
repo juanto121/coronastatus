@@ -1,5 +1,5 @@
 <%
-  const {
+const {
     profile,
     passcode,
     baseUrl,
@@ -63,104 +63,105 @@
 <%- include('partials/header', { home: true, menu: false }) -%>
 
 <section class="custom-section custom-hero p-4">
-  <div class="custom-section-content mx-auto">
-    <header class="py-2 flex justify-center sm:justify-between items-center flex-wrap">
-      <%- include('partials/logo') -%>
-      <%- include('partials/menu', { home: true }) -%>
-    </header>
-    <div class="my-8 flex flex-row flex-wrap justify-between">
-      <%- include('partials/cta') -%>
-      <%- include('partials/app-feature-block', {
-        image: '/static/images/hospital.svg',
-        title: __('Health centers'),
-        description: __('Going to health centers can be a risk. Help us mitigate this risk and make an online diagnosis.')
-      }) -%>
+    <div class="custom-section-content mx-auto">
+        <header class="py-2 flex justify-center sm:justify-between items-center flex-wrap">
+            <%- include('partials/logo') -%>
+            <%- include('partials/menu', { home: true }) -%>
+        </header>
+        <div class="my-8 flex flex-row flex-wrap justify-between">
+            <%- include('partials/cta') -%>
+            <%- include('partials/app-feature-block', {
+            image: '/static/images/hospital.svg',
+            title: __('Health centers'),
+            description: __('Going to health centers can be a risk. Help us mitigate this risk and make an online diagnosis.')
+            }) -%>
 
-      <%- include('partials/app-feature-block', {
-        image: '/static/images/mobile.svg',
-        title: __("It's free"),
-        description: __('In case you need it, a doctor will make your assessment at no cost.')
-      }) -%>
+            <%- include('partials/app-feature-block', {
+            image: '/static/images/mobile.svg',
+            title: __("It's free"),
+            description: __('In case you need it, a doctor will make your assessment at no cost.')
+            }) -%>
 
-      <%- include('partials/app-feature-block', {
-        image: '/static/images/research.svg',
-        title: __('Data privacy'),
-        description: __('The registered data will be treated with a strict privacy policy. We are thinking about your health and the other Colombians health.')
-      }) -%>
+            <%- include('partials/app-feature-block', {
+            image: '/static/images/research.svg',
+            title: __('Data privacy'),
+            description: __('The registered data will be treated with a strict privacy policy. We are thinking about your health and the other Colombians health.')
+            }) -%>
 
-      <%- include('partials/app-feature-block', {
-        image: '/static/images/doctor.svg',
-        title: __('Contribute'),
-        description: __('Report your health condition')
-      }) -%>
+            <%- include('partials/app-feature-block', {
+            image: '/static/images/doctor.svg',
+            title: __('Contribute'),
+            description: __('Report your health condition')
+            }) -%>
 
+        </div>
     </div>
-  </div>
 </section>
 
 
 
-<% if(locals.didNotAcceptPrivacyPolicy) {%>
-  <div class="" role="alert">
-    <%= __("You must approve the privacy statement to report your data.") %>
-  </div>
+<% if(locals.didNotAcceptPrivacyPolicy) { %>
+    <div class="" role="alert">
+        <%= __("You must approve the privacy statement to report your data.") %>
+    </div>
 <% } %>
 
 <section class="custom-section-content mx-auto p-4 pb-24 w-full">
-  <form id="contribute" method="post" action="/" class="custom-form p-6 py-6 lg:p-24 lg:py-12 my-4 rounded-lg flex flex-col items-start">
-    <h3 class="text-2xl md:text-3xl lg:text-5xl text-center font-bold text-cvs-red m-2 self-center">
-      <%= profile ? __("Your state of health") : __("Report your health condition") %>
-    </h3>
-    <% if (locals.redirectToGovernment) {%>
-      <!-- If you change the color make sure it's in postcss.config.js -->
-      <%- include('partials/alert', {
-        color: 'red',
-        message:
-          `${__(`Thank you for your contribution!`)}
-          ${__(`The government has now launched their own self-report system, please use that instead.`)}
-          <br/>
-          <a
+    <form id="contribute" method="post" action="/"
+          class="custom-form p-6 py-6 lg:p-24 lg:py-12 my-4 rounded-lg flex flex-col items-start">
+        <h3 class="text-2xl md:text-3xl lg:text-5xl text-center font-bold text-cvs-red m-2 self-center">
+            <%= profile ? __("Your state of health") : __("Report your health condition") %>
+        </h3>
+        <% if (locals.redirectToGovernment) { %>
+            <!-- If you change the color make sure it's in postcss.config.js -->
+            <%- include('partials/alert', {
+            color: 'red',
+            message:
+            `${__(`Thank you for your contribution!`)}
+            ${__(`The government has now launched their own self-report system, please use that instead.`)}
+            <br/>
+            <a
             class="hover:text-cvs-red font-bold hover:underline whitespace-no-wrap"
             target="_blank"
             style="cursor: pointer;"
             href="${__('www.nhs.uk')}"
-          >
+            >
             ${__(`Go to the National health service website`)}
-          </a>`,
-      }) -%>
-    <% } else if (locals.success) {%>
-      <!-- If you change the color make sure it's in postcss.config.js -->
-      <%- include('partials/alert', {
-        color: 'blue',
-        message:
-          `${__(`Thank you for your contribution!`)}
-          ${__(`If you want to register another person on this computer, save or write down your personal link`)}
-          <strong>${baseUrl}${urls.profile}/${passcode}</strong>
-          ${__("and")}
-          <a href="${urls.profile}/${passcode}?clear=true" class="font-bold hover:text-cvs-red hover:underline"> ${ __(`clear this form`)}.</a>`,
-      }) -%>
-    <% } else if (locals.cleared) {%>
-      <!-- If you change the color make sure it's in postcss.config.js -->
-      <%- include('partials/alert', {
-        color: 'blue',
-        message:
-          `${__("Your personal health information is cleared from this computer.")}
-          ${__("You can now use this computer for another user.")}`,
-      }) -%>
-    <% } else if (locals.passcode) {%>
-      <!-- If you change the color make sure it's in postcss.config.js -->
-      <%- include('partials/alert', {
-        color: 'blue',
-        message:
-          `${__(`Below is your personal health information.`)}
-          ${__(`If you want to register another person on this computer, save or write down your personal link`)}
-          <strong>${baseUrl}${urls.profile}/${passcode}</strong>
-          ${__("and")}
-          <a href="${urls.profile}/${passcode}?clear=true" class="font-bold hover:text-cvs-red hover:underline"> ${ __(`clear this form`)}.</a>`,
-      }) -%>
-    <% } else { %>
-      <p class="text-center text-base lg:text-xl font-medium m-4 mt-0 self-center">
-        <!--
+            </a>`,
+            }) -%>
+        <% } else if (locals.success) { %>
+            <!-- If you change the color make sure it's in postcss.config.js -->
+            <%- include('partials/alert', {
+            color: 'blue',
+            message:
+            `${__(`Thank you for your contribution!`)}
+            ${__(`If you want to register another person on this computer, save or write down your personal link`)}
+            <strong>${baseUrl}${urls.profile}/${passcode}</strong>
+            ${__("and")}
+            <a href="${urls.profile}/${passcode}?clear=true" class="font-bold hover:text-cvs-red hover:underline"> ${ __(`clear this form`)}.</a>`,
+            }) -%>
+        <% } else if (locals.cleared) { %>
+            <!-- If you change the color make sure it's in postcss.config.js -->
+            <%- include('partials/alert', {
+            color: 'blue',
+            message:
+            `${__("Your personal health information is cleared from this computer.")}
+            ${__("You can now use this computer for another user.")}`,
+            }) -%>
+        <% } else if (locals.passcode) { %>
+            <!-- If you change the color make sure it's in postcss.config.js -->
+            <%- include('partials/alert', {
+            color: 'blue',
+            message:
+            `${__(`Below is your personal health information.`)}
+            ${__(`If you want to register another person on this computer, save or write down your personal link`)}
+            <strong>${baseUrl}${urls.profile}/${passcode}</strong>
+            ${__("and")}
+            <a href="${urls.profile}/${passcode}?clear=true" class="font-bold hover:text-cvs-red hover:underline"> ${ __(`clear this form`)}.</a>`,
+            }) -%>
+        <% } else { %>
+            <p class="text-center text-base lg:text-xl font-medium m-4 mt-0 self-center">
+                <!--
         <%= __("Are you from") %> <%= __(locals.country) %>?
         -->
         <%- __("Collecting data from healthy people is just as important as it helps to size the current situation and make better decisions.") %></p>
@@ -352,15 +353,21 @@
     </label>
     </fieldset>
 
-    <div id="symptom-start-question" style="display: none;">
-      <label for="symptom-start"><%= __('When did the symptoms start?')%></label>
-      <input
-        class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        type="date"
-        name="symptom-start"
-        id="symptom-start"
-        value="<%= symptomStart %>">
-    </div>
+        <label for="postal-code"><%= __('Zip code') %>
+            <% if (locals.zipGuide) { %>
+                <span>- </span><a class="text-cvs-red font-bold hover:underline"
+                                  href="<%= __(`https://www.whatismyzip.com`) %>"
+                                  target="_blank"><%= __('What is my Zip code?') %></a>
+            <% } %>
+        </label>
+        <input class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+               required type="text" pattern="[A-Za-z0-9]+" maxlength="8" name="postal-code" id="postal-code"
+               placeholder="<%= locals.zipPlaceHolder %>" value="<%= postalCode %>">
+
+        <div class="flex flex-row items-center mt-8">
+            <img src="/static/images/mask.svg" alt="" class="h-16 w-16">
+            <h3 class="text-cvs-red text-xl font-bold m-4"><%= __("Testing and symptoms") %></h3>
+        </div>
 
     <!--diagnosedWith-->
     <fieldset>
@@ -435,14 +442,14 @@
     </fieldset>
     <!--Previous Diagnosed with Deprecated
     <fieldset>
-    <legend class="mb-0"><%= __('Have you been diagnosed with any of the following conditions?')%></legend>
+    <legend class="mb-0"><%= __('Have you been diagnosed with any of the following conditions?') %></legend>
     <p class="mb-4"><%= __('Diabetes mellitus, Hypertension, Ischemic heart disease, Asthma, Chronic lung disease, Chronic kidney disease') %></p>
     <p>
         <input required type="radio" id="diagnosed-other-conditions-yes" name="diagnosed-other-conditions" value="yes" <%= diagnosedWithOtherConditions ? 'checked' : '' %>>
-        <label class="mr-4" for="diagnosed-other-conditions-yes"><%= __('Yes')%></label>
+        <label class="mr-4" for="diagnosed-other-conditions-yes"><%= __('Yes') %></label>
 
         <input required type="radio" id="diagnosed-other-conditions-no" name="diagnosed-other-conditions" value="no" <%= diagnosedWithOtherConditions === false ? 'checked' : '' %>>
-        <label for="diagnosed-other-conditions-no"><%= __('No')%></label>
+        <label for="diagnosed-other-conditions-no"><%= __('No') %></label>
     </p>
     </fieldset>
     -->
@@ -581,51 +588,51 @@
 </section>
 
 <section class="w-full self-center text-center m-8">
-  <%- include('partials/share') -%>
+    <%- include('partials/share') -%>
 </section>
 
 <section class="custom-section p-4">
-  <div class="custom-section-content mx-auto">
-    <h2 class="sr-only"><%= __('Numbers') %></h2>
-    <ul class="my-8 flex flex-row flex-wrap justify-between">
-      <%- include('partials/app-stats-block', {
-      image: '/static/images/napkin.svg',
-      title: __('Total reports'),
-      number: numberWithSpaces(aggregated.numberOfReports)
-      }) -%>
-      <!-- Contacted / Reported Fix equiation -->
-      <%- include('partials/app-stats-block', {
-      image: '/static/images/temperature-check.svg',
-      title: __('Contacted / Reported'),
-      number: `${numberWithSpaces(aggregated.numberOfConfirmedInfected)}/${numberWithSpaces(aggregated.numberOfTested)}`
-      }) -%>
+    <div class="custom-section-content mx-auto">
+        <h2 class="sr-only"><%= __('Numbers') %></h2>
+        <ul class="my-8 flex flex-row flex-wrap justify-between">
+            <%- include('partials/app-stats-block', {
+            image: '/static/images/napkin.svg',
+            title: __('Total reports'),
+            number: numberWithSpaces(aggregated.numberOfReports)
+            }) -%>
+            <!-- Contacted / Reported Fix equiation -->
+            <%- include('partials/app-stats-block', {
+            image: '/static/images/temperature-check.svg',
+            title: __('Contacted / Reported'),
+            number: `${numberWithSpaces(aggregated.numberOfConfirmedInfected)}/${numberWithSpaces(aggregated.numberOfTested)}`
+            }) -%>
 
-      <%- include('partials/app-stats-block', {
-      image: '/static/images/transfer.svg',
-      title: __(`In close contact with someone who's infected`),
-      number: numberWithSpaces(aggregated.numberOfContacts)
-      }) -%>
+            <%- include('partials/app-stats-block', {
+            image: '/static/images/transfer.svg',
+            title: __(`In close contact with someone who's infected`),
+            number: numberWithSpaces(aggregated.numberOfContacts)
+            }) -%>
 
-      <%- include('partials/app-stats-block', {
-      image: '/static/images/symptoms.svg',
-      title: __('Has symptoms'),
-      number: numberWithSpaces(aggregated.numberOfPeopleShowingSymptoms)
-      }) -%>
-    </ul>
-  </div>
+            <%- include('partials/app-stats-block', {
+            image: '/static/images/symptoms.svg',
+            title: __('Has symptoms'),
+            number: numberWithSpaces(aggregated.numberOfPeopleShowingSymptoms)
+            }) -%>
+        </ul>
+    </div>
 </section>
 
 <section class="custom-section custom-section-about px-6 lg:px-0 py-12 lg:py-24 bg-white">
-  <div class="custom-section-content mx-auto">
-    <div class="section-about-header flex flex-row items-center mb-8">
-      <img class="section-about-header__img h-24 w-24"
-        src="/static/images/recovery-path.svg" alt="">
-      <h2 class="section-about-header__title ml-4 text-cvs-red text-2xl md:text-3xl lg:text-4xl font-bold"><%= __('About the platform') %></h2>
-    </div>
-    <p class="section-about-paragraph p-4 text-base lg:text-xl font-medium">
-      <%= __(`This platform is a completely free service, in order to reduce the burden on health centers to face the COVID-19 pandemic in Colombia, and to help health professionals to carry out diagnoses more efficiently. This is not a test that determines the presence of the virus.`)%>
-    </p>
-    <!--Using self report
+    <div class="custom-section-content mx-auto">
+        <div class="section-about-header flex flex-row items-center mb-8">
+            <img class="section-about-header__img h-24 w-24"
+                 src="/static/images/recovery-path.svg" alt="">
+            <h2 class="section-about-header__title ml-4 text-cvs-red text-2xl md:text-3xl lg:text-4xl font-bold"><%= __('About the platform') %></h2>
+        </div>
+        <p class="section-about-paragraph p-4 text-base lg:text-xl font-medium">
+            <%= __(`This platform is a completely free service, in order to reduce the burden on health centers to face the COVID-19 pandemic in Colombia, and to help health professionals to carry out diagnoses more efficiently. This is not a test that determines the presence of the virus.`) %>
+        </p>
+        <!--Using self report
     <p class="section-about-paragraph p-4 text-base lg:text-xl font-medium">
       <%= __(`Using self-report, you can get a better picture of how many
             people have symptoms without exposing health workers to potential
@@ -634,26 +641,27 @@
             by other volunteers, have created this tool in response to`) %>
     <a class="text-cvs-red font-bold hover:underline"
       href="https://medium.com/@tomaspueyo/coronavirus-act-today-or-people-will-die-f4d3d9cd99ca "><%= __('this article') %></a>
-    <%= __('as an attempt to chart these numbers.')%>
+    <%= __('as an attempt to chart these numbers.') %>
     </p>
     -->
-    <p class="section-about-paragraph p-4 text-base lg:text-xl font-medium">
-      <%= __(`This is not an official government tool for more information on the epidemic. If you are in a delicate state of health, we recommend you consult with the health authorities and follow all their recommendations.`) %>
-      <a class="text-cvs-red font-bold hover:underline" href="<%= __(`https://who.int`) %>"><%= __(`To WHO.int`) %></a>
-    </p>
-    <div class="hashtag-item-container flex flex-row justify-around" style="margin: 4rem 0 -14rem 0;">
-      <div class="hashtag-item text-center flex flex-col items-center w-1/2">
-        <div class="hashtag-item__title text-cvs-red font-medium text-lg md:text-3xl uppercase m-2"><%- __('#lavatusmanos') %></div>
-        <img src="/static/images/washing-hands.svg" alt=""
-          class="hashtag-item__img h-35 w-35 lg:h-40 lg:w-40 m-2">
-      </div>
-      <div class="hashtag-item text-center flex flex-col items-center w-1/2">
-        <div class="hashtag-item__title text-cvs-red font-medium text-lg md:text-3xl uppercase m-2"><%- __('#quedateencasa') %></div>
-        <img src="/static/images/stay-home.svg" alt=""
-          class="hashtag-item__img h-35 w-35 lg:h-40 lg:w-40 m-2">
-      </div>
+        <p class="section-about-paragraph p-4 text-base lg:text-xl font-medium">
+            <%= __(`This is not an official government tool for more information on the epidemic. If you are in a delicate state of health, we recommend you consult with the health authorities and follow all their recommendations.`) %>
+            <a class="text-cvs-red font-bold hover:underline"
+               href="<%= __(`https://who.int`) %>"><%= __(`To WHO.int`) %></a>
+        </p>
+        <div class="hashtag-item-container flex flex-row justify-around" style="margin: 4rem 0 -14rem 0;">
+            <div class="hashtag-item text-center flex flex-col items-center w-1/2">
+                <div class="hashtag-item__title text-cvs-red font-medium text-lg md:text-3xl uppercase m-2"><%- __('#lavatusmanos') %></div>
+                <img src="/static/images/washing-hands.svg" alt=""
+                     class="hashtag-item__img h-35 w-35 lg:h-40 lg:w-40 m-2">
+            </div>
+            <div class="hashtag-item text-center flex flex-col items-center w-1/2">
+                <div class="hashtag-item__title text-cvs-red font-medium text-lg md:text-3xl uppercase m-2"><%- __('#quedateencasa') %></div>
+                <img src="/static/images/stay-home.svg" alt=""
+                     class="hashtag-item__img h-35 w-35 lg:h-40 lg:w-40 m-2">
+            </div>
+        </div>
     </div>
-  </div>
 </section>
 
 <script src="/static/form.js?v=<%= locals.cacheKey %>"></script>
@@ -689,57 +697,89 @@
   var uploadProgress = (progress) => {
     uploadProgressElement.innerText = "Cargando archivo " + progress + "%"
   }
-
   videoInputElement.onchange = () => {
-    const files = videoInputElement.files
-    if(files && files.length > 0){
-      videoElement.src = URL.createObjectURL(files[0]);
-      UploadApi.uploadMedia(files[0], uploadProgress).then((response) => {
-        videoUrlElement.value = response.file
-        debugger
-      }, uploadProgress)
+      submitButtonElement.disabled = true
+      submitButtonElement.value = "Cargando el video..."
+      const files = videoInputElement.files
+      if (files && files.length > 0) {
+          videoElement.src = URL.createObjectURL(files[0]);
+          UploadApi.uploadMedia(files[0], uploadProgress)
+              .then((response) => {
+                  debugger
+                  videoUrlElement.value = response
+                  submitButtonElement.disabled = false
+                  submitButtonElement.value = "ENVIAR REPORTE"
+              }, uploadProgress)
               .catch((err) => {
-                console.log(err)
+                  console.log("Failed to upload video", err)
+                  submitButtonElement.disabled = false
+                  submitButtonElement.value = "ENVIAR REPORTE"
               })
-    }
+      }
   }
 
   class UploadApi {
-    static async uploadMedia(file, progressCallback) {
-      const postFileAsForm = function postFile(fileAsForm) {
-        return new Promise((res, rej) => {
-          let req = new XMLHttpRequest();
-          req.onload = () => {
-            res(JSON.parse(req.responseText));
-          };
-          req.onerror = (err) => {console.log('error file upload', err)};
-          req.upload.onprogress = (e) => {
-            if(e.lengthComputable) {
-              const percent = Math.round((e.loaded / e.total) * 100);
-              progressCallback(percent);
-            }
-          };
-          req.open("POST", `http://api.flipook.com/media/upload`);
-          req.send(fileAsForm);
-        });
-      };
-      const data = new FormData();
-      data.append('file', file);
-      const resp = await postFileAsForm(data);
-      return resp;
+      static async getUploadUrl(filename) {
+          const getUrl = (filename) => {
+              return new Promise((res, rej) => {
+                  let req = new XMLHttpRequest()
+                  req.open("POST", "https://86pw37zri7.execute-api.us-west-2.amazonaws.com/prod/file/urls")
+                  req.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
+                  req.send(JSON.stringify({filename: filename}))
+                  req.onload = () => {
+                      res(JSON.parse(req.responseText))
+                  }
+                  req.onerror = (err) => {
+                      console.log('error getting file url', err)
+                  }
+              })
+          }
+          const resp = await getUrl(filename)
+          return resp
+      }
+
+      static async uploadMedia(file, progressCallback) {
+          const onProgress = (e) => {
+              if (e.lengthComputable) {
+                  const percent = Math.round((e.loaded / e.total) * 100);
+                  progressCallback(percent);
+              }
+          }
+
+          const data = new FormData();
+
+          const s3Params = await UploadApi.getUploadUrl(file.name)
+          Object.keys(s3Params.fields).forEach(key => {
+              data.set(key, s3Params.fields[key])
+          })
+
+          data.append('file', file);
+
+          try {
+              await axios({
+                  url: s3Params.url,
+                  method: 'POST',
+                  data: data,
+                  onUploadProgress: onProgress
+              })
+              return s3Params.url + "/" + s3Params.fields.key
+          } catch (err) {
+              console.log(err)
+          }
+          return ""
+      }
     }
-  }
 </script>
 
 <script>
-  (function scrollCallToAction() {
-    document.querySelectorAll('[href="#contribute"]').forEach(function(element) {
-      element.addEventListener("click", function(event) {
-        event.preventDefault();
-        document.getElementById("contribute").scrollIntoView({ behavior: "smooth" });
-      });
-    });
-  })()
+    (function scrollCallToAction() {
+        document.querySelectorAll('[href="#contribute"]').forEach(function (element) {
+            element.addEventListener("click", function (event) {
+                event.preventDefault();
+                document.getElementById("contribute").scrollIntoView({behavior: "smooth"});
+            });
+        });
+    })()
 </script>
 
 <%- include('partials/footer', { home: true }) -%>
