@@ -183,10 +183,9 @@ legend {
 }
 .custom-facebook-button {
   background-color: #1877f2;
-  padding: 1rem 1rem;
   color: white;
   text-decoration: none;
-  border-radius: 3px;
+  border-radius: 10px;
 }
 .custom-fullscreen {
   background: transparent;

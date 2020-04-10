@@ -168,7 +168,7 @@ const {
 
     <div class="flex flex-row items-center mt-8">
       <img src="/static/images/map.svg" alt="" class="h-16 w-16">
-      <h3 class="text-cvs-red text-xl font-bold m-4"><%= __("Geography and demography") %></h3>
+      <h3 class="text-cvs-red text-xl font-bold m-4"><%= __("Demography and Geography") %></h3>
     </div>
 
 
@@ -516,11 +516,12 @@ const {
             name="phone-number"
             id="phone-number"
     >
-
+    <div>
+    <legend class="mb-4"><%= __('Vital signs - OPTIONAL') %></legend>
       <div class="video-container">
         <div>
           <span id="video-upload-progress"></span>
-          <label class="mb-0" for="video-file">OPCIONAL - Sube un video de tu dedo presionando por 20 segundos el lente de la camara con una fuente de luz (Puede ser el flash)</label>
+          <p class="mb-4" for="video-file"><%= __('Upload a video of your forefinger pressing the camera for 25 seconds with a white light source in the background (a lamp, bulb or the sun). It should look completly red.')%></p>
           <input
                   type="file"
                   class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -531,12 +532,13 @@ const {
         </div>
         <video id="video-element" controls></video>
       </div>
-
       <input name="video-url" type="hidden" id="video-url" value="<%=videoUrl%>"/>
+    </div>
 
     <h3 class="text-cvs-red text-xl font-bold m-4 ml-0 mt-8 mb-0"><%= __("How will my data be used?") %></h3>
 
-    <p class="mt-0 mb-4"><%= __('Your data will be stored with all the privacy and necessary requirements. They will only be shared with doctors in order to make a proper diagnosis.')%><br />
+    <p class="mt-0 mb-4"><%= __('The registered data will be treated with a strict privacy policy. We want to protect your identity and your health.')%> 
+      <%= __('They will only be shared with doctors in order to make a proper diagnosis.')%><br />
       <a target="_blank" class="text-cvs-red hover:underline"href="<%= urls.privacyPolicy %>"><%= __('Our privacy policy can be found here')%></a>.
     </p>
 
@@ -547,16 +549,17 @@ const {
         <span class="checkmark"></span>
       </label>
     </p>
-
+    <!-- Accept Cookie
     <p>
       <label class="checkbox" for="accept-remember">
         <input type="checkbox" id="accept-remember" name="accept-remember">
-        <span><%= __(`I agree to set a cookie so I can change my health condition later e.g. to report recovery/getting sick`)%> (<%= __('recommended')%>)</span>
+        <span><%= __(`I agree to set a cookie so I can report changes in my health condition later`)%> (<%= __('recommended')%>)</span>
         <span class="checkmark"></span>
       </label>
     </p>
+    -->
 
-    <ul class="mt-4">
+    <ul class="mt-6">
       <li>
         <input type="hidden" name="passcode" value="<%= passcode %>" />
         <input class="inverse" type="submit" value="<%= __('Submit report') %>">
@@ -565,7 +568,7 @@ const {
   </form>
 </section>
 
-<section class="w-full self-center text-center m-8">
+<section class="w-full self-center text-center m-2">
     <%- include('partials/share') -%>
 </section>
 
@@ -593,7 +596,7 @@ const {
 
             <%- include('partials/app-stats-block', {
             image: '/static/images/symptoms.svg',
-            title: __('Has symptoms'),
+            title: __('Have symptoms'),
             number: numberWithSpaces(aggregated.numberOfPeopleShowingSymptoms)
             }) -%>
         </ul>
@@ -607,25 +610,17 @@ const {
                  src="/static/images/recovery-path.svg" alt="">
             <h2 class="section-about-header__title ml-4 text-cvs-red text-2xl md:text-3xl lg:text-4xl font-bold"><%= __('About the platform') %></h2>
         </div>
-        <p class="section-about-paragraph p-4 text-base lg:text-xl font-medium">
-            <%= __(`This platform is a completely free service, in order to reduce the burden on health centers to face the COVID-19 pandemic in Colombia, and to help health professionals to carry out diagnoses more efficiently. This is not a test that determines the presence of the virus.`) %>
+        <p class="section-about-paragraph p-4 text-base lg:text-xl font-medium text-justify">
+            <%= __(`To mitigate the spread of COVID-19, it is necessary for people to avoid leaving their homes, unless their health condition requires hospital care. For this reason, this platform provides a free service that seeks to reduce congestion in health centers through online reviews, providing specialized care to those who require it and reducing the risk of contagion for doctors.`) %>
         </p>
-        <!--Using self report
-    <p class="section-about-paragraph p-4 text-base lg:text-xl font-medium">
-      <%= __(`Using self-report, you can get a better picture of how many
-            people have symptoms without exposing health workers to potential
-            contamination hazards and without using up valuable infection control
-            equipment that is already in short supply. We at Bustbyte, well helped
-            by other volunteers, have created this tool in response to`) %>
-    <a class="text-cvs-red font-bold hover:underline"
-      href="https://medium.com/@tomaspueyo/coronavirus-act-today-or-people-will-die-f4d3d9cd99ca "><%= __('this article') %></a>
-    <%= __('as an attempt to chart these numbers.') %>
-    </p>
-    -->
-        <p class="section-about-paragraph p-4 text-base lg:text-xl font-medium">
-            <%= __(`This is not an official government tool for more information on the epidemic. If you are in a delicate state of health, we recommend you consult with the health authorities and follow all their recommendations.`) %>
-            <a class="text-cvs-red font-bold hover:underline"
-               href="<%= __(`https://who.int`) %>"><%= __(`To WHO.int`) %></a>
+        <p class="section-about-paragraph p-4 text-base lg:text-xl font-medium text-justify">
+            <%= __(`There is a worldwide limitation of tests for COVID-19, which leads to carefully choosing the population on which they should be made. From 5vid.co we want to help with the initial risk classification so that only the cases that really need it are escalated. However, in no way does this platform aim to diagnose the presence of the virus.`) %>
+        </p>
+        <p class="section-about-paragraph p-4 text-base lg:text-xl font-medium text-justify">
+            <%= __(`We clarify that this is not a Government tool to obtain information about the pandemic. However, it is intended to decongest official hotlines. We remind you that if you are in a delicate health condition, you should consult with the health authorities and follow all their recommendations.`) %>
+            <a class="text-cvs-red font-bold hover:underline" target="_blank" href="<%=urls.help%>">
+              <%= __(`See hotlines.`) %>
+            </a>
         </p>
         <div class="hashtag-item-container flex flex-row justify-around" style="margin: 4rem 0 -14rem 0;">
             <div class="hashtag-item text-center flex flex-col items-center w-1/2">
