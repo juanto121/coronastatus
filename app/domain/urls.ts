@@ -84,7 +84,7 @@ const localeAwareUrls: Urls = {
   'es-AR': {
     submitReport: '/',
     profile: '/estadosalud',
-    privacyPolicy: '/aviso-privacidad',
+    privacyPolicy: '/politica-de-privacidad',
     help: '/help',
     map: '/mapa',
     contributors: '/colaboradores',
@@ -183,7 +183,7 @@ const localeAwareUrls: Urls = {
   'es-CO': {
     submitReport: '/',
     profile: '/estadosalud',
-    privacyPolicy: '/aviso-privacidad',
+    privacyPolicy: '/politica-de-privacidad',
     help: '/lineas-de-atencion',
     map: '/mapa',
     contributors: '/colaboradores',
