@@ -13,11 +13,9 @@ export interface CovidReport {
   bodyTemperature?: string;
   smokingHabit?: SmokingHabit;
   isolationStatus?: IsolationStatus;
-  diagnosedWithOtherConditions?: boolean;
   diagnosedWith: DiagnosedWith;
   phone: string;
   name: string;
-  nationalId: number;
   score?: number;
   videoUrl?: string;
 }

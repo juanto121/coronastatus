@@ -157,7 +157,7 @@ router.post('/', createReportRateLimit, async (req, res) => {
     postalCode: req.body['postal-code'].toUpperCase(),
     hasBeenTested: req.body['been-tested'] === 'yes',
     testResult: extractTestResult(req),
-    isPregnant: req.body['is-pregnant'] === 'on',
+    isPregnant: req.body['is-pregnant'] === 'yes',
     sex: toSex(req.body['gender']),
     symptoms: {
       [Symptom.DRY_COUGH]: req.body['symptom-cough'] === 'on',
@@ -181,8 +181,6 @@ router.post('/', createReportRateLimit, async (req, res) => {
     bodyTemperature: req.body['body-temperature'],
     smokingHabit: toSmokingHabit(req.body['smoking-habits']),
     isolationStatus: toIsolationStatus(req.body['isolation-status']),
-    diagnosedWithOtherConditions:
-      req.body['diagnosed-other-conditions'] === 'yes',
     //Added
     diagnosedWith: {
       [Diagnosed.DIABETES]: req.body['diagnosed-diabetes'] === 'on',
@@ -200,7 +198,6 @@ router.post('/', createReportRateLimit, async (req, res) => {
     submissionTimestamp: new Date().getTime(),
     phone: req.body['phone-number'],
     name: req.body['name-value'],
-    nationalId: req.body['national-id'],
     videoUrl: req.body['video-url']
   };
 

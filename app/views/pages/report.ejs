@@ -16,14 +16,12 @@ const {
   const testResult = profile && locals.profile.testResult;
   const phone = profile && locals.profile.phone;
   const videoUrl = profile && locals.profile.videoUrl;
-  <!--Adding Name and National ID-->
+  <!--Adding Name -->
   const name = profile && locals.profile.name;
-  const nationalId = profile && locals.profile.nationalId;
   <!---->
   const bodyTemperature = profile && locals.profile.bodyTemperature;
   const isolationStatus = profile && locals.profile.isolationStatus;
   const smokingHabit = profile && locals.profile.smokingHabit;
-  const diagnosedWithOtherConditions = profile && locals.profile.diagnosedWithOtherConditions;
   <!-- New added -->
   const diagnosedWith = profile && locals.profile.diagnosedWith;
   const diagnosedWithDiabetes = diagnosedWith && diagnosedWith['DIABETES'];
@@ -204,29 +202,26 @@ const {
 
     <!-- Adding is Pregnant-->
     <div id="pregnant-question" style="display: none;">
-      <fieldset>
+      <fieldset >
         <legend><%= __("Are you pregnant?") %></legend>
         <p>
           <input required type="radio" id="is-pregnant-yes" name="is-pregnant" value="yes"
             <%= isPregnant ? 'checked' : '' %>>
           <label class="mr-4" for="is-pregnant-yes"><%= __('Yes') %></label>
 
-          <input required type="radio" id="is-pregnant-no" name="is-pregnant" value="no"
+          <input required type="radio" id="is-pregnant-no" name="is-pregnant" value="no" checked
             <%= isPregnant === false ? 'checked' : '' %>>
           <label for="is-pregnant-no"><%= __('No') %></label>
         </p>
       </fieldset>
     </div>
-    <label for="postal-code"><%= __('Zip code') %>
-      <% if (locals.zipGuide) { %>
-      <span>- </span><a class="text-cvs-red font-bold hover:underline" href="<%= __(`https://www.whatismyzip.com`) %>"
-        target="_blank"><%= __('What is my Zip code?') %></a>
-      <% } %>
-    </label>
+    <legend class="mt-1 mb-0"><%= __('Zip code') %>
+    </legend>
+    <p class="text-base font-thin text-gray-500"><%= __('Must contain 4 to 8 numbers (ex: 050022)')%></p>
     <input
       class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-      type="text" pattern="[A-Za-z0-9]+" maxlength="8" name="postal-code" id="postal-code"
-      placeholder="<%= locals.zipPlaceHolder %>" value="<%= postalCode %>">
+      type="text" pattern="[0-9]{4,8}" name="postal-code" id="postal-code" title="<%= __('Must contain 4 to 8 numbers (ex: 050022)') %>"
+      value="<%= postalCode %>" >
 
     <div class="flex flex-row items-center mt-8">
       <img src="/static/images/mask.svg" alt="" class="h-16 w-16">
@@ -487,19 +482,6 @@ const {
           <label for="never-smoked"><%= __("No") %></label>
         </p>
       </fieldset>
-      <!--Previous Diagnosed with Deprecated
-    <fieldset>
-    <legend class="mb-0"><%= __('Have you been diagnosed with any of the following conditions?') %></legend>
-    <p class="mb-4"><%= __('Diabetes mellitus, Hypertension, Ischemic heart disease, Asthma, Chronic lung disease, Chronic kidney disease') %></p>
-    <p>
-        <input required type="radio" id="diagnosed-other-conditions-yes" name="diagnosed-other-conditions" value="yes" <%= diagnosedWithOtherConditions ? 'checked' : '' %>>
-        <label class="mr-4" for="diagnosed-other-conditions-yes"><%= __('Yes') %></label>
-
-        <input required type="radio" id="diagnosed-other-conditions-no" name="diagnosed-other-conditions" value="no" <%= diagnosedWithOtherConditions === false ? 'checked' : '' %>>
-        <label for="diagnosed-other-conditions-no"><%= __('No') %></label>
-    </p>
-    </fieldset>
-    -->
 
       <fieldset>
         <legend><%= __('Why are you in isolation?')%></legend>
@@ -535,13 +517,14 @@ const {
       <label class="mb-0" for="name-value"><%= __('What is your name?') %></label>
       <input required type="text"
         class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        step="0.1" value="<%=name%>" name="name-value" id="name-value">
+        value="<%=name%>" name="name-value" id="name-value">
 
       <label class="mb-0" for="phone-number"><%= __('What is your phone number?') %></label>
       <p class="text-base"> <%= __('Make sure that the entered phone number is correct') %></p>
-      <input required type="text"
+      <p class="text-base font-thin text-gray-500"><%= __('Must contain only 10 numbers (ex: 30082584XX)')%></p>
+      <input required type="tel" title="<%= __('Must contain only 10 numbers (ex: 30082584XX)') %>"
         class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        step="0.1" name="phone-number" id="phone-number">
+        pattern="[0-9]{10}" name="phone-number" id="phone-number" >
       <div>
         <legend class="mb-4"><%= __('Vital signs - OPTIONAL') %></legend>
         <div class="video-container">
@@ -664,6 +647,11 @@ const {
     </div>
   </div>
 </section>
+
+<!--Validation-->
+<script>
+  
+</script>
 
 <script src="/static/form.js?v=<%= locals.cacheKey %>"></script>
 

@@ -10,7 +10,6 @@ function changeTestResultDisplay(show) {
 }
 
 function changePregnantDisplay(show) {
-  console.log(show)
   var pregnantElement = document.getElementById('pregnant-question');
   if (show) {
     pregnantElement.style.display = 'block';
