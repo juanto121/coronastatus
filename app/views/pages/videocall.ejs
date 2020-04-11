@@ -1,0 +1,58 @@
+<%
+const {
+    profile,
+    passcode,
+    baseUrl,
+    urls
+  } = locals;
+%>
+
+<%- include('partials/header') -%>
+
+<section class="custom-videocall-consent mt-8 mx-auto p-8 rounded-lg w-full">
+    <h1 class="mt-0 text-3xl sm:text-4xl">
+        <%= __(`Informed Consent`) %>
+    </h1>
+    <p class="subtitle text-justify text-lg">
+        <%= __(`You will access a health guidance service through which the symptoms you have reported will be studied virtually. Recommendations and treatment to be followed will be established, to the extent possible from the virtual point of view. By no means does this service replace face-to-face medical attention and it is clarified that it has the restrictions of the environment, therefore it is possible that after the analysis the doctor advises face-to-face medical consultation.`)
+    %>
+    </p>
+
+    <p class="mt-4">
+        <label class="checkbox">
+            <input type="checkbox" id="accept-videocall" name="accept-videocall" 
+                onclick="changeVideocallDisplay()">
+            <span class="text-lg"><%= __(`I have read the informed consent, accept it and agree to continue with the video call`)%></span>
+            <span class="checkmark"></span>
+        </label>
+    </p>
+    <div id="videocall-display" name="videocall-display" style="display: none;">
+    <div 
+        class="flex flex-wrap sm:flex-no-wrap items-center justify-center mt-6">
+        <input id="videocall-code" name="videocall-code" type="text" maxlength="6" style="width:200px"
+            class="mb-4 h-12 mr-4 bg-gray-50 appearance-none border-2 border-cvs-red rounded focus:outline-none font-bold text-center text-xl" />
+        <input id="profile-url-id" class="inverse mb-4 w-auto" type="submit"
+            onclick="goToVideoCall()"
+            value="<%= __(`Go to videocall`) %>">
+    </div>
+    </div>
+</section>
+
+<script>
+function changeVideocallDisplay() {
+    var checkBox = document.getElementById('accept-videocall');
+    if (checkBox.checked) {
+        document.getElementById('videocall-display').style.display = 'block';
+    }
+    else {
+        document.getElementById('videocall-display').style.display = 'none';
+    }
+}
+
+function goToVideoCall() { 
+	var videoCallCode = document.getElementById("videocall-code").value; 
+	window.open("http://talky.io/" + videoCallCode, "_blank");
+} 
+</script>
+
+<%- include('partials/footer') -%>

@@ -380,9 +380,11 @@ const {
 
       <div id="symptom-start-question" style="display: none;">
         <label for="symptom-start"><%= __('When did the symptoms start?')%></label>
-        <input required
-          class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          type="date" name="symptom-start" id="symptom-start" value="<%= symptomStart %>">
+        <input 
+            class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"    
+            type="date" 
+            name="symptom-start" id="symptom-start" 
+            value="<%= symptomStart %>">
       </div>
 
       <label class="mb-0" for="body-temperature"><%= __('What is your current body temperature? (Celcius)') %></label>
@@ -680,7 +682,12 @@ const {
 
   var symptoms = document.querySelectorAll('input[name^="symptom-"]:checked');
   if (symptoms != null && symptoms.length > 0) {
+    document.getElementById('symptom-start-question').required = true;
     document.getElementById('symptom-start-question').style.display = 'block';
+  }
+  else {
+    document.getElementById('symptom-start-question').required = false;
+    document.getElementById('symptom-start-question').value = null;
   }
 
   changeTestResultDisplay(document.getElementById("been-tested-yes").checked);

@@ -33,6 +33,7 @@ type Urls = {
     api: string;
     apiDocs: string;
     statistics: string;
+    videocall: string;
   };
 };
 
@@ -46,7 +47,8 @@ const localeAwareUrls: Urls = {
     contributors: '/frivillige',
     api: '/api',
     apiDocs: '/api-docs',
-    statistics: '/statistikk'
+    statistics: '/statistikk',
+    videocall: '/videollamada'
   },
   nl: {
     submitReport: '/',
@@ -57,7 +59,8 @@ const localeAwareUrls: Urls = {
     contributors: '/bijdragers',
     api: '/api',
     apiDocs: '/api-docs',
-    statistics: '/statistieken'
+    statistics: '/statistieken',
+    videocall: '/videollamada'
   },
   en: {
     submitReport: '/',
@@ -68,7 +71,8 @@ const localeAwareUrls: Urls = {
     contributors: '/contributors',
     api: '/api',
     apiDocs: '/api-docs',
-    statistics: '/statistics'
+    statistics: '/statistics',
+    videocall: '/videollamada'
   },
   'en-US': {
     submitReport: '/',
@@ -79,7 +83,8 @@ const localeAwareUrls: Urls = {
     contributors: '/contributors',
     api: '/api',
     apiDocs: '/api-docs',
-    statistics: '/statistics'
+    statistics: '/statistics',
+    videocall: '/videollamada'
   },
   'es-AR': {
     submitReport: '/',
@@ -90,7 +95,8 @@ const localeAwareUrls: Urls = {
     contributors: '/colaboradores',
     api: '/api',
     apiDocs: '/api-docs',
-    statistics: '/estadisticas'
+    statistics: '/estadisticas',
+    videocall: '/videollamada'
   },
   'en-AU': {
     submitReport: '/',
@@ -101,7 +107,8 @@ const localeAwareUrls: Urls = {
     contributors: '/contributors',
     api: '/api',
     apiDocs: '/api-docs',
-    statistics: '/statistics'
+    statistics: '/statistics',
+    videocall: '/videollamada'
   },
   'en-MT': {
     submitReport: '/',
@@ -112,7 +119,8 @@ const localeAwareUrls: Urls = {
     contributors: '/contributors',
     api: '/api',
     apiDocs: '/api-docs',
-    statistics: '/statistics'
+    statistics: '/statistics',
+    videocall: '/videollamada'
   },
   'es-MX': {
     submitReport: '/',
@@ -123,7 +131,8 @@ const localeAwareUrls: Urls = {
     contributors: '/colaboradores',
     api: '/api',
     apiDocs: '/api-docs',
-    statistics: '/estadisticas'
+    statistics: '/estadisticas',
+    videocall: '/videollamada'
   },
   sk: {
     submitReport: '/',
@@ -134,7 +143,8 @@ const localeAwareUrls: Urls = {
     contributors: '/prispievatelia',
     api: '/api',
     apiDocs: '/api-docs',
-    statistics: '/statistiky'
+    statistics: '/statistiky',
+    videocall: '/videollamada'
   },
   it: {
     submitReport: '/',
@@ -145,7 +155,8 @@ const localeAwareUrls: Urls = {
     contributors: '/contributori',
     api: '/api',
     apiDocs: '/api-docs',
-    statistics: '/statistiche'
+    statistics: '/statistiche',
+    videocall: '/videollamada'
   },
   tr: {
     submitReport: '/',
@@ -156,7 +167,8 @@ const localeAwareUrls: Urls = {
     contributors: '/katkida-bulunanlar',
     api: '/api',
     apiDocs: '/api-docs',
-    statistics: '/istatistikler'
+    statistics: '/istatistikler',
+    videocall: '/videollamada'
   },
   dk: {
     submitReport: '/',
@@ -167,7 +179,8 @@ const localeAwareUrls: Urls = {
     contributors: '/frivillige',
     api: '/api',
     apiDocs: '/api-docs',
-    statistics: '/statistikker'
+    statistics: '/statistikker',
+    videocall: '/videollamada'
   },
   ua: {
     submitReport: '/',
@@ -178,7 +191,8 @@ const localeAwareUrls: Urls = {
     contributors: '/contributors',
     api: '/api',
     apiDocs: '/api-docs',
-    statistics: '/statistics'
+    statistics: '/statistics',
+    videocall: '/videollamada'
   },
   'es-CO': {
     submitReport: '/',
@@ -189,7 +203,8 @@ const localeAwareUrls: Urls = {
     contributors: '/colaboradores',
     api: '/api',
     apiDocs: '/api-docs',
-    statistics: '/estadisticas'
+    statistics: '/estadisticas',
+    videocall: '/videollamada'
   },
   'fr-FR': {
     submitReport: '/',
@@ -200,7 +215,8 @@ const localeAwareUrls: Urls = {
     contributors: '/contributeurs',
     api: '/api',
     apiDocs: '/api-docs',
-    statistics: '/statistiques'
+    statistics: '/statistiques',
+    videocall: '/videollamada'
   },
   'es-ES': {
     submitReport: '/',
@@ -211,7 +227,8 @@ const localeAwareUrls: Urls = {
     contributors: '/colaboradores',
     api: '/api',
     apiDocs: '/api-docs',
-    statistics: '/estadisticas'
+    statistics: '/estadisticas',
+    videocall: '/videollamada'
   },
   ca: {
     submitReport: '/',
@@ -222,7 +239,8 @@ const localeAwareUrls: Urls = {
     contributors: '/contributors',
     api: '/api',
     apiDocs: '/api-docs',
-    statistics: '/statistics'
+    statistics: '/statistics',
+    videocall: '/videollamada'
   },
   'en-SG': {
     submitReport: '/',
@@ -233,7 +251,8 @@ const localeAwareUrls: Urls = {
     contributors: '/contributors',
     api: '/api',
     apiDocs: '/api-docs',
-    statistics: '/statistics'
+    statistics: '/statistics',
+    videocall: '/videollamada'
   },
   'ms-MY': {
     submitReport: '/',
@@ -244,7 +263,8 @@ const localeAwareUrls: Urls = {
     contributors: '/penyumbang',
     api: '/api',
     apiDocs: '/api-docs',
-    statistics: '/statistik'
+    statistics: '/statistik',
+    videocall: '/videollamada'
   },
   se: {
     submitReport: '/',
@@ -255,7 +275,8 @@ const localeAwareUrls: Urls = {
     contributors: '/medverkare',
     api: '/api',
     apiDocs: '/api-docs',
-    statistics: '/statistik'
+    statistics: '/statistik',
+    videocall: '/videollamada'
   }
 };
 
