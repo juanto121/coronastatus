@@ -57,7 +57,6 @@ interface ExposedCovidReport {
   bodyTemperature?: string;
   smokingHabit?: SmokingHabit;
   isolationStatus?: IsolationStatus;
-  diagnosedWithOtherConditions?: boolean;
 }
 
 type ZeroOrOne = 0 | 1;
@@ -77,7 +76,6 @@ interface ExposedCovidReportCSV extends Record<Symptom, ZeroOrOne> {
   bodyTemperature?: string;
   smokingHabit?: SmokingHabit;
   isolationStatus?: IsolationStatus;
-  diagnosedWithOtherConditions?: ZeroOrOne;
 }
 
 const toISODate = (submissionTimestamp: number): string =>
@@ -96,7 +94,6 @@ const reportToExposedFormat = (report: CovidReport): ExposedCovidReport => ({
   bodyTemperature: report.bodyTemperature,
   smokingHabit: report.smokingHabit,
   isolationStatus: report.isolationStatus,
-  diagnosedWithOtherConditions: report.diagnosedWithOtherConditions
 });
 
 const extractSymptomsAsZeroOrOne = (
@@ -114,6 +111,7 @@ const extractSymptomsAsZeroOrOne = (
   [Symptom.NO_SMELL]: toZeroOrOne(symptoms.NO_SMELL),
   [Symptom.SLIME_COUGH]: toZeroOrOne(symptoms.SLIME_COUGH),
   [Symptom.RUNNY_NOSE]: toZeroOrOne(symptoms.RUNNY_NOSE),
+  [Symptom.CHEST_PAIN]: toZeroOrOne(symptoms.RUNNY_NOSE),
   [Symptom.NAUSEA_OR_VOMITING]: toZeroOrOne(symptoms.NAUSEA_OR_VOMITING)
 });
 
@@ -136,9 +134,6 @@ const reportToExposedCsvFormat = (
   bodyTemperature: report.bodyTemperature,
   smokingHabit: report.smokingHabit,
   isolationStatus: report.isolationStatus,
-  diagnosedWithOtherConditions: toZeroOrOne(
-    report.diagnosedWithOtherConditions
-  ),
   ...extractSymptomsAsZeroOrOne(report.symptoms)
 });
 

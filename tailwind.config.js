@@ -6,7 +6,7 @@ module.exports = {
         'cvs-green-light': '#304044',
         'cvs-green': '#4d646a',
         'cvs-green-dark': '#2B7889',
-        'cvs-gold': '#F2CC20'
+        'cvs-gold': '#B2ECF4'
       }
     }
   },

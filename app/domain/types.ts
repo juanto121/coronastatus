@@ -1,6 +1,7 @@
 export interface CovidReport {
   yearOfBirth?: string; // Deprecated
   sex: Sex;
+  isPregnant: boolean; //Added
   postalCode: string;
   hasBeenTested: boolean;
   hasBeenInContactWithInfected: boolean;
@@ -12,11 +13,9 @@ export interface CovidReport {
   bodyTemperature?: string;
   smokingHabit?: SmokingHabit;
   isolationStatus?: IsolationStatus;
-  diagnosedWithOtherConditions?: boolean;
   diagnosedWith: DiagnosedWith;
   phone: string;
   name: string;
-  nationalId: number;
   score?: number;
   videoUrl?: string;
 }
@@ -68,18 +67,23 @@ export enum Symptom {
   NO_SMELL = 'NO_SMELL',
   SLIME_COUGH = 'SLIME_COUGH',
   RUNNY_NOSE = 'RUNNY_NOSE',
+  CHEST_PAIN = 'CHEST_PAIN',
   NAUSEA_OR_VOMITING = 'NAUSEA_OR_VOMITING'
 }
 
 //Added
 export enum Diagnosed {
   DIABETES = 'DIABETES',
-  HYPERTENSION = 'HYPERTENSION',
-  ISCHEMICHEARTDISEASE = 'ISCHEMICHEARTDISEASE',
+  HYPERTENSIONARTERIAL = 'HYPERTENSIONARTERIAL',
+  CORONARYHEARTDISEASE = 'CORONARYHEARTDISEASE',
   ASTHMA = 'ASTHMA',
   CHRONICLUNGDISEASE = 'CHRONICLUNGDISEASE',
-  CHRONICKIDNEYDISEASE = 'CHRONICKIDNEYDISEASE',
-  AUTOIMMUNEDISEASE = 'AUTOIMMUNEDISEASE'
+  KIDNEYDISEASE = 'KIDNEYDISEASE',
+  AUTOIMMUNEDISEASE = 'AUTOIMMUNEDISEASE',
+  CANCER = 'CANCER',
+  VIH = 'VIH',
+  OBESITY_OR_MALNUTRITION = 'OBESITY_OR_MALNUTRITION',
+  IMMUNOSUPRESSION = 'IMMUNOSUPRESSION'
 }
 
 export interface AggregatedCovidReportData {

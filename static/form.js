@@ -9,6 +9,17 @@ function changeTestResultDisplay(show) {
   }
 }
 
+function changePregnantDisplay(show) {
+  var pregnantElement = document.getElementById('pregnant-question');
+  if (show) {
+    pregnantElement.style.display = 'block';
+    pregnantElement.getElementsByTagName('input').forEach(el => el.required = true);
+  } else {
+    pregnantElement.style.display = 'none';
+    pregnantElement.getElementsByTagName('input').forEach(el => el.required = false);
+  }
+}
+
 var symptomCheckboxes = document.querySelectorAll(
   'input[type=checkbox][name^=symptom-]'
 );

@@ -9,6 +9,7 @@ export interface Scoring {
 // Report that includes scoring and saves to external Mongo database
 export class ExtendedCovidReportApi {
   static async getScore(report: CovidReport): Promise<Scoring> {
+    console.log(JSON.stringify(report));
     try {
       const score: Scoring = await request({
         uri: 'https://ocpi33er57.execute-api.us-east-1.amazonaws.com/dev/score',

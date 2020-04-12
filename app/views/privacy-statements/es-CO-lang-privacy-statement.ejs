@@ -2,45 +2,93 @@
 
 <%- include('partials/header') -%>
 
-<h1><%= __("Aviso de Privacidad") %></h1>
-<p class="subtitle">¿Qué datos almacenamos sobre usted y por qué?</p>
+<h1><%= __("Política de privacidad") %></h1>
+<p class="subtitle">¿Que datos almacenamos sobre usted y por qué?</p>
 
-<h3>Género</h3>
+<h3>Edad</h3>
 <p>
-  Almacenamos el género para poder decir algo sobre la distribución entre
-  hombres. y mujeres con síntomas.
+  Requerimos el grupo de edad de acuerdo a los estándares de la OMS para
+  identificar la vulnerabilidad de un usuario.
 </p>
 
-<h3>Grupos de Edad</h3>
+<h3>Sexo</h3>
 <p>
-  Almacenamos grupos de edad para distinguir qué grupos de edad experimentan
-  síntomas.
+  Requerimos el sexo del usuario para identificar su vulnerabilidad
+  y determinar si hay algún género más propenso al virus.
+</p>
+
+<h3>Embarazo</h3>
+<p>
+  Requerimos conocer si el usuario se encuentra en estado de embarazo para
+  identificar su vulnerabilidad.
 </p>
 
 <h3>Código postal</h3>
 <p>
-  Para dar al público una idea de cuántas personas muestran síntomas en el área
-  donde viven, almacenamos códigos postales. De esta manera podemos mostrar una
-  visión general de la cantidad de personas con síntomas específicos en
-  diferentes áreas.
+  Requerimos el código postal para estimar cúales zonas son las más afectadas
+  por el virus y poder priorizar la atención de acuerdo al riesgo.
 </p>
 
-<h3>Estado de la prueba</h3>
+<h3>Contacto cercano con sospechosa o positiva para COVID-19</h3>
 <p>
-  También guardamos si ha sido examinado y cuáles son los resultados de esta
-  prueba. Con esta información podemos calcular el porcentaje de los
-  participantes que presentaron síntomas. Mostramos esto en el mapa.
+  Requerimos conocer si el usuario tuvo contacto cercano con una persona sospechosa o
+  positiva para COVID-19 con el fin de determinar si existe nexo epidemiológico.
+</p>
+
+<h3>Prueba COVID-19 y su resultado</h3>
+<p>
+  Requerimos conocer si el usuario se ha realizado la prueba para COVID-19
+  con el fin de informar al médico sobre la situación actual del usuario
+  respecto a este examen de laboratorio.
 </p>
 
 <h3>Síntomas</h3>
 <p>
-  Los síntomas que envíe indican si puede estar infectado con el virus Covid-19.
-  El momento del inicio de los síntomas también da una indicación de hace cuánto
-  tanto tiempo que eres contagioso. Recopilamos estos datos y los visualizamos
-  de forma anónima. De esta manera, el público puede obtener una idea de cuán
-  grandes son las cifras.
+  Requerimos conocer los síntomas del usuario para poder realizar la primera
+  valoración clínica e informar al médico sobre su estado de salud. La fecha
+  de inicio de los síntomas también es un dato relevante para realizar una
+  adecuada revisión por parte del especialista en salud.
 </p>
+
+<h3>Condiciones diagnosticadas</h3>
+<p>
+  Requerimos conocer las condiciones con las que ha diagnosticado el usuario
+  (comorbilidades) para estimar su vulnerabilidad.
+</p>
+
+<h3>Usuario fumador</h3>
+<p>
+  Requerimos conocer si el usuario fuma para estimar su vulnerabilidad.
+</p>
+
+<h3>Aislamiento</h3>
+<p>
+  Requerimos conocer el estado de aislamiento del usuario para estimar su riesgo
+  epidemiológico y entender las medidas de protección que esta tomando.
+</p>
+
+<h3>Nombre</h3>
+<p>
+  Requerimos conocer el nombre del usuario para facilitar la comunicación vía
+  telefónica por parte del médico.
+</p>
+
+<h3>Número de celular</h3>
+<p>
+  Requerimos conocer el número de celular del usuario para que el médico pueda
+  establecer contacto con él. Además esto permite tener trazabilidad sobre el
+  estado de salud reportado por el usuario.
+</p>
+
+<h3>Signos vitales</h3>
+<p>
+  Requerimos este campo para poder medir los signos vitales usando Inteligencia
+  Artificial e informar al médico acerca de los resultados obtenidos con el fin
+  de poder realizar un mejor diagnóstico.
+</p>
+
 <div class="border-b border-cvs-red mt-4"></div>
+<!--
 <h3>Cookies</h3>
 <p>
   Utilizamos cookies para almacenar datos de participantes en su propio
@@ -54,30 +102,20 @@
   que pueda ser eliminado
 </p>
 
+
 <h3>Compartir datos con el Ministerio de Salud</h3>
 <p>Si lo desea, proporcionamos datos anónimos al Ministerio.</p>
-
-<h3>Analítica</h3>
-<p>
-  Usamos análisis para obtener información sobre el uso del sitio web. Usamos
-  <a
-    class="text-cvs-red hover:underline"
-    href="https://simpleanalytics.com"
-    target="_blank"
-    >Simple Analytics</a
-  >
-  para esto: una parte que no almacena datos personales y no coloca cookies.
-</p>
-
-<h3>¿Más preguntas?</h3>
-<p>
-  Contactanos en twitter:
-  <a
-    class="text-cvs-red hover:underline"
-    href="https://twitter.com/5vidco"
-    target="_blank"
-    >@5vidco</a
-  >.
-</p>
+-->
+<h3>Contáctenos</h3>
+<div class="flex flex-col">
+<div class="flex flex-row justify items-center mb-3">
+  <img class="h-10 w-10 mr-1" src="/static/images/twitter.svg">
+  <a class="text-xl text-cvs-red hover:underline" href="https://twitter.com/5vidco" target="_blank">@5vidco</a>
+</div>
+<div class="flex flex-row justify items-center">
+  <img class="h-10 w-10 mr-2" src="/static/images/gmail.svg">
+  <a class="text-xl text-cvs-red hover:underline" href="mailto:sincovid@gmail.com" target="_blank">sincovid@gmail.com</a>
+</div>
+</div>
 
 <%- include('partials/footer') -%>

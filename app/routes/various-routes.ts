@@ -24,4 +24,9 @@ router.get('/robots.txt', (req, res) => {
   return res.render('pages/robots');
 });
 
+router.get(`${urls.videocall}`, (req, res) => {
+  return res.render('pages/videocall'
+  );
+});
+
 export default router;

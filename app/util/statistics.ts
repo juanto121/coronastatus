@@ -27,6 +27,7 @@ const symptomToLabelMap = {
   [Symptom.NO_SMELL]: 'Loss of sense of smell',
   [Symptom.SLIME_COUGH]: 'Mucus cough',
   [Symptom.RUNNY_NOSE]: 'Stuffy or runny nose',
+  [Symptom.CHEST_PAIN]: 'Chest pain',
   [Symptom.NAUSEA_OR_VOMITING]: 'Nausea or vomiting'
 };
 
