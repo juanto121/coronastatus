@@ -29,7 +29,7 @@ const {
     <div id="videocall-display" name="videocall-display" style="display: none;">
     <div 
         class="flex flex-wrap sm:flex-no-wrap items-center justify-center mt-6">
-        <input id="videocall-code" name="videocall-code" type="text" maxlength="6" style="width:200px"
+        <input id="videocall-code" name="videocall-code" type="text" style="width:200px" placeholder="<%= __('Enter Code') %>"
             class="mb-4 h-12 mr-4 bg-gray-50 appearance-none border-2 border-cvs-red rounded focus:outline-none font-bold text-center text-xl" />
         <input id="profile-url-id" class="inverse mb-4 w-auto" type="submit"
             onclick="goToVideoCall()"

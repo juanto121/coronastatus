@@ -124,10 +124,6 @@
         window.localStorage.getItem('isUsingPasscodeLink') === 'true' ||
         readCookie('passcode');
 
-      if (submitted) {
-        button.textContent = '<%= __(`Your state of health`) %>';
-      }
-
       button.classList.remove('opacity-0');
     });
   })();

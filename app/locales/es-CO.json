@@ -226,5 +226,6 @@
   "Informed Consent": "Consentimiento Informado",
   "I have read the informed consent, accept it and agree to continue with the video call": "He leído el consentimiento informado, lo acepto y estoy de acuerdo en continuar con la videollamada",
   "Must contain 4 to 8 numbers (ex: 050022)": "Tiene que contener entre 4 y 8 números (ej: 050022)",
-  "Must contain only 10 numbers (ex: 30082584XX)": "Tiene que tener solamente 10 números (ej: 30082584XX)"
+  "Must contain only 10 numbers (ex: 30082584XX)": "Tiene que tener solamente 10 números (ej: 30082584XX)",
+  "Enter Code": "Ingrese el Código"
 }
