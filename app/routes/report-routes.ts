@@ -17,6 +17,7 @@ import {
   ExtendedCovidReportApi,
   Scoring
 } from '../repository/ExtendedCovidReportApi';
+import { ReportsAPI } from '../repository/ReportsAPI';
 
 const cookieOptions = {
   maxAge: 31557600000, // maxAge is set to 1 year in ms
@@ -209,7 +210,8 @@ router.post('/', createReportRateLimit, async (req, res) => {
     res.clearCookie('passcode');
   }
   const score: Scoring = await ExtendedCovidReportApi.getScore(covidReport);
-  covidReport.score = Number(score.scoring)
+  covidReport.score = Number(score.scoring);
+  await ReportsAPI.createReport(covidReport);
   reportRepo.addNewCovidReport(passcode, covidReport);
   if (req.body['passcode']) {
     return res.redirect(
