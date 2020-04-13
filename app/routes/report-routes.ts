@@ -219,7 +219,7 @@ router.post('/', createReportRateLimit, async (req, res) => {
       `${res.locals.urls.profile}/${passcode}?success=true#contribute`
     );
   }
-  const covidRisk = 'low';
+  const covidRisk = 'medium';
   return res.render('pages/confirm-profile', {
     covidRisk,
     passcode,
