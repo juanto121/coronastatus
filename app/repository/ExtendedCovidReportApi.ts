@@ -2,9 +2,9 @@ const request = require('request-promise')
 import { CovidReport } from '../domain/types';
 
 export interface Scoring {
-  covidScore: string;
+  covidScore: number;
   covidRisk?: string;
-  patientScore?: string;
+  patientScore?: number;
   patientRisk?: string;
 }
 
@@ -26,7 +26,7 @@ export class ExtendedCovidReportApi {
       };
     } catch (err) {
       console.log('Failed to get score', err);
-      return { covidScore: '-1' };
+      return { covidScore: -1 };
     }
   }
 }
