@@ -1,105 +1,87 @@
+<%
+const covidRisk = 'high';
+const hasCookie = false;
+const passcode = 'mesero-pagaras-descansas';
+%>
+
 <%- include('partials/header') -%>
 
-<section 
-  class="custom-videocall-consent mt-8 mx-auto p-8 rounded-lg w-full"
->
-  <% if (hasCookie) { %>
-
-  <h1 class="mt-0 text-3xl sm:text-4xl">
-    <%= __(`We stored your data in a cookie so come back later to update your
-    status`) %>
-  </h1>
-  <p class="subtitle">
-    <%= __(`If you use this computer with multiple users, please use this link
-    to update your status.`) %> <%= __(`Write it down somewhere or save it on
-    your computer.`) %>
-  </p>
-
-  <% } else { %>
-
-  <h1 class="mt-0 text-3xl sm:text-4xl">
-    <%= __(`Before proceeding please note down the following link`) %>
-  </h1>
-  <p class="subtitle">
-    <%= __(`Save the following link somewhere, or bookmark it in your browser.`)
-    %>
-    <br />
-    <%= __(`That way you can update your report if your health condition
-    changes.`) %>
-  </p>
-  <% }%>
-
-  <div
-    class="flex-wrap flex sm:flex-no-wrap items-center justify-between mt-4"
-    style="max-width: 100%"
-  >
-    <input
-      id="link-to-be-copied"
-      type="text"
-      readonly
-      value="<%= baseUrl %><%= urls.profile %>/<%= passcode %>"
-      class="mb-4 h-12 flex-grow w-auto flex-shrink mr-4 bg-gray-200 appearance-none border-2 border-cvs-red rounded py-2 px-4 leading-tight focus:outline-none"
-    />
-    <button
-      id="profile-url-id"
-      class="mb-4 h-12 rounded"
-      data-clipboard-text="<%= baseUrl %><%= urls.profile %>/<%= passcode %>"
-    >
-      <%= __(`Copy`) %>
-    </button>
-  </div>
-
-  <!-- If you change the color make sure it's in postcss.config.js -->
-  <%- include('partials/alert', { color: 'blue', class: `mb-4 hidden`, id:
-  `profile-copy-status-success`, message: __(`The link has been copied.`) })-%>
-
-  <!-- If you change the color make sure it's in postcss.config.js -->
-  <%- include('partials/alert', { color: 'red', class: `mb-4 hidden`, id:
-  `profile-copy-status-fail`, message: __(`Could not copy the link, please copy
-  it yourself`) }) -%>
-
-  <form method="get" action="<%= urls.profile %>/<%= passcode %>#contribute">
-    <input type="hidden" name="success" value="true" />
-
-    <% if (!hasCookie) { %>
-    <p class="mt-4">
-      <label class="checkbox" for="accept">
-        <input type="checkbox" id="accept" name="accept" />
-        <span><%= __(`I've noted down the link.`)%></span>
-        <span class="checkmark"></span>
-      </label>
+<section class="custom-videocall-consent mt-8 mx-auto p-8 rounded-lg w-full">
+    <h2 class="mt-0 text-1xl sm:text-2xl">
+        <%= __(`Risk clasification`) %>
+    </h2>
+    <% if (covidRisk === 'low') { %>
+    <p class="subtitle text-justify text-lg">
+        <%= __(`According to the reported information, you have a low probability of having contracted the virus or presenting any complication. However, if your clinical picture worsens, you can enter the system and fill out the form again.`)%>
     </p>
-    <% } %>
-
-    <p class="my-4">
-      <input class="inverse" type="submit" value="<%= __('Proceed') %>" />
+    <p class="subtitle text-justify text-lg mt-3">
+        <%= __(`We recommend that you consult your IPS if you experience any of the following symptoms:`)%>
     </p>
-  </form>
+    <% } else if (covidRisk === 'medium'){ %>
+    <p class="subtitle text-justify text-lg">
+        <%= __(`According to the reported information, you should be evaluated by a doctor in the next 24 hours. For this reason, you will receive a call from a doctor to the phone number that you filled out in the form, in which he will explain how to enter a video call to be able to extend the anamnesis (medical history) and determine the risks in order to get proper addressing. If you have not received the call after this time and you have any of the following symptoms, you should consult your IPS as a priority:`)%>
+    </p>
+    <% } else { %>
+    <p class="subtitle text-justify text-lg">
+        <%= __(`According to the reported information, you should be evaluated by a doctor as soon as possible. For this reason, you will receive a call from a doctor to the phone number that you filled out in the form, in which he will explain how to enter a video call to be able to extend the anamnesis (medical history) and determine the risks in order to get proper addressing. If you have not received the call in the next 12 hours and you have any of the following symptoms, you should consult your IPS as a priority:`)%>
+    </p>
+    <% }%>
+    <ul class="text-lg mt-3" style="list-style-type:circle; padding-left:20px">
+        <li><%= __(`Quantified fever (greater than or equal to 38 degrees) for more than two days.`)%></li>
+        <li><%= __(`Breathing faster than normal.`)%></li>
+        <li><%= __(`Quick decay of the general state.`)%></li>
+        <li><%= __(`Chest sound or pain when breathing.`)%></li>
+        <li><%= __(`Sleepiness or difficulty waking up.`)%></li>
+    </ul>
 </section>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script>
+<section class="custom-videocall-consent mt-8 mx-auto p-8 rounded-lg w-full">
+
+    <h2 class="mt-0 text-1xl sm:text-2xl">
+        <%= __(`Recommendations`) %>
+    </h2>
+    <p class="subtitle text-justify text-lg">
+        <%= __(`Keep in mind the following recommendations to take care of your health and protect the health of others:`)%>
+    </p>
+
+    <ul class="text-lg mt-3" style="list-style-type:circle; padding-left:20px">
+        <li><%= __(`Wash your hands frequently: when washing your hands, you can use an alcohol-based disinfectant or just soap and water.`)%>
+        </li>
+        <li><%= __(`Take respiratory hygiene measures: when coughing or sneezing, cover your mouth and nose with your elbow flexed or with a tissue. If you use a tissue, throw it away immediately and wash your hands. If you sneeze or cough on your hands, you can contaminate the objects or people you touch.`)%>
+        </li>
+        <li><%= __(`Maintain social distance: try to keep at least 2 meters of distance between yourself and other people, particularly those who are coughing, sneezing and have a fever.`)%>
+        </li>
+        <li><%= __(`Avoid sharing personal items like phones and computers.`)%></li>
+        <li><%= __(`Avoid touching your eyes, nose, and mouth.`)%></li>
+        <li><%= __(`Clean and decontaminate objects and surfaces.`)%></li>
+        <li><%= __(`Ventilate your home and work areas whenever possible.`)%></li>
+    </ul>
+
+    <p class="subtitle text-justify text-lg mt-3">
+        <%= __("For more information, visit the pages of the") %>
+        <a href="https://www.minsalud.gov.co/Paginas/default.aspx" class="text-cvs-red hover:underline" target="_blank"><%= __("Ministry of Health and Social Protection") %></a>
+        <%= __("and the") %>
+        <a href="https://www.who.int/es" class="text-cvs-red hover:underline" target="_blank"><%= __("WHO") %></a>.
+    </p>
+
+    
+    <!-- If you change the color make sure it's in postcss.config.js -->
+    <%- include('partials/alert', { color: 'blue', class: `mb-4 hidden`, id:
+  `profile-copy-status-success`, message: __(`The link has been copied.`) })-%>
+
+    <!-- If you change the color make sure it's in postcss.config.js -->
+    <%- include('partials/alert', { color: 'red', class: `mb-4 hidden`, id:
+  `profile-copy-status-fail`, message: __(`Could not copy the link, please copy
+  it yourself`) }) -%>
+</section>
 
 <script>
-  var clipboard = new ClipboardJS('#profile-url-id');
-  var successElement = document.getElementById('profile-copy-status-success');
-  var failElement = document.getElementById('profile-copy-status-fail');
-
-  clipboard.on('success', function(e) {
-    successElement.style.display = 'block';
-  });
-
-  clipboard.on('error', function(e) {
-    failElement.style.display = 'block';
-  });
-</script>
-
-<script>
-  // This is done so that we can show a hint on the front page that a profile might exist
-  // when entering from the same browser at a later time.
-  var hasCookie = 'true' === '<%= hasCookie %>';
-  if (!hasCookie) {
-    window.localStorage.setItem('isUsingPasscodeLink', 'false');
-  }
+    // This is done so that we can show a hint on the front page that a profile might exist
+    // when entering from the same browser at a later time.
+    var hasCookie = 'true' === '<%= hasCookie %>';
+    if (!hasCookie) {
+        window.localStorage.setItem('isUsingPasscodeLink', 'false');
+    }
 </script>
 
 <%- include('partials/footer') -%>
