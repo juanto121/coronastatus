@@ -1,26 +1,32 @@
 const request = require('request-promise')
-import config from '../config';
-import { getInstance } from './Database';
 import { CovidReport } from '../domain/types';
 
 export interface Scoring {
-  scoring: string;
+  covidScore: string;
+  covidRisk?: string;
+  patientScore?: string;
+  patientRisk?: string;
 }
+
 // Report that includes scoring and saves to external Mongo database
 export class ExtendedCovidReportApi {
   static async getScore(report: CovidReport): Promise<Scoring> {
-    console.log(JSON.stringify(report));
     try {
-      const score: Scoring = await request({
+      const score = await request({
         uri: 'https://ocpi33er57.execute-api.us-east-1.amazonaws.com/dev/score',
         method: 'POST',
         body: report,
         json: true
       });
-      return score;
+      return {
+        covidScore: score.covid_score,
+        covidRisk: score.covid_risk,
+        patientScore: score.patient_score,
+        patientRisk: score.patient_risk
+      };
     } catch (err) {
       console.log('Failed to get score', err);
-      return { scoring: '-1' };
+      return { covidScore: '-1' };
     }
   }
 }

@@ -213,7 +213,7 @@ router.post('/', createReportRateLimit, async (req, res) => {
     res.clearCookie('passcode');
   }
   const score: Scoring = await ExtendedCovidReportApi.getScore(covidReport);
-  covidReport.score = Number(score.scoring);
+  covidReport.score = score;
   await ReportsAPI.createReport(covidReport);
   reportRepo.addNewCovidReport(passcode, covidReport);
   if (req.body['passcode']) {
@@ -221,7 +221,9 @@ router.post('/', createReportRateLimit, async (req, res) => {
       `${res.locals.urls.profile}/${passcode}?success=true#contribute`
     );
   }
-  const covidRisk = 'medium';
+  const covidRisk = covidReport.score.covidRisk
+    ? covidReport.score.covidRisk
+    : null;
   return res.render('pages/confirm-profile', {
     covidRisk,
     passcode,

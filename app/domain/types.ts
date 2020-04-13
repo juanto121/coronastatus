@@ -1,3 +1,5 @@
+import { Scoring } from '../repository/ExtendedCovidReportApi';
+
 export interface CovidReport {
   yearOfBirth?: string; // Deprecated
   sex: Sex;
@@ -16,7 +18,7 @@ export interface CovidReport {
   diagnosedWith: DiagnosedWith;
   phone: string;
   name: string;
-  score?: number;
+  score?: Scoring;
   videoUrl?: string;
 }
 // Added
