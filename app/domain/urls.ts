@@ -34,6 +34,7 @@ type Urls = {
     apiDocs: string;
     statistics: string;
     videocall: string;
+    riskClassification: string;
   };
 };
 
@@ -48,7 +49,8 @@ const localeAwareUrls: Urls = {
     api: '/api',
     apiDocs: '/api-docs',
     statistics: '/statistikk',
-    videocall: '/videollamada'
+    videocall: '/videollamada',
+    riskClassification: 'clasificacion-del-riesgo'
   },
   nl: {
     submitReport: '/',
@@ -60,7 +62,8 @@ const localeAwareUrls: Urls = {
     api: '/api',
     apiDocs: '/api-docs',
     statistics: '/statistieken',
-    videocall: '/videollamada'
+    videocall: '/videollamada',
+    riskClassification: 'clasificacion-del-riesgo'
   },
   en: {
     submitReport: '/',
@@ -72,7 +75,8 @@ const localeAwareUrls: Urls = {
     api: '/api',
     apiDocs: '/api-docs',
     statistics: '/statistics',
-    videocall: '/videollamada'
+    videocall: '/videollamada',
+    riskClassification: 'clasificacion-del-riesgo'
   },
   'en-US': {
     submitReport: '/',
@@ -84,7 +88,8 @@ const localeAwareUrls: Urls = {
     api: '/api',
     apiDocs: '/api-docs',
     statistics: '/statistics',
-    videocall: '/videollamada'
+    videocall: '/videollamada',
+    riskClassification: 'clasificacion-del-riesgo'
   },
   'es-AR': {
     submitReport: '/',
@@ -96,7 +101,8 @@ const localeAwareUrls: Urls = {
     api: '/api',
     apiDocs: '/api-docs',
     statistics: '/estadisticas',
-    videocall: '/videollamada'
+    videocall: '/videollamada',
+    riskClassification: 'clasificacion-del-riesgo'
   },
   'en-AU': {
     submitReport: '/',
@@ -108,7 +114,8 @@ const localeAwareUrls: Urls = {
     api: '/api',
     apiDocs: '/api-docs',
     statistics: '/statistics',
-    videocall: '/videollamada'
+    videocall: '/videollamada',
+    riskClassification: 'clasificacion-del-riesgo'
   },
   'en-MT': {
     submitReport: '/',
@@ -120,7 +127,8 @@ const localeAwareUrls: Urls = {
     api: '/api',
     apiDocs: '/api-docs',
     statistics: '/statistics',
-    videocall: '/videollamada'
+    videocall: '/videollamada',
+    riskClassification: 'clasificacion-del-riesgo'
   },
   'es-MX': {
     submitReport: '/',
@@ -132,7 +140,8 @@ const localeAwareUrls: Urls = {
     api: '/api',
     apiDocs: '/api-docs',
     statistics: '/estadisticas',
-    videocall: '/videollamada'
+    videocall: '/videollamada',
+    riskClassification: 'clasificacion-del-riesgo'
   },
   sk: {
     submitReport: '/',
@@ -144,7 +153,8 @@ const localeAwareUrls: Urls = {
     api: '/api',
     apiDocs: '/api-docs',
     statistics: '/statistiky',
-    videocall: '/videollamada'
+    videocall: '/videollamada',
+    riskClassification: 'clasificacion-del-riesgo'
   },
   it: {
     submitReport: '/',
@@ -156,7 +166,8 @@ const localeAwareUrls: Urls = {
     api: '/api',
     apiDocs: '/api-docs',
     statistics: '/statistiche',
-    videocall: '/videollamada'
+    videocall: '/videollamada',
+    riskClassification: 'clasificacion-del-riesgo'
   },
   tr: {
     submitReport: '/',
@@ -168,7 +179,8 @@ const localeAwareUrls: Urls = {
     api: '/api',
     apiDocs: '/api-docs',
     statistics: '/istatistikler',
-    videocall: '/videollamada'
+    videocall: '/videollamada',
+    riskClassification: 'clasificacion-del-riesgo'
   },
   dk: {
     submitReport: '/',
@@ -180,7 +192,8 @@ const localeAwareUrls: Urls = {
     api: '/api',
     apiDocs: '/api-docs',
     statistics: '/statistikker',
-    videocall: '/videollamada'
+    videocall: '/videollamada',
+    riskClassification: 'clasificacion-del-riesgo'
   },
   ua: {
     submitReport: '/',
@@ -192,7 +205,8 @@ const localeAwareUrls: Urls = {
     api: '/api',
     apiDocs: '/api-docs',
     statistics: '/statistics',
-    videocall: '/videollamada'
+    videocall: '/videollamada',
+    riskClassification: 'clasificacion-del-riesgo'
   },
   'es-CO': {
     submitReport: '/',
@@ -204,7 +218,8 @@ const localeAwareUrls: Urls = {
     api: '/api',
     apiDocs: '/api-docs',
     statistics: '/estadisticas',
-    videocall: '/videollamada'
+    videocall: '/videollamada',
+    riskClassification: 'clasificacion-del-riesgo'
   },
   'fr-FR': {
     submitReport: '/',
@@ -216,7 +231,8 @@ const localeAwareUrls: Urls = {
     api: '/api',
     apiDocs: '/api-docs',
     statistics: '/statistiques',
-    videocall: '/videollamada'
+    videocall: '/videollamada',
+    riskClassification: 'clasificacion-del-riesgo'
   },
   'es-ES': {
     submitReport: '/',
@@ -228,7 +244,8 @@ const localeAwareUrls: Urls = {
     api: '/api',
     apiDocs: '/api-docs',
     statistics: '/estadisticas',
-    videocall: '/videollamada'
+    videocall: '/videollamada',
+    riskClassification: 'clasificacion-del-riesgo'
   },
   ca: {
     submitReport: '/',
@@ -240,7 +257,8 @@ const localeAwareUrls: Urls = {
     api: '/api',
     apiDocs: '/api-docs',
     statistics: '/statistics',
-    videocall: '/videollamada'
+    videocall: '/videollamada',
+    riskClassification: 'clasificacion-del-riesgo'
   },
   'en-SG': {
     submitReport: '/',
@@ -252,7 +270,8 @@ const localeAwareUrls: Urls = {
     api: '/api',
     apiDocs: '/api-docs',
     statistics: '/statistics',
-    videocall: '/videollamada'
+    videocall: '/videollamada',
+    riskClassification: 'clasificacion-del-riesgo'
   },
   'ms-MY': {
     submitReport: '/',
@@ -264,7 +283,8 @@ const localeAwareUrls: Urls = {
     api: '/api',
     apiDocs: '/api-docs',
     statistics: '/statistik',
-    videocall: '/videollamada'
+    videocall: '/videollamada',
+    riskClassification: 'clasificacion-del-riesgo'
   },
   se: {
     submitReport: '/',
@@ -276,7 +296,8 @@ const localeAwareUrls: Urls = {
     api: '/api',
     apiDocs: '/api-docs',
     statistics: '/statistik',
-    videocall: '/videollamada'
+    videocall: '/videollamada',
+    riskClassification: 'clasificacion-del-riesgo'
   }
 };
 
