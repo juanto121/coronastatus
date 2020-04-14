@@ -10,23 +10,32 @@
     </p>
     <p class="subtitle text-justify text-lg mt-3">
         <strong>
-        <%= __(`We recommend that you consult your IPS if you experience any of the following symptoms:`)%>
+            <%= __(`We recommend that you consult your IPS if you experience any of the following symptoms:`)%>
         </strong>
     </p>
     <% } else if (covidRisk === 'medium'){ %>
     <p class="subtitle text-justify text-lg">
-        <%= __(`According to the reported information, you should be evaluated by a doctor in the next 24 hours. For this reason, you will receive a call from a doctor to the phone number that you filled out in the form, in which he will explain how to enter a video call to be able to extend the medical history and determine the risks in order to get proper addressing.`)%> 
+        <%= __(`According to the reported information, you should be evaluated by a doctor in the next 24 hours. For this reason, you will receive a call from a doctor to the phone number that you filled out in the form, in which he will explain how to enter a video call to be able to extend the medical history and determine the risks in order to get proper addressing.`)%>
         <strong>
-        <%= __(`If you have not received the call after this time and you have any of the following symptoms, you should consult your IPS as a priority:`)%>
+            <%= __(`If you have not received the call after this time and you have any of the following symptoms, you should consult your IPS as a priority:`)%>
+        </strong>
+    </p>
+    <% } else if (covidRisk === 'high'){ %>
+    <p class="subtitle text-justify text-lg">
+        <%= __(`According to the reported information, you should be evaluated by a doctor as soon as possible. For this reason, you will receive a call from a doctor to the phone number that you filled out in the form, in which he will explain how to enter a video call to be able to extend the medical history and determine the risks in order to get proper addressing.`)%>
+        <strong><%= __(`If you have not received the call in the next 12 hours and you have any of the following symptoms, you should consult your IPS as a priority:`)%>
         </strong>
     </p>
     <% } else { %>
     <p class="subtitle text-justify text-lg">
-        <%= __(`According to the reported information, you should be evaluated by a doctor as soon as possible. For this reason, you will receive a call from a doctor to the phone number that you filled out in the form, in which he will explain how to enter a video call to be able to extend the medical history and determine the risks in order to get proper addressing.`)%> 
-        <strong><%= __(`If you have not received the call in the next 12 hours and you have any of the following symptoms, you should consult your IPS as a priority:`)%>
-        </strong>
+        <%= __(`An error occurred in the system when performing the risk classification based on the reported information. Please try again to fill out the form. If the error persists, write us at`)%>
+        <a href="https://twitter.com/5vidco" class="text-cvs-red hover:underline" target="_blank"><%= __("@5vidco") %></a>
+        <%= __(`or send us an email to`)%>
+        <a href="mailto:sincovid@gmail.com" class="text-cvs-red hover:underline" target="_blank"><%= __("sincovid@gmail.com") %></a>.
+        <%= __(`Thanks for your understanding.`)%>
     </p>
-    <% }%>
+    <% } %>
+    <% if ((covidRisk === 'low') || (covidRisk === 'medium') || (covidRisk === 'high')) { %>
     <ul class="text-lg mt-3" style="list-style-type:circle; padding-left:20px">
         <li><%= __(`Quantified fever (greater than or equal to 38 degrees) for more than two days.`)%></li>
         <li><%= __(`Breathing faster than normal.`)%></li>
@@ -34,6 +43,7 @@
         <li><%= __(`Chest sound or pain when breathing.`)%></li>
         <li><%= __(`Sleepiness or difficulty waking up.`)%></li>
     </ul>
+    <% } %>
 </section>
 
 <section class="custom-videocall-consent mt-8 mx-auto p-8 rounded-lg w-full">
@@ -49,10 +59,10 @@
         <li><strong><%= __(`Wash your hands frequently:`)%></strong>
             <%= __(`when washing your hands, you can use an alcohol-based disinfectant or just soap and water.`)%>
         </li>
-        <li><strong><%= __(`Take respiratory hygiene measures:`)%></strong> 
+        <li><strong><%= __(`Take respiratory hygiene measures:`)%></strong>
             <%= __(`when coughing or sneezing, cover your mouth and nose with your elbow flexed or with a tissue. If you use a tissue, throw it away immediately and wash your hands. If you sneeze or cough on your hands, you can contaminate the objects or people you touch.`)%>
         </li>
-        <li><strong><%= __(`Maintain social distance:`)%></strong> 
+        <li><strong><%= __(`Maintain social distance:`)%></strong>
             <%= __(`try to keep at least 2 meters of distance between yourself and other people, particularly those who are coughing, sneezing and have a fever.`)%>
         </li>
         <li><%= __(`Avoid sharing personal items like phones and computers.`)%></li>
@@ -63,12 +73,13 @@
 
     <p class="subtitle text-justify text-lg mt-3">
         <%= __("For more information, visit the pages of the") %>
-        <a href="https://www.minsalud.gov.co/Paginas/default.aspx" class="text-cvs-red hover:underline" target="_blank"><%= __("Ministry of Health and Social Protection") %></a>
+        <a href="https://www.minsalud.gov.co/Paginas/default.aspx" class="text-cvs-red hover:underline"
+            target="_blank"><%= __("Ministry of Health and Social Protection") %></a>
         <%= __("and the") %>
         <a href="https://www.who.int/es" class="text-cvs-red hover:underline" target="_blank"><%= __("WHO") %></a>.
     </p>
 
-    
+
     <!-- If you change the color make sure it's in postcss.config.js -->
     <%- include('partials/alert', { color: 'blue', class: `mb-4 hidden`, id:
   `profile-copy-status-success`, message: __(`The link has been copied.`) })-%>

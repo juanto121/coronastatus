@@ -1,4 +1,4 @@
-<% const { urls, home = false } = locals; %>
+<% const { urls, home = false} = locals; %>
 <!-- prettier spacer -->
 <% const isOnProfile = locals.activePage === urls.submitReport ||
 locals.activePage === urls.profile; %>
@@ -16,6 +16,7 @@ locals.activePage === urls.profile; %>
 <% const baseUrl = locals.baseUrl; %>
 <!---->
 <% const imageSubfolder = locals.imageSubfolder; %>
+
 
 <div class="block hidden">
   <button
@@ -45,7 +46,7 @@ locals.activePage === urls.profile; %>
       <!-- Contribute now-->
       <a
         id="nav-cta-button"
-        href="<%= urls.submitReport %>#contribute"
+        href="<%= urls.submitReport + (typeof covidRisk == 'undefined' ? '#contribute': '')%>"
         class="opacity-0 custom-nav-link text-center whitespace-no-wrap block text-xl py-4 lg:text-base text-white font-medium lg:py-4 px-4 rounded-full <%= isOnProfile ? '' : '' %>"
         ><%= __("Report your health condition") %></a
       >
