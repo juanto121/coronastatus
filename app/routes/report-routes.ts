@@ -199,6 +199,7 @@ router.post('/', createReportRateLimit, async (req, res) => {
     submissionTimestamp: new Date().getTime(),
     phone: req.body['phone-number'],
     name: req.body['name-value'],
+    id: req.body['id-value'],
     videoUrl: req.body['video-url']
   };
 

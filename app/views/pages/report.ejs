@@ -18,6 +18,7 @@ const {
   const videoUrl = profile && locals.profile.videoUrl;
   <!--Adding Name -->
   const name = profile && locals.profile.name;
+  const id = profile && locals.profile.id;
   <!---->
   const bodyTemperature = profile && locals.profile.bodyTemperature;
   const isolationStatus = profile && locals.profile.isolationStatus;
@@ -463,6 +464,11 @@ const {
           <label for="isolation-due-to-covid-19"><%= __("Due to COVID-19 infection") %></label>
         </p>
       </fieldset>
+
+      <label class="mb-0" for="id-value"><%= __('If you already have a 5vid ID enter it here:') %></label>
+      <input required type="text"
+        class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        value="<%=id%>" name="id-value" id="id-value">
 
       <label class="mb-0" for="name-value"><%= __('What is your name?') %></label>
       <input required type="text"
