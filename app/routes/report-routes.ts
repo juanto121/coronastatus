@@ -43,9 +43,11 @@ router.get('/', async (req, res) => {
   if (req.cookies.passcode) {
     return res.redirect(`${res.locals.urls.profile}/${req.cookies.passcode}`);
   }
+  const patientId = req.cookies.patientId
   const reports = await reportRepo.getLatestCovidReports();
   const aggregated = aggregateCovidReports(reports);
   return res.render('pages/report', {
+    patientId,
     aggregated,
     cleared: req.query?.cleared === 'true' || false
   });
@@ -199,7 +201,7 @@ router.post('/', createReportRateLimit, async (req, res) => {
     submissionTimestamp: new Date().getTime(),
     phone: req.body['phone-number'],
     name: req.body['name-value'],
-    id: req.body['id-value'],
+    patientId: req.body['patient-id-value'],
     videoUrl: req.body['video-url']
   };
 
@@ -215,7 +217,27 @@ router.post('/', createReportRateLimit, async (req, res) => {
   }
   const score: Scoring = await ExtendedCovidReportApi.getScore(covidReport);
   covidReport.score = score;
-  await ReportsAPI.createReport(covidReport);
+
+  const patientIdOriginal = covidReport.patientId;
+  if ((patientIdOriginal!==null) && (patientIdOriginal!=='')) {
+    console.log("PatientIdOriginal: ",patientIdOriginal)
+    covidReport.patientId = patientIdOriginal.trim()
+  }
+  
+  // THE RESPONSE SEEMS TO BE WEIRD
+  //const responseReportsAPI = await ReportsAPI.createReport(covidReport);
+
+  // Set cookie with patientID
+  //let patientId = responseReportsAPI.patientId
+  //    SUPPOSE RESPONSE ---------------- DELETE
+  var patientId = '123456';
+  console.log("PatientID response: ",patientId)
+
+  if ((patientId!==null) && (patientId!=='')) {
+    res.cookie('patientId', patientId, cookieOptions);
+    console.log("Cookie Done")
+  }
+
   reportRepo.addNewCovidReport(passcode, covidReport);
   if (req.body['passcode']) {
     return res.redirect(
@@ -227,6 +249,7 @@ router.post('/', createReportRateLimit, async (req, res) => {
     : null;
   return res.render('pages/confirm-profile', {
     covidRisk,
+    patientId,
     passcode,
     hasCookie: acceptRemember
   });

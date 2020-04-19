@@ -7,14 +7,20 @@ const request = require('request-promise');
 export class ReportsAPI {
   static async createReport(report: CovidReport) {
     try {
-      await request({
+      const response = await request({
         uri: config.REPORT_API_URL,
         method: 'POST',
         body: report,
         json: true
       });
+      return {
+        patientId: response.patientId
+      };
     } catch (err) {
       console.log('Failed to create report', err);
+      return {
+        patientId: null
+      };
     }
   }
 }

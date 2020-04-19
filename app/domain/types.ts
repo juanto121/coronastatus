@@ -18,7 +18,7 @@ export interface CovidReport {
   diagnosedWith: DiagnosedWith;
   phone: string;
   name: string;
-  id: string;
+  patientId: string;
   score?: Scoring;
   videoUrl?: string;
 }
