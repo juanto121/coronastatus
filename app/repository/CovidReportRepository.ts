@@ -121,6 +121,13 @@ export class CovidReportRepository {
   }
 
   private parseJsonDumpToCovidReport(jsonDump: string): CovidReport {
-    return JSON.parse(jsonDump);
+    const jsonReport = JSON.parse(jsonDump);
+    delete jsonReport.phone;
+    delete jsonReport.name;
+    delete jsonReport.patientId;
+    delete jsonReport.videoUrl;
+    delete jsonReport.submissionTimestamp;
+    delete jsonReport.score;
+    return jsonReport;
   }
 }

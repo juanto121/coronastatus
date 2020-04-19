@@ -521,6 +521,15 @@ console.log("locals.profile: ", locals.profile)
           <span class="checkmark"></span>
         </label>
       </p>
+      <!-- Accept Cookie
+    <p>
+      <label class="checkbox" for="accept-remember">
+        <input type="checkbox" id="accept-remember" name="accept-remember">
+        <span><%= __(`I agree to set a cookie so I can report changes in my health condition later`)%> (<%= __('recommended')%>)</span>
+        <span class="checkmark"></span>
+      </label>
+    </p>
+    -->
 
       <ul class="mt-6">
         <li>
@@ -633,6 +642,8 @@ console.log("locals.profile: ", locals.profile)
   changeTestResultDisplay(document.getElementById("been-tested-yes").checked);
   changePregnantDisplay(document.getElementById("gender-female").checked);
 
+  var hasPasscodeCookie = document.cookie.includes('passcode');
+  document.getElementById('accept-remember').checked = hasPasscodeCookie;
   var videoElement = document.getElementById('video-element')
   var videoInputElement = document.getElementById('video-file')
   var uploadProgressElement = document.getElementById('video-upload-progress')

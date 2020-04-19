@@ -40,10 +40,13 @@ const reportRepo = new CovidReportRepository();
 const passcodeCreator = getPasscodeCreator();
 
 router.get('/', async (req, res) => {
+  if (req.cookies.passcode) {
+    return res.redirect(`${res.locals.urls.profile}/${req.cookies.passcode}`);
+  }
   const patientId = req.cookies.patientId
   const reports = await reportRepo.getLatestCovidReports();
   const aggregated = aggregateCovidReports(reports);
-  return res.render('pages/report', {
+  return res.render('pages/volunteer', {
     patientId,
     aggregated,
     cleared: req.query?.cleared === 'true' || false
