@@ -106,7 +106,7 @@ console.log("locals.profile: ", locals.profile)
   <form id="contribute" method="post" action="/"
     class="custom-form p-6 py-6 lg:p-24 lg:py-12 my-4 rounded-lg flex flex-col items-start">
     <h3 class="text-2xl md:text-3xl lg:text-5xl text-center font-bold text-cvs-red m-2 self-center">
-      <%= profile ? __("Your state of health") : __("Report your health condition") %>
+      <%= __("Report your health condition") %>
     </h3>
     <% if (locals.passcode) { %>
     <!-- If you change the color make sure it's in postcss.config.js -->
