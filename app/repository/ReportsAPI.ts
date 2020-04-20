@@ -8,7 +8,7 @@ export class ReportsAPI {
   static async createReport(report: CovidReport) {
     try {
       const response = await request({
-        uri: config.REPORT_API_URL,
+        uri: config.REPORT_API_URL + "/reports/",
         method: 'POST',
         body: report,
         json: true

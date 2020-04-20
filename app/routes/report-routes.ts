@@ -221,13 +221,10 @@ router.post('/', createReportRateLimit, async (req, res) => {
     covidReport.patientId = patientIdOriginal.trim()
   }
   
-  // THE RESPONSE SEEMS TO BE WEIRD
-  //const responseReportsAPI = await ReportsAPI.createReport(covidReport);
+  const responseReportsAPI = await ReportsAPI.createReport(covidReport);
 
   // Set cookie with patientID
-  //let patientId = responseReportsAPI.patientId
-  //    SUPPOSE RESPONSE ---------------- DELETE
-  var patientId = '123456';
+  let patientId = responseReportsAPI.patientId
   console.log("PatientID response: ",patientId)
 
   if ((patientId!==null) && (patientId!=='')) {
