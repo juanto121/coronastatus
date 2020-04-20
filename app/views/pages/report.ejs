@@ -525,7 +525,7 @@ console.log("locals.profile: ", locals.profile)
       <ul class="mt-6">
         <li>
           <input type="hidden" name="passcode" value="<%= passcode %>" />
-          <input class="inverse" type="submit" value="<%= __('Submit report') %>">
+          <input id="submit-report" class="inverse" type="submit" value="<%= __('Submit report') %>">
         </li>
       </ul>
   </form>
@@ -637,6 +637,7 @@ console.log("locals.profile: ", locals.profile)
   var videoInputElement = document.getElementById('video-file')
   var uploadProgressElement = document.getElementById('video-upload-progress')
   var videoUrlElement = document.getElementById('video-url')
+  var submitButtonElement = document.getElementById("submit-report")
   var uploadedUrl = ""
   var uploadProgress = (progress) => {
     uploadProgressElement.innerText = "Cargando archivo " + progress + "%"
@@ -649,7 +650,6 @@ console.log("locals.profile: ", locals.profile)
       videoElement.src = URL.createObjectURL(files[0]);
       UploadApi.uploadMedia(files[0], uploadProgress)
         .then((response) => {
-          debugger
           videoUrlElement.value = response
           submitButtonElement.disabled = false
           submitButtonElement.value = "ENVIAR REPORTE"
