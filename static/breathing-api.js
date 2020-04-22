@@ -2,7 +2,7 @@ class BreathingApi {
   static async analyseBreathing(audioUrl) {
     try {
       await axios({
-        url: '',
+        url: 'https://breathing-frequency-api-dev.5vid.co/calculate_bf',
         method: 'POST',
         data: {
           audio_path: audioUrl

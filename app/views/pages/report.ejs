@@ -697,7 +697,7 @@ console.log("locals.profile: ", locals.profile)
       videoElement.src = URL.createObjectURL(files[0]);
       UploadApi.uploadMedia(files[0], uploadProgress)
         .then((response) => {
-          videoUrlElement.value = response
+          videoUrlElement.value = `s3://${response.bucket}/${response.key}`
           enableReportSubmit()
         }, uploadProgress)
         .catch((err) => {
@@ -715,7 +715,9 @@ console.log("locals.profile: ", locals.profile)
       audioElement.src = URL.createObjectURL(files[0]);
       UploadApi.uploadMedia(files[0], uploadProgress, 'audio')
         .then((response) => {
-          audioUrlElement.value = response
+          const s3Url = `s3://${response.bucket}/${response.key}`
+          audioUrlElement.value = s3Url
+          BreathingApi.analyseBreathing(s3Url)
           enableReportSubmit()
         })
         .catch((err) => {
@@ -769,7 +771,11 @@ console.log("locals.profile: ", locals.profile)
           data: data,
           onUploadProgress: onProgress
         })
-        return s3Params.url + "/" + s3Params.fields.key
+        return {
+          bucket: s3Params.fields.bucket,
+          key: s3Params.fields.key,
+          url: s3Params.url
+        }
       } catch (err) {
         console.log(err)
       }
