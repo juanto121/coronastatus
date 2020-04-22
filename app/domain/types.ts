@@ -18,6 +18,7 @@ export interface CovidReport {
   diagnosedWith: DiagnosedWith;
   phone: string;
   name: string;
+  patientId: string;
   score?: Scoring;
   videoUrl?: string;
 }
@@ -182,6 +183,7 @@ export interface Config {
   PASSCODE_LENGTH: number;
   DB_PATH: string;
   REPORT_API_URL: string;
+  VIDEOCALL_API_URL: string;
 }
 
 export type DatabaseType = 'pg' | 'sqlite';

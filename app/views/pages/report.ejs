@@ -5,6 +5,7 @@ const {
     baseUrl,
     urls
   } = locals;
+  
   const age = profile && locals.profile.age;
   const postalCode = profile && locals.profile.postalCode;
   const sex = profile && locals.profile.sex;
@@ -59,6 +60,11 @@ const {
 }
 %>
 <%- include('partials/header', { home: true, menu: false }) -%>
+<% 
+console.log("PatientIdCookie: ", patientId)
+console.log("Profile: ", profile)
+console.log("locals.profile: ", locals.profile)
+%>
 
 <section class="custom-section custom-hero p-4">
   <div class="custom-section-content mx-auto">
@@ -464,6 +470,11 @@ const {
         </p>
       </fieldset>
 
+      <label class="mb-0" for="patient-id-value"><%= __('If you already have a 5vid ID, enter it here') %></label>
+      <input type="text"
+        class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        value="<%=patientId%>" name="patient-id-value" id="patient-id-value">
+
       <label class="mb-0" for="name-value"><%= __('What is your name?') %></label>
       <input required type="text"
         class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -510,20 +521,11 @@ const {
           <span class="checkmark"></span>
         </label>
       </p>
-      <!-- Accept Cookie
-    <p>
-      <label class="checkbox" for="accept-remember">
-        <input type="checkbox" id="accept-remember" name="accept-remember">
-        <span><%= __(`I agree to set a cookie so I can report changes in my health condition later`)%> (<%= __('recommended')%>)</span>
-        <span class="checkmark"></span>
-      </label>
-    </p>
-    -->
 
       <ul class="mt-6">
         <li>
           <input type="hidden" name="passcode" value="<%= passcode %>" />
-          <input class="inverse" type="submit" value="<%= __('Submit report') %>">
+          <input id="submit-report" class="inverse" type="submit" value="<%= __('Submit report') %>">
         </li>
       </ul>
   </form>
@@ -631,12 +633,11 @@ const {
   changeTestResultDisplay(document.getElementById("been-tested-yes").checked);
   changePregnantDisplay(document.getElementById("gender-female").checked);
 
-  var hasPasscodeCookie = document.cookie.includes('passcode');
-  document.getElementById('accept-remember').checked = hasPasscodeCookie;
   var videoElement = document.getElementById('video-element')
   var videoInputElement = document.getElementById('video-file')
   var uploadProgressElement = document.getElementById('video-upload-progress')
   var videoUrlElement = document.getElementById('video-url')
+  var submitButtonElement = document.getElementById("submit-report")
   var uploadedUrl = ""
   var uploadProgress = (progress) => {
     uploadProgressElement.innerText = "Cargando archivo " + progress + "%"
@@ -649,7 +650,6 @@ const {
       videoElement.src = URL.createObjectURL(files[0]);
       UploadApi.uploadMedia(files[0], uploadProgress)
         .then((response) => {
-          debugger
           videoUrlElement.value = response
           submitButtonElement.disabled = false
           submitButtonElement.value = "ENVIAR REPORTE"

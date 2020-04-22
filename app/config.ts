@@ -29,7 +29,8 @@ const fallbackConfig: Config = {
     process.env.REDIRECT_TO_GOVERNMENT === 'true' || false,
   PASSCODE_LENGTH: parseInt(process.env.PASSCODE_LENGTH || '3', 10),
   DB_PATH: process.env.DB_PATH || './covid_db',
-  REPORT_API_URL: process.env.REPORT_API_URL || 'http://localhost:3000'
+  REPORT_API_URL: process.env.REPORT_API_URL || 'http://localhost:3000',
+  VIDEOCALL_API_URL: process.env.VIDEOCALL_API_URL || 'http://localhost:5000'
 };
 
 export default {

@@ -2,73 +2,110 @@
 
 <%- include('partials/header') -%>
 
-<h1><%= __("Privacy Policy") %></h1>
+<h1><%= __("Privacy policy") %></h1>
 <p class="subtitle">What data do we store about you and why?</p>
+
+<h3>Age</h3>
+<p>
+  We require the age group according to the WHO standards to identify the 
+  vulnerability of a user.
+</p>
 
 <h3>Gender</h3>
 <p>
-  We store gender to be able to say something about the distribution between men
-  and women with symptoms.
+  We require the user’s gender to identify his vulnerability and determine if
+  there is any gender more prone to the virus.
 </p>
 
-<h3>Age goup</h3>
+<h3>Pregnancy</h3>
 <p>
-  We store age groups to distinguish which age groups experience symptoms.
+  We require to know if the user is in pregnancy state to identify her 
+  vulnerability.
 </p>
 
-<h3>Postcode</h3>
+<h3>Postal Code</h3>
 <p>
-  To give the public insight into how many people show symptoms in the area
-  where they live, we store postcodes. In this way we can show overview of the
-  number of people with specific symptoms in different areas.
+  We require the postal code to estimate which areas are most affected by the 
+  virus and to prioritize care according to risk.
 </p>
 
-<h3>Test status</h3>
+<h3>Close contact with suspicious or positive for COVID-19 person</h3>
 <p>
-  We also save whether you have been tested and what the results of this test
-  are. With this information we can calculate the percentage of the participants
-  who show symptoms. We display this on a map.
+  We require to know if the user had close contact with a suspicious or positive 
+  for COVID-19 person in order to determine if there is an epidemiological link.
+</p>
+
+<h3>COVID-19 test and result</h3>
+<p>
+  We require to know if the user has been tested for COVID-19 in order to inform 
+  the doctor about the user’s current situation regarding this laboratory 
+  examination.
 </p>
 
 <h3>Symptoms</h3>
 <p>
-  The symptoms you submit indicate whether you may be infected with the Covid-19
-  virus. The timing of the onset of symptoms also gives an indication of how
-  long you've been contagious. We collect this data and visualize it
-  anonymously. In this way, the public can gain insight into how big the figures
-  can be.
+  We require to know the symptoms of the user to be able to carry out the first 
+  clinical evaluation and inform the doctor about his health condition. The date 
+  of onset of symptoms is also relevant information for a proper review by the 
+  health specialist.
 </p>
-<div class="border-b border-cvs-red mt-4"></div>
+
+<h3>Diagnosed conditions</h3>
+<p>
+  We require to know the conditions with which the user has been diagnosed 
+  (comorbidities) to estimate his vulnerability.
+</p>
+
+<h3>Smoker</h3>
+<p>
+  We require to know if the user smokes to estimate his vulnerability.
+</p>
+
+<h3>Isolation</h3>
+<p>
+  We require to know the user’s isolation status to estimate his epidemiological 
+  risk and understand the protection measures he is taking.
+</p>
+
+<h3>Name</h3>
+<p>
+  We require to know the name of the user to facilitate communication by phone 
+  with the doctor.
+</p>
+
+<h3>Phone number</h3>
+<p>
+  We require to know the user’s phone number so that the doctor can establish 
+  contact with him. Furthermore, this may allow traceability on the health 
+  condition reported by the user.
+</p>
+
+<h3>Vital signs</h3>
+<p>
+  We require this field to be able to measure vital signs using Artificial 
+  Intelligence and inform the doctor about the obtained  results  in order to 
+  make a better diagnosis.
+</p>
+
 <h3>Cookies</h3>
 <p>
-  We use cookies to store participant data in their own browser. We first ask
-  permission for this. With these cookies, participants can anonymously report
-  if their symptoms have decreased.
+  We use cookies to store a unique user ID in his own browser. With this ID, it 
+  is possible to relate the health condition reports made by the same user in 
+  order to allow doctors to make a more appropriate diagnosis.
 </p>
 
-<h3>Delete data</h3>
-<p>
-  All stored data is anonymized and we do not store any personal data that can
-  be deleted.
-</p>
+<div class="border-b border-cvs-red mt-4"></div>
 
-<h3>Share data with National Health Service</h3>
-<p>If desired, we provide anonymous data to the NHS.</p>
-
-<h3>Analytics</h3>
-<p>
-  We use analytics to gain insight into the use of the website. We use
-  <a class="text-cvs-red hover:underline" href="https://simpleanalytics.com" target="_blank">Simple Analytics</a>
-  for this - a party that does not store personal data and does not place
-  cookies.
-</p>
-
-<h3>More questions?</h3>
-<p>
-  Contact us on Twitter:
-  <a class="text-cvs-red hover:underline" href="https://twitter.com/coronastatusNL" target="_blank"
-    >@coronastatusNL</a
-  >.
-</p>
+<h3>Contact us</h3>
+<div class="flex flex-col">
+<div class="flex flex-row justify items-center mb-3">
+  <img class="h-8 w-8 mr-1" src="/static/images/twitter.svg">
+  <a class="text-xl text-cvs-red hover:underline" href="https://twitter.com/5vidco" target="_blank">@5vidco</a>
+</div>
+<div class="flex flex-row justify items-center">
+  <img class="h-8 w-8 mr-2" src="/static/images/gmail.svg">
+  <a class="text-xl text-cvs-red hover:underline" href="mailto:sincovid@gmail.com" target="_blank">sincovid@gmail.com</a>
+</div>
+</div>
 
 <%- include('partials/footer') -%>

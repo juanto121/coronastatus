@@ -40,10 +40,13 @@ const reportRepo = new CovidReportRepository();
 const passcodeCreator = getPasscodeCreator();
 
 router.get('/', async (req, res) => {
+  if (req.cookies.passcode) {
+    return res.redirect(`${res.locals.urls.profile}/${req.cookies.passcode}`);
+  }
   const patientId = req.cookies.patientId
   const reports = await reportRepo.getLatestCovidReports();
   const aggregated = aggregateCovidReports(reports);
-  return res.render('pages/report', {
+  return res.render('pages/volunteer', {
     patientId,
     aggregated,
     cleared: req.query?.cleared === 'true' || false
@@ -221,10 +224,13 @@ router.post('/', createReportRateLimit, async (req, res) => {
     covidReport.patientId = patientIdOriginal.trim()
   }
   
-  const responseReportsAPI = await ReportsAPI.createReport(covidReport);
+  // THE RESPONSE SEEMS TO BE WEIRD
+  //const responseReportsAPI = await ReportsAPI.createReport(covidReport);
 
   // Set cookie with patientID
-  let patientId = responseReportsAPI.patientId
+  //let patientId = responseReportsAPI.patientId
+  //    SUPPOSE RESPONSE ---------------- DELETE
+  var patientId = '123456';
   console.log("PatientID response: ",patientId)
 
   if ((patientId!==null) && (patientId!=='')) {

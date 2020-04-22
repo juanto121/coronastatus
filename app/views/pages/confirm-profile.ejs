@@ -1,4 +1,20 @@
 <%- include('partials/header') -%>
+<%- console.log("PatientID profile:", patientId) -%>
+<% if (patientId !== null) { %>
+<section class="custom-videocall-consent mt-8 mx-auto p-8 rounded-lg w-full">
+    <h3 class="mt-0 text-1xl font-bold sm:text-2xl">
+        <%= __(`5vid ID`) %>
+    </h3>
+    <p class="subtitle text-justify text-lg mb-2">
+        <%= __(`This is your 5vid ID, make sure you save it in a safe place. Use this personal code when reporting your health condition again.`)%>
+    </p>
+    <div class="flex justify-center">
+    <input readonly id="patient-id" name="patient-id" type="text" style="width:200px"
+            class="mb-4 h-12 mr-4 bg-gray-50 justify-between sm:justify-between appearance-none border-2 border-cvs-red rounded focus:outline-none font-bold text-center text-xl" 
+            value="<%=patientId%>"/>
+    </div>
+</section>
+<% } %>
 
 <section class="custom-videocall-consent mt-8 mx-auto p-8 rounded-lg w-full">
     <h2 class="mt-0 text-1xl sm:text-2xl">

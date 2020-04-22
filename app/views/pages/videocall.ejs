@@ -38,6 +38,8 @@ const {
     </div>
 </section>
 
+<script src="/static/videocallAPI.js?v=<%= locals.cacheKey %>"></script>
+
 <script>
 function changeVideocallDisplay() {
     var checkBox = document.getElementById('accept-videocall');
@@ -49,9 +51,19 @@ function changeVideocallDisplay() {
     }
 }
 
-function goToVideoCall() { 
-	var videoCallCode = document.getElementById("videocall-code").value; 
-	window.open("http://talky.io/" + videoCallCode, "_blank");
+async function goToVideoCall() { 
+    var videoCallCode = document.getElementById("videocall-code").value;
+    if ((videoCallCode!==null) && (videoCallCode.trim()!==''))
+    {
+        document.getElementById("profile-url-id").disabled = true;
+        const response = await VideocallAPI.acceptInformedConsent(videoCallCode, 
+        "<%= videocallURL %>");
+        console.log("Response", response);
+        if (response){
+            window.open("http://talky.io/" + videoCallCode, "_blank");
+        }
+        document.getElementById("profile-url-id").disabled = false;
+    }
 } 
 </script>
 
