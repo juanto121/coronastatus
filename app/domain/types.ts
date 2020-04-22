@@ -21,6 +21,7 @@ export interface CovidReport {
   patientId: string;
   score?: Scoring;
   videoUrl?: string;
+  audioUrl?: string;
 }
 // Added
 export type DiagnosedWith = {

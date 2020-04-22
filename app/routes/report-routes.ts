@@ -40,7 +40,7 @@ const reportRepo = new CovidReportRepository();
 const passcodeCreator = getPasscodeCreator();
 
 router.get('/', async (req, res) => {
-  const patientId = req.cookies.patientId
+  const patientId = req.cookies.patientId;
   const reports = await reportRepo.getLatestCovidReports();
   const aggregated = aggregateCovidReports(reports);
   return res.render('pages/report', {
@@ -174,7 +174,7 @@ router.post('/', createReportRateLimit, async (req, res) => {
       [Symptom.RUNNY_NOSE]: req.body['symptom-runny-nose'] === 'on',
       [Symptom.CHEST_PAIN]: req.body['symptom-chest-pain'] === 'on',
       [Symptom.NAUSEA_OR_VOMITING]:
-        req.body['symptom-nausea-or-vomiting'] === 'on'
+      req.body['symptom-nausea-or-vomiting'] === 'on'
     },
     symptomStart: req.body['symptom-start'],
     hasBeenInContactWithInfected: req.body['been-in-contact-with'] === 'yes',
@@ -199,7 +199,8 @@ router.post('/', createReportRateLimit, async (req, res) => {
     phone: req.body['phone-number'],
     name: req.body['name-value'],
     patientId: req.body['patient-id-value'],
-    videoUrl: req.body['video-url']
+    videoUrl: req.body['video-url'],
+    audioUrl: req.body['audio-url']
   };
 
   const passcode = req.body['passcode'] || passcodeCreator.createPasscode();
@@ -216,20 +217,20 @@ router.post('/', createReportRateLimit, async (req, res) => {
   covidReport.score = score;
 
   const patientIdOriginal = covidReport.patientId;
-  if ((patientIdOriginal!==null) && (patientIdOriginal!=='')) {
-    console.log("PatientIdOriginal: ",patientIdOriginal)
-    covidReport.patientId = patientIdOriginal.trim()
+  if ((patientIdOriginal !== null) && (patientIdOriginal !== '')) {
+    console.log('PatientIdOriginal: ', patientIdOriginal);
+    covidReport.patientId = patientIdOriginal.trim();
   }
-  
+
   const responseReportsAPI = await ReportsAPI.createReport(covidReport);
 
   // Set cookie with patientID
-  let patientId = responseReportsAPI.patientId
-  console.log("PatientID response: ",patientId)
+  let patientId = responseReportsAPI.patientId;
+  console.log('PatientID response: ', patientId);
 
-  if ((patientId!==null) && (patientId!=='')) {
+  if ((patientId !== null) && (patientId !== '')) {
     res.cookie('patientId', patientId, cookieOptions);
-    console.log("Cookie Done")
+    console.log('Cookie Done');
   }
 
   reportRepo.addNewCovidReport(passcode, covidReport);
