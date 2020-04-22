@@ -5,7 +5,7 @@ const {
     baseUrl,
     urls
   } = locals;
-  
+
   const age = profile && locals.profile.age;
   const postalCode = profile && locals.profile.postalCode;
   const sex = profile && locals.profile.sex;
@@ -60,7 +60,7 @@ const {
 }
 %>
 <%- include('partials/header', { home: true, menu: false }) -%>
-<% 
+<%
 console.log("PatientIdCookie: ", patientId)
 console.log("Profile: ", profile)
 console.log("locals.profile: ", locals.profile)
@@ -682,7 +682,6 @@ console.log("locals.profile: ", locals.profile)
             videoElement.src = URL.createObjectURL(files[0]);
             UploadApi.uploadMedia(files[0], uploadProgress)
                 .then((response) => {
-                    debugger
                     videoUrlElement.value = response
                     submitButtonElement.disabled = false
                     submitButtonElement.value = "ENVIAR REPORTE"
