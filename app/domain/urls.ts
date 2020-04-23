@@ -78,7 +78,7 @@ const localeAwareUrls: Urls = {
     api: '/api',
     apiDocs: '/api-docs',
     statistics: '/statistics',
-    videocall: '/videollamada',
+    videocall: '/videocall',
     riskClassification: '/risk-classification',
     volunteerDoctor: '/volunteer-doctor'
   },
@@ -92,7 +92,7 @@ const localeAwareUrls: Urls = {
     api: '/api',
     apiDocs: '/api-docs',
     statistics: '/statistics',
-    videocall: '/videollamada',
+    videocall: '/videocall',
     riskClassification: '/risk-classification',
     volunteerDoctor: '/volunteer-doctor'
   },
@@ -120,7 +120,7 @@ const localeAwareUrls: Urls = {
     api: '/api',
     apiDocs: '/api-docs',
     statistics: '/statistics',
-    videocall: '/videollamada',
+    videocall: '/videocall',
     riskClassification: '/risk-classification',
     volunteerDoctor: '/volunteer-doctor'
   },
@@ -134,7 +134,7 @@ const localeAwareUrls: Urls = {
     api: '/api',
     apiDocs: '/api-docs',
     statistics: '/statistics',
-    videocall: '/videollamada',
+    videocall: '/videocall',
     riskClassification: '/risk-classification',
     volunteerDoctor: '/volunteer-doctor'
   },
@@ -288,7 +288,7 @@ const localeAwareUrls: Urls = {
     api: '/api',
     apiDocs: '/api-docs',
     statistics: '/statistics',
-    videocall: '/videollamada',
+    videocall: '/videocall',
     riskClassification: '/risk-classification',
     volunteerDoctor: '/volunteer-doctor'
   },
