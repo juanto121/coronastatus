@@ -78,9 +78,9 @@ const localeAwareUrls: Urls = {
     api: '/api',
     apiDocs: '/api-docs',
     statistics: '/statistics',
-    videocall: '/videollamada',
-    riskClassification: '/clasificacion-del-riesgo',
-    volunteerDoctor: '/medico-voluntario'
+    videocall: '/videocall',
+    riskClassification: '/risk-classification',
+    volunteerDoctor: '/volunteer-doctor'
   },
   'en-US': {
     submitReport: '/',
@@ -92,9 +92,9 @@ const localeAwareUrls: Urls = {
     api: '/api',
     apiDocs: '/api-docs',
     statistics: '/statistics',
-    videocall: '/videollamada',
-    riskClassification: '/clasificacion-del-riesgo',
-    volunteerDoctor: '/medico-voluntario'
+    videocall: '/videocall',
+    riskClassification: '/risk-classification',
+    volunteerDoctor: '/volunteer-doctor'
   },
   'es-AR': {
     submitReport: '/',
@@ -120,9 +120,9 @@ const localeAwareUrls: Urls = {
     api: '/api',
     apiDocs: '/api-docs',
     statistics: '/statistics',
-    videocall: '/videollamada',
-    riskClassification: '/clasificacion-del-riesgo',
-    volunteerDoctor: '/medico-voluntario'
+    videocall: '/videocall',
+    riskClassification: '/risk-classification',
+    volunteerDoctor: '/volunteer-doctor'
   },
   'en-MT': {
     submitReport: '/',
@@ -134,9 +134,9 @@ const localeAwareUrls: Urls = {
     api: '/api',
     apiDocs: '/api-docs',
     statistics: '/statistics',
-    videocall: '/videollamada',
-    riskClassification: '/clasificacion-del-riesgo',
-    volunteerDoctor: '/medico-voluntario'
+    videocall: '/videocall',
+    riskClassification: '/risk-classification',
+    volunteerDoctor: '/volunteer-doctor'
   },
   'es-MX': {
     submitReport: '/',
@@ -288,9 +288,9 @@ const localeAwareUrls: Urls = {
     api: '/api',
     apiDocs: '/api-docs',
     statistics: '/statistics',
-    videocall: '/videollamada',
-    riskClassification: '/clasificacion-del-riesgo',
-    volunteerDoctor: '/medico-voluntario'
+    videocall: '/videocall',
+    riskClassification: '/risk-classification',
+    volunteerDoctor: '/volunteer-doctor'
   },
   'ms-MY': {
     submitReport: '/',
