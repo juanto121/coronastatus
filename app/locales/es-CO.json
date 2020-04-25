@@ -214,8 +214,8 @@
   "HIV": "VIH",
   "Obesity or Malnutrition": "Obesidad o Desnutrición",
   "Vital signs - OPTIONAL": "Signos vitales - OPCIONAL",
-  "Upload a video of your forefinger pressing the camera for 25 seconds with a white light source in the background (a lamp, bulb or the sun). It should look completly red.": "Suba un video de su dedo índice presionando el lente de la cámara por 25 segundos con una fuente de luz blanca de fondo (una lámpara, bombillo o el sol). Debe verse completamente rojo.",
-  "Upload a 20 seconds audio recording of your breathing. Make sure you are in a quiet setting.": "Suba una grabación de audio de 20 segundos de su respiración. Asegúrese de estar en un ambiente silencioso.",
+  "Upload a video of your index fingertip slightly pressing it against the lens of your phone camera for 25 seconds and with the flash turned on. Try not to move your finger too much during the recording and make sure that what you see when playing the video is a red background.": "Suba un video de la punta de su dedo índice presionando suavemente el lente de la cámara de su celular por 25 segundos y con el flash activado. Intente no mover mucho el dedo durante la grabación y asegúrese de que lo que ve al reproducir el video es un fondo de color rojo.",
+  "Upload a 20-second audio recording your breath with the phone’s microphone close to your nose. Make sure you are in a quiet, closed place that is not too narrow. Try that the application with which you are recording has the maximum possible quality configured.": "Suba un audio de 20 segundos grabado su respiración con el micrófono del celular cerca a la nariz. Asegúrese de estar en un lugar silencioso y cerrado que no sea muy estrecho. Procure que la aplicación con la que realiza la grabación tenga configurada la máxima calidad posible.",
   "Share 5vid.co": "Compartir 5vid.co",
   "To mitigate the spread of COVID-19, it is necessary for people to avoid leaving their homes, unless their health condition requires hospital care. For this reason, this platform provides a free service that seeks to reduce congestion in health centers through online reviews, providing specialized care to those who require it and reducing the risk of contagion for doctors.": "Para mitigar la propagación del COVID-19 es necesario que las personas eviten salir de sus casas, a menos que su estado de salud amerite atención hospitalaria. Por este motivo, esta plataforma presta un servicio gratuito que busca reducir la congestión de los centros de salud mediante revisiones en línea, brindando atención especializada a quienes lo requieran y disminuyendo el riesgo de contagio para los médicos.",
   "There is a worldwide limitation of tests for COVID-19, which leads to carefully choosing the population on which they should be made. From 5vid.co we want to help with the initial risk classification so that only the cases that really need it are escalated. However, in no way does this platform aim to diagnose the presence of the virus.": "Existe una limitación mundial de pruebas para COVID-19 que lleva a que se tenga que escoger muy bien la población sobre la que deben realizarse. Desde 5vid.co queremos ayudar con la clasificación inicial del riesgo para que solamente sean escalados los casos que verdaderamente lo necesiten. Sin embargo, de ninguna manera esta plataforma tiene como objetivo diagnosticar la presencia del virus.",
@@ -264,5 +264,8 @@
   "Thanks for your understanding.": "Gracias por su comprensión.",
   "If you already have a 5vid ID, enter it here": "Si tiene un 5vid ID, ingréselo",
   "This is your 5vid ID, make sure you save it in a safe place. Use this personal code when reporting your health condition again.": "Este es su 5vid ID, asegúrese de guardarlo en un lugar seguro. Use este código personal cuando vuelva a reportar su estado de salud.",
-  "I want to be volunteer doctor": "Quiero ser médico voluntario"
+  "I want to be volunteer doctor": "Quiero ser médico voluntario",
+  "Vital signs": "Signos Vitales",
+  "Video": "Video",
+  "Recording": "Grabación"
 }

@@ -18,7 +18,7 @@ locals.activePage === urls.profile; %>
 <% const imageSubfolder = locals.imageSubfolder; %>
 
 
-<div class="block md:hidden">
+<div class="block lg:hidden">
   <button id="nav-toggle" class="flex items-center text-cvs-green-light hover:text-cvs-gold">
     <svg class="fill-current h-6 w-6" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
       <title>Menu</title>
@@ -27,14 +27,14 @@ locals.activePage === urls.profile; %>
   </button>
 </div>
 <!--w-auto flex-grow lg:flex lg:items-center hidden lg:w-auto lg:block pt-6 lg:pt-0-->
-<div class="flex w-screen md:w-auto items-end md:items-center justify-center">
-  <nav class="w-auto flex-col md:flex hidden md:block pt-6 md:pt-0 pl-2" id="nav-content">
-    <ul class="list-reset md:flex justify-end flex-1 items-center text-right lg:text-left">
+<div class="flex w-screen lg:w-auto items-end lg:items-center justify-center">
+  <nav class="w-auto flex-col lg:flex hidden lg:block pt-6 lg:pt-0 pl-2" id="nav-content">
+    <ul class="list-reset lg:flex justify-end flex-1 items-center text-right lg:text-left">
       <% if (!home) { %>
-      <li class="mr-3 rounded mb-4 md:mb-0">
+      <li class="mr-3 rounded mb-4 lg:mb-0">
         <!-- Contribute now-->
         <a id="nav-cta-button" href="<%= urls.submitReport + (typeof covidRisk == 'undefined' ? '#contribute': '')%>"
-          class="opacity-0 custom-nav-link text-center whitespace-no-wrap block text-base	md:text-xl py-2 lg:text-base text-white font-medium lg:py-3 px-2 rounded-full <%= isOnProfile ? '' : '' %>">
+          class="opacity-0 custom-nav-link text-center whitespace-no-wrap block text-base	lg:text-base py-2 lg:text-base text-white font-medium lg:py-3 px-2 rounded-full <%= isOnProfile ? '' : '' %>">
           <svg class="inline-block h-6 w-6 mr-2 mb-1" viewBox="0 0 48 48" fill="none"
             xmlns="http://www.w3.org/2000/svg">
             <path
@@ -44,9 +44,9 @@ locals.activePage === urls.profile; %>
           <%= __("Report your health condition") %></a>
       </li>
       <% } %>
-      <li class="mr-2 rounded mb-4 md:mb-0">
+      <li class="mr-2 rounded mb-4 lg:mb-0">
         <a href="https://doctores.5vid.co"
-          class="custom-nav-link pl-3 text-center whitespace-no-wrap block text-base	md:text-xl py-2 lg:text-base text-white lg:text-base font-medium lg:py-3 pr-2 rounded-full">
+          class="custom-nav-link pl-3 text-center whitespace-no-wrap block text-base	lg:text-base py-2 lg:text-base text-white lg:text-base font-medium lg:py-3 pr-2 rounded-full">
           <svg class="inline-block h-6 w-6 mr-1 mb-1 fill-current" version="1.1" id="Capa_1"
             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
             viewBox="0 0 480.007 480.007" style="enable-background:new 0 0 480.007 480.007;" xml:space="preserve">
