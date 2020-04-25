@@ -5,7 +5,6 @@ import path from 'path';
 import i18n, { Replacements } from 'i18n';
 import swaggerUi from 'swagger-ui-express';
 import reportRoutes from './routes/report-routes';
-import volunteerRoutes from './routes/volunteer-routes';
 import mapRoutes from './routes/map-routes';
 import apiRoutes from './routes/api-routes';
 import statisticsRoutes from './routes/statistics-routes';
@@ -85,7 +84,6 @@ app.set('views', [
 ]);
 
 app.use(urls.submitReport, reportRoutes);
-app.use(urls.volunteerDoctor, volunteerRoutes);
 app.use(urls.map, mapRoutes);
 app.use(urls.api, apiRoutes);
 app.use(urls.statistics, statisticsRoutes);

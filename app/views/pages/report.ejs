@@ -61,15 +61,10 @@ function numberWithSpaces(x) {
 }
 %>
 <%- include('partials/header', { home: true, menu: false }) -%>
-<%
-console.log("PatientIdCookie: ", patientId)
-console.log("Profile: ", profile)
-console.log("locals.profile: ", locals.profile)
-%>
 
 <section class="custom-section custom-hero p-4">
     <div class="custom-section-content mx-auto">
-        <header class="py-2 flex justify-center sm:justify-between items-center flex-wrap">
+        <header class="py-2 flex flex-row justify-between items-center flex-wrap">
             <%- include('partials/logo') -%>
             <%- include('partials/menu', { home: true }) -%>
         </header>
