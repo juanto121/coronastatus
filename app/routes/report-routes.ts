@@ -18,6 +18,7 @@ import {
   Scoring
 } from '../repository/ExtendedCovidReportApi';
 import { ReportsAPI } from '../repository/ReportsAPI';
+import { DoctorsAPI } from '../repository/DoctorsAPI';
 
 const cookieOptions = {
   maxAge: 31557600000, // maxAge is set to 1 year in ms
@@ -43,9 +44,12 @@ router.get('/', async (req, res) => {
   const patientId = req.cookies.patientId;
   const reports = await reportRepo.getLatestCovidReports();
   const aggregated = aggregateCovidReports(reports);
+  const response = await DoctorsAPI.aggregateContacted();
+  const contacted = response.contacted;
   return res.render('pages/report', {
     patientId,
     aggregated,
+    contacted,
     cleared: req.query?.cleared === 'true' || false
   });
 });
@@ -218,7 +222,6 @@ router.post('/', createReportRateLimit, async (req, res) => {
 
   const patientIdOriginal = covidReport.patientId;
   if ((patientIdOriginal !== null) && (patientIdOriginal !== '')) {
-    console.log('PatientIdOriginal: ', patientIdOriginal);
     covidReport.patientId = patientIdOriginal.trim();
   }
 

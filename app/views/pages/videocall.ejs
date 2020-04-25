@@ -38,7 +38,7 @@ const {
     </div>
 </section>
 
-<script src="/static/videocallAPI.js?v=<%= locals.cacheKey %>"></script>
+<script src="/static/doctorsAPI.js?v=<%= locals.cacheKey %>"></script>
 
 <script>
 function changeVideocallDisplay() {
@@ -56,7 +56,7 @@ async function goToVideoCall() {
     if ((videoCallCode!==null) && (videoCallCode.trim()!==''))
     {
         document.getElementById("profile-url-id").disabled = true;
-        const response = await VideocallAPI.acceptInformedConsent(videoCallCode, 
+        const response = await DoctorsAPI.acceptInformedConsent(videoCallCode, 
         "<%= videocallURL %>");
         console.log("Response", response);
         if (response){

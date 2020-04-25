@@ -25,7 +25,7 @@ router.get('/robots.txt', (req, res) => {
 });
 
 router.get(`${urls.videocall}`, (req, res) => {
-  const videocallURL = config.VIDEOCALL_API_URL
+  const videocallURL = config.DOCTORS_API_URL
   return res.render('pages/videocall', {
     videocallURL
     }

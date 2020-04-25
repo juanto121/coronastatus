@@ -614,7 +614,7 @@ function numberWithSpaces(x) {
             <%- include('partials/app-stats-block', {
             image: '/static/images/temperature-check.svg',
             title: __('Contacted / Reported'),
-            number: `${numberWithSpaces(aggregated.numberOfConfirmedInfected)}/${numberWithSpaces(aggregated.numberOfTested)}`
+            number: `${numberWithSpaces(contacted)}/${numberWithSpaces(aggregated.numberOfTested)}`
             }) -%>
 
             <%- include('partials/app-stats-block', {

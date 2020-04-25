@@ -1,4 +1,4 @@
-class VideocallAPI {
+class DoctorsAPI {
   static async acceptInformedConsent(videocallCode, videocallUrl) {
     try {
       await axios({
@@ -15,5 +15,5 @@ class VideocallAPI {
       console.log(err);
       return false;
     }
-  }
+  }  
 }

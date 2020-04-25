@@ -184,7 +184,7 @@ export interface Config {
   PASSCODE_LENGTH: number;
   DB_PATH: string;
   REPORT_API_URL: string;
-  VIDEOCALL_API_URL: string;
+  DOCTORS_API_URL: string;
 }
 
 export type DatabaseType = 'pg' | 'sqlite';
