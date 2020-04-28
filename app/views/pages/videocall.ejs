@@ -20,51 +20,76 @@ const {
 
     <p class="mt-4">
         <label class="checkbox">
-            <input type="checkbox" id="accept-videocall" name="accept-videocall" 
-                onclick="changeVideocallDisplay()">
-            <span class="text-lg"><%= __(`I have read the informed consent, accept it and agree to continue with the video call`)%></span>
+            <input type="checkbox" id="accept-videocall" name="accept-videocall" onclick="changeVideocallDisplay()">
+            <span
+                class="text-lg"><%= __(`I have read the informed consent, accept it and agree to continue with the video call`)%></span>
             <span class="checkmark"></span>
         </label>
     </p>
     <div id="videocall-display" name="videocall-display" style="display: none;">
-    <div 
-        class="flex flex-wrap sm:flex-no-wrap items-center justify-center mt-6">
-        <input id="videocall-code" name="videocall-code" type="text" style="width:200px" placeholder="<%= __('Enter Code') %>"
-            class="mb-4 h-12 mr-4 bg-gray-50 appearance-none border-2 border-cvs-red rounded focus:outline-none font-bold text-center text-xl" />
-        <input id="profile-url-id" class="inverse mb-4 w-auto" type="submit"
-            onclick="goToVideoCall()"
-            value="<%= __(`Go to videocall`) %>">
-    </div>
+        <div class="flex flex-wrap sm:flex-no-wrap items-center justify-center mt-6">
+            <input id="videocall-code" name="videocall-code" type="text" style="width:200px"
+                placeholder="<%= __('Enter Code') %>"
+                class="mb-4 h-12 mr-4 bg-gray-50 appearance-none border-2 border-cvs-red rounded focus:outline-none font-bold text-center text-xl" />
+            <input id="profile-url-id" class="inverse mb-4 w-auto" type="submit" onclick="goToVideoCall()"
+                value="<%= __(`Go to videocall`) %>">
+        </div>
+        <div class="w-auto flex flex-row justify-center mb-2 collapsible-obj">
+            <a class="tutorial flex flex-row items-center text-center cursor-pointer bg-gray-500 rounded-full px-4">
+                <%= __('How do I enter the videocall?') %>
+                <img class="h-4 w-4 ml-2" src="/static/images/expand-colored.svg" alt="">
+            </a>
+        </div>
+        <div class="w-auto block justify-center hidden">
+            <div class="w-auto md:w-2/3 h-64 md:h-124 content-obj mb-4">
+                <iframe class="w-full h-full" src="https://www.youtube.com/embed/tQX5xNVQwq0" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                </iframe>
+            </div>
+        </div>
     </div>
 </section>
 
 <script src="/static/doctorsAPI.js?v=<%= locals.cacheKey %>"></script>
 
 <script>
-function changeVideocallDisplay() {
-    var checkBox = document.getElementById('accept-videocall');
-    if (checkBox.checked) {
-        document.getElementById('videocall-display').style.display = 'block';
+    var coll = document.getElementsByClassName("collapsible-obj");
+    var i;
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("active-obj");
+            var content = this.nextElementSibling;
+            if (content.style.display === "flex") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "flex";
+            }
+        });
     }
-    else {
-        document.getElementById('videocall-display').style.display = 'none';
-    }
-}
 
-async function goToVideoCall() { 
-    var videoCallCode = document.getElementById("videocall-code").value;
-    if ((videoCallCode!==null) && (videoCallCode.trim()!==''))
-    {
-        document.getElementById("profile-url-id").disabled = true;
-        const response = await DoctorsAPI.acceptInformedConsent(videoCallCode, 
-        "<%= videocallURL %>");
-        console.log("Response", response);
-        if (response){
-            window.open("http://talky.io/" + videoCallCode, "_blank");
+    function changeVideocallDisplay() {
+        var checkBox = document.getElementById('accept-videocall');
+        if (checkBox.checked) {
+            document.getElementById('videocall-display').style.display = 'block';
         }
-        document.getElementById("profile-url-id").disabled = false;
+        else {
+            document.getElementById('videocall-display').style.display = 'none';
+        }
     }
-} 
+
+    async function goToVideoCall() {
+        var videoCallCode = document.getElementById("videocall-code").value;
+        if ((videoCallCode !== null) && (videoCallCode.trim() !== '')) {
+            document.getElementById("profile-url-id").disabled = true;
+            const response = await DoctorsAPI.acceptInformedConsent(videoCallCode,
+                "<%= videocallURL %>");
+            console.log("Response", response);
+            if (response) {
+                window.open("http://talky.io/" + videoCallCode, "_blank");
+            }
+            document.getElementById("profile-url-id").disabled = false;
+        }
+    } 
 </script>
 
 <%- include('partials/footer') -%>
