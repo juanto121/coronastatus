@@ -1,14 +1,14 @@
-<% const title = __(`Join us in the most important crowdsource!`); const
-metaDescription = __(`Make your voluntary contribution to the health care system
-and register your health condition now. Together we can create an overview.`);
+<% const title = __(`Report your health condition from home`); const
+metaDescription = __(`Help us to decongest health centers. Report your state of health, a doctor will contact you. It is free.`);
 const baseUrl = locals.baseUrl; const imageSubfolder = locals.imageSubfolder;
 const ogUrl = `https://${baseUrl}`;
 const shareImageUrl =
-`https://${baseUrl}/static/${imageSubfolder}/social-media.png`; %>
+`https://${baseUrl}/static/${imageSubfolder}/social-media.png`;%>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162218621-1"></script>
 <script>
+  console.log(shareImageUrl)
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
