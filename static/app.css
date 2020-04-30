@@ -445,3 +445,20 @@ input[type='submit']:focus {
 .contributor-list {
   align-self: center;
 }
+
+.collapsible-obj {
+  border: none;
+  outline: none;
+}
+
+.content-obj {
+  justify-content: center;
+  display: flex;
+  overflow: hidden;
+}
+
+
+.tutorial {
+  background-color: #f4d1ff;
+  color: #8a2be2;
+}
