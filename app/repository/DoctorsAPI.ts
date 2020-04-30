@@ -20,7 +20,7 @@ export class DoctorsAPI {
     } catch (err) {
       console.log('Failed to create report', err);
       return {
-        contacted: 0
+        contacted: "-"
       };
     }
   }
