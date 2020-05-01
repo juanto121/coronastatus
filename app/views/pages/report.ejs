@@ -503,7 +503,6 @@ function numberWithSpaces(x) {
                 <div>
                     <div class="video-container mb-4">
                         <div>
-                            <span id="video-upload-progress"></span>
                             <p class="mb-4" for="video-file">
                                 <%= __('Upload a video of your index fingertip slightly pressing it against the lens of your phone camera for 25 seconds and with the flash turned on. Try not to move your finger too much during the recording and make sure that what you see when playing the video is a red background.') %>
                             </p>
@@ -523,9 +522,10 @@ function numberWithSpaces(x) {
                                 </div>
                             </div>
                             <div class="w-4/5 md:w-64">
+                            <span id="video-upload-progress"></span>
                             <input type="file"
                                 class="w-full appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline cursor-pointer m-1"
-                                name="video-file" id="video-file">
+                                name="video-file" id="video-file" accept="video/*">
                             </div>
                         </div>
                         <video id="video-element" controls></video>
@@ -555,9 +555,10 @@ function numberWithSpaces(x) {
                         </div>
                         <div>
                             <div class="w-4/5 md:w-64">
+                                <span id="audio-upload-progress"></span>
                                 <input type="file"
                                     class="w-full appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline cursor-pointer m-1"
-                                    name="audio-file" id="audio-file">
+                                    name="audio-file" id="audio-file" accept="audio/*">
                             </div>
                             <div>
                                 <audio id="audio-element" controls></audio>
@@ -714,7 +715,8 @@ function numberWithSpaces(x) {
     changeTestResultDisplay(document.getElementById("been-tested-yes").checked);
     changePregnantDisplay(document.getElementById("gender-female").checked);
 
-    var uploadProgressElement = document.getElementById('video-upload-progress')
+    var uploadProgressVideoElement = document.getElementById('video-upload-progress')
+    var uploadProgressAudioElement = document.getElementById('audio-upload-progress')
 
     var videoElement = document.getElementById('video-element')
     var videoInputElement = document.getElementById('video-file')
@@ -726,50 +728,69 @@ function numberWithSpaces(x) {
 
     var submitButtonElement = document.getElementById("submit-report")
     var uploadedUrl = ""
-    var uploadProgress = (progress) => {
-        uploadProgressElement.innerText = "Cargando archivo " + progress + "%"
+    var uploadProgressVideo = (progress) => {
+        uploadProgressVideoElement.innerText = "Cargando archivo " + progress + "%"
+    }
+    var uploadProgressAudio = (progress) => {
+        uploadProgressAudioElement.innerText = "Cargando archivo " + progress + "%"
     }
 
+    var audioReady = true;
+    var videoReady = true;
     var enableReportSubmit = () => {
-        submitButtonElement.disabled = false
-        submitButtonElement.value = "ENVIAR REPORTE"
+        if (audioReady&&videoReady){
+            submitButtonElement.disabled = false
+            submitButtonElement.value = "ENVIAR REPORTE"
+        }
     }
 
     videoInputElement.onchange = () => {
         submitButtonElement.disabled = true
-        submitButtonElement.value = "Cargando el video..."
+        submitButtonElement.value = "Cargando archivo..."
         const files = videoInputElement.files
         if (files && files.length > 0) {
+            videoReady = false;
             videoElement.src = URL.createObjectURL(files[0]);
-            UploadApi.uploadMedia(files[0], uploadProgress)
+            UploadApi.uploadMedia(files[0], uploadProgressVideo)
                 .then((response) => {
                     videoUrlElement.value = `s3://${response.bucket}/${response.key}`
+                    videoReady = true
                     enableReportSubmit()
-                }, uploadProgress)
+                }, uploadProgressVideo)
                 .catch((err) => {
                     console.log("Failed to upload video", err)
+                    videoReady = true
                     enableReportSubmit()
                 })
+        }
+        else {
+            enableReportSubmit()
         }
     }
 
     audioInputElement.onchange = () => {
         submitButtonElement.disabled = true
-        submitButtonElement.value = "Cargando audio de tu respiración."
+        submitButtonElement.value = "Cargando archivo..."
         const files = audioInputElement.files
         if (files && files.length > 0) {
+            audioReady = false;
             audioElement.src = URL.createObjectURL(files[0]);
-            UploadApi.uploadMedia(files[0], uploadProgress, 'audio')
+            UploadApi.uploadMedia(files[0], uploadProgressAudio, 'audio')
                 .then((response) => {
                     const s3Url = `s3://${response.bucket}/${response.key}`
                     audioUrlElement.value = s3Url
                     BreathingApi.analyseBreathing(s3Url)
+                    audioReady = true
                     enableReportSubmit()
                 })
                 .catch((err) => {
                     console.log('Failed to upload audio', err)
+                    audioReady = true
                     enableReportSubmit()
                 })
+        }
+        else {
+            enableReportSubmit()
         }
     }
 
