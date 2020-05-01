@@ -759,9 +759,12 @@ function numberWithSpaces(x) {
                 }, uploadProgressVideo)
                 .catch((err) => {
                     console.log("Failed to upload video", err)
-                    videoReady = true;
+                    videoReady = true
                     enableReportSubmit()
                 })
+        }
+        else {
+            enableReportSubmit()
         }
     }
 
@@ -782,9 +785,12 @@ function numberWithSpaces(x) {
                 })
                 .catch((err) => {
                     console.log('Failed to upload audio', err)
-                    audioReady = true;
+                    audioReady = true
                     enableReportSubmit()
                 })
+        }
+        else {
+            enableReportSubmit()
         }
     }
 
