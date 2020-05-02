@@ -10,7 +10,7 @@
 <!-- spacer -->
 
 <% if (typeof show === 'undefined' || typeof show === 'boolean' && show == true) { %>
-<footer class="custom-section custom-section-footer p-8 pt-32">
+<footer class="custom-section custom-section-footer mt-2 px-8 pt-2 pb-8">
   <!-- GITHUB LOGO
   <div
     class="custom-section-content mx-auto custom-section-footer-content flex flex-col items-center"
@@ -27,32 +27,24 @@
       />
     </a>
   -->
-    <div
-      class="flex flex-row justify-between flex-wrap items-center self-stretch mt-8 text-base lg:text-xl text-center"
-    >
-      <% if (locals.twitter) { %>
-      <a
-        class="text-cvs-green-dark font-medium whitespace-no-wrap"
+  <div class="flex flex-row justify-center">
+    <% if (locals.twitter) { %>
+    <div class="items-center">
+      <a class="text-cvs-green-dark font-medium text-lg md:text-3xl text-center"
         href="https://twitter.com/intent/user?screen_name=<%= locals.twitter %>"
-        target="_blank"
-        >@<%= locals.twitter %></a
-      >
-      <% } %>
-      <span
-        class="text-cvs-green-dark font-medium text-left md:text-center md:whitespace-no-wrap"
-      >
-
-      </span>
-      <!-- Privacy policies
+        target="_blank">@<%= locals.twitter %></a>
+    </div>
+    <% } %>
+    <!-- Privacy policies
       <a
         class="text-cvs-green-dark hover:text-cvs-red font-bold hover:underline whitespace-no-wrap"
         href="<%= urls.privacyPolicy %>"
         ><%= __('Privacy Policy')%></a
       >
       -->
-    </div>
+  </div>
 
-<!-- Statistics
+  <!-- Statistics
     <div
       class="flex items-center justify-center self-stretch mt-4 mb-8 text-sm lg:text-base text-center"
     >
@@ -74,9 +66,7 @@
 <% if (shouldAddAnalytics) { %>
 <!-- Simple Analytics -->
 <script async defer src="https://cdn.simpleanalytics.io/hello.js"></script>
-<noscript
-  ><img src="https://api.simpleanalytics.io/hello.gif" alt=""
-/></noscript>
+<noscript><img src="https://api.simpleanalytics.io/hello.gif" alt="" /></noscript>
 <% } %>
 
 <script src="/static/hamburger-menu.js?v=<%= locals.cacheKey %>"></script>
@@ -101,7 +91,7 @@
 <script>
   // Remove query params from url after page load so #hashtags keep working
   (function removeQueryParams() {
-    window.addEventListener('load', function(event) {
+    window.addEventListener('load', function (event) {
       if (window.history && window.history.replaceState) {
         window.history.replaceState({}, document.title, window.location.pathname);
       }
@@ -113,7 +103,7 @@
   // Show button "Your state of health" when people did fill in the form
   // and show button "Contribute now" when they didn't
   (function updateMainCTA() {
-    window.addEventListener('load', function(event) {
+    window.addEventListener('load', function (event) {
       var button = document.getElementById('nav-cta-button') ||
         document.getElementById('home-cta-button');
 
@@ -130,4 +120,5 @@
 </script>
 
 </body>
+
 </html>
