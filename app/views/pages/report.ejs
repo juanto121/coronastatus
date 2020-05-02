@@ -54,7 +54,7 @@ const symptomRunnyNose = symptoms && symptoms['RUNNY_NOSE'];
 const symptomChestPain = symptoms && symptoms['CHEST_PAIN'];
 const symptomNauseaOrVomiting = symptoms && symptoms['NAUSEA_OR_VOMITING'];
 <!-- Ages New-->
-const newAges = ['0 - 5', '6 - 11', '12 - 18', '19 - 26', '27 - 59', '>60'];
+const newAges = ['0 - 5', '6 - 11', '12 - 18', '19 - 26', '27 - 59', '>=60'];
 
 function numberWithSpaces(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
@@ -499,7 +499,7 @@ function numberWithSpaces(x) {
                 <h3 class="text-cvs-red text-xl font-bold m-4"><%= __("Vital signs - OPTIONAL") %></h3>
             </div>
             <div>
-                <legend class="mt-4 mb-2 py-0"><%= __('Video') %></legend>
+                <legend class="mt-4 mb-0 py-0"><u><%= __('Video') %></u></legend>
                 <div>
                     <div class="video-container mb-4">
                         <div>
@@ -528,14 +528,14 @@ function numberWithSpaces(x) {
                                 name="video-file" id="video-file" accept="video/*">
                             </div>
                         </div>
-                        <video id="video-element" controls></video>
+                        <video id="video-element" controls style="display: none;"></video>
                     </div>
                     <input name="video-url" type="hidden" id="video-url" value="<%= videoUrl %>" />
                 </div>
-                <legend class="mt-6 mb-2 py-0"><%= __('Audio') %></legend>
+                <legend class="mt-16 mb-0 py-0"><u><%= __('Audio') %></u></legend>
                 <div>
                     <div class="audio-container">
-                        <p class="mt-4 mb-4" for="audio-file">
+                        <p class="mt-0 mb-4" for="audio-file">
                             <%= __('Upload a 20-second audio recording your breath with the phone’s microphone close to your nose. Make sure you are in a quiet, closed place that is not too narrow. Try that the application with which you are recording has the maximum possible quality configured.') %>
                         </p>
                         <div class="w-auto flex flex-row justify-center mb-2 collapsible-obj">
@@ -561,7 +561,7 @@ function numberWithSpaces(x) {
                                     name="audio-file" id="audio-file" accept="audio/*">
                             </div>
                             <div>
-                                <audio id="audio-element" controls></audio>
+                                <audio id="audio-element" controls style="display: none;"></audio>
                             </div>
                         </div>
                     </div>
@@ -633,7 +633,7 @@ function numberWithSpaces(x) {
     </div>
 </section>
 
-<section class="custom-section custom-section-about px-6 lg:px-0 py-12 lg:py-24 bg-white">
+<section class="custom-section custom-section-about px-6 lg:px-0 pt-12 lg:pt-24 bg-white">
     <div class="custom-section-content mx-auto">
         <div class="section-about-header flex flex-row items-center mb-8">
             <img class="section-about-header__img h-24 w-24" src="/static/images/recovery-path.svg" alt="">
@@ -652,17 +652,17 @@ function numberWithSpaces(x) {
                 <%= __(`See hotlines.`) %>
             </a>
         </p>
-        <div class="hashtag-item-container flex flex-row justify-around" style="margin: 4rem 0 -14rem 0;">
+        <div class="hashtag-item-container flex flex-row justify-around mt-12">
             <div class="hashtag-item text-center flex flex-col items-center w-1/2">
-                <div class="hashtag-item__title text-cvs-red font-medium text-lg md:text-3xl uppercase m-2">
+                <div class="hashtag-item__title text-cvs-red font-medium text-base md:text-3xl uppercase m-2">
                     <%- __('#lavatusmanos') %></div>
                 <img src="/static/images/washing-hands.svg" alt=""
-                    class="hashtag-item__img h-35 w-35 lg:h-40 lg:w-40 m-2">
+                    class="hashtag-item__img h-24 w-24 lg:h-40 lg:w-40 m-2">
             </div>
             <div class="hashtag-item text-center flex flex-col items-center w-1/2">
-                <div class="hashtag-item__title text-cvs-red font-medium text-lg md:text-3xl uppercase m-2">
+                <div class="hashtag-item__title text-cvs-red font-medium text-base md:text-3xl uppercase m-2">
                     <%- __('#quedateencasa') %></div>
-                <img src="/static/images/stay-home.svg" alt="" class="hashtag-item__img h-35 w-35 lg:h-40 lg:w-40 m-2">
+                <img src="/static/images/stay-home.svg" alt="" class="hashtag-item__img h-24 w-24 lg:h-40 lg:w-40 m-2">
             </div>
         </div>
     </div>
@@ -755,6 +755,7 @@ function numberWithSpaces(x) {
                 .then((response) => {
                     videoUrlElement.value = `s3://${response.bucket}/${response.key}`
                     videoReady = true
+                    videoElement.style.display = 'flex'
                     enableReportSubmit()
                 }, uploadProgressVideo)
                 .catch((err) => {
@@ -764,7 +765,9 @@ function numberWithSpaces(x) {
                 })
         }
         else {
+            videoElement.style.display = 'none'
             enableReportSubmit()
+            uploadProgressVideoElement.innerText = ""
         }
     }
 
@@ -781,6 +784,7 @@ function numberWithSpaces(x) {
                     audioUrlElement.value = s3Url
                     BreathingApi.analyseBreathing(s3Url)
                     audioReady = true
+                    audioElement.style.display = 'flex'
                     enableReportSubmit()
                 })
                 .catch((err) => {
@@ -790,7 +794,9 @@ function numberWithSpaces(x) {
                 })
         }
         else {
+            audioElement.style.display = 'none'
             enableReportSubmit()
+            uploadProgressAudioElement.innerText = ""
         }
     }
 
