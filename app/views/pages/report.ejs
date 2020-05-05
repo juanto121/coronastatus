@@ -77,16 +77,16 @@ function numberWithSpaces(x) {
             }) -%>
 
             <%- include('partials/app-feature-block', {
-            image: '/static/images/mobile.svg',
-            title: __("It's free"),
-            description: __('In case you need it, a doctor will make your assessment at no cost and he will call you')
-            }) -%>
-
-            <%- include('partials/app-feature-block', {
             image: '/static/images/research.svg',
             title: __('Data privacy'),
             description: __('The registered data will be treated with a strict privacy policy. We want to protect your identity and your health.')
             }) -%>
+
+            <%- include('partials/app-feature-block', {
+                image: '/static/images/mobile.svg',
+                title: __("It's free"),
+                description: __('In case you need it, a doctor will make your assessment at no cost and he will call you')
+                }) -%>
 
             <%- include('partials/app-feature-block', {
             image: '/static/images/doctor.svg',
@@ -104,6 +104,7 @@ function numberWithSpaces(x) {
         <h3 class="text-2xl md:text-3xl lg:text-5xl text-center font-bold text-cvs-red m-2 self-center">
             <%= profile ? __("Your state of health") : __("Report your health condition") %>
         </h3>
+
         <% if (locals.passcode) { %>
         <!-- If you change the color make sure it's in postcss.config.js -->
         <%- include('partials/alert', {
@@ -116,14 +117,17 @@ function numberWithSpaces(x) {
             <a href="${urls.profile}/${passcode}?clear=true" class="font-bold hover:text-cvs-red hover:underline"> ${ __(`clear this form`)}.</a>`,
             }) -%>
         <% } %>
+        <label class="text-base mt-4 text-red-700" for="Age"><%= __("* Required") %></label>
 
-        <div class="flex flex-row items-center mt-8">
+        <div class="flex flex-row items-center mt-2">
             <img src="/static/images/map.svg" alt="" class="h-16 w-16">
             <h3 class="text-cvs-red text-xl font-bold m-4"><%= __("Demography and Geography") %></h3>
         </div>
 
 
-        <label class="text-h4" for="Age"><%= __("Your age") %></label>
+        <label class="text-h4" for="Age"><%= __("Your age")%> 
+            <span class="text-red-700">*</span>
+        </label>
         <select required name="age" id="Age">
             <option value="" disabled selected><%= __("Choose your age") %></option>
             <% for(var i in newAges) {
@@ -134,7 +138,9 @@ function numberWithSpaces(x) {
         </select>
 
         <fieldset>
-            <legend><%= __("Biological gender") %></legend>
+            <legend><%= __("Biological gender") %>
+                <span class="text-red-700">*</span>
+            </legend>
             <p class="mb-2">
                 <input required type="radio" id="gender-female" name="gender" value="female"
                     onclick="changePregnantDisplay(true)" <%= sex === 'FEMALE' ? 'checked' : '' %>>
@@ -155,7 +161,9 @@ function numberWithSpaces(x) {
         <!-- Adding is Pregnant-->
         <div id="pregnant-question" style="display: none;">
             <fieldset>
-                <legend><%= __("Are you pregnant?") %></legend>
+                <legend><%= __("Are you pregnant?") %>
+                    <span class="text-red-700">*</span>
+                </legend>
                 <p>
                     <input required type="radio" id="is-pregnant-yes" name="is-pregnant" value="yes"
                         <%= isPregnant ? 'checked' : '' %>>
@@ -183,6 +191,7 @@ function numberWithSpaces(x) {
         <fieldset>
             <legend>
                 <%= __("Have you been in close contact with someone who was tested positive or is suspicious for COVID-19?") %>
+                <span class="text-red-700">*</span>
             </legend>
 
             <p>
@@ -198,7 +207,9 @@ function numberWithSpaces(x) {
 
 
         <fieldset>
-            <legend><%= __('Have you been tested for COVID-19?') %></legend>
+            <legend><%= __('Have you been tested for COVID-19?') %>
+                <span class="text-red-700">*</span>
+            </legend>
             <p>
                 <input required type="radio" id="been-tested-yes" name="been-tested" value="yes"
                     onclick="changeTestResultDisplay(true)" <%= hasBeenTested ? 'checked' : '' %>>
@@ -211,8 +222,9 @@ function numberWithSpaces(x) {
 
             <div id="test-result-question" style="display: none;">
                 <fieldset>
-                    <legend><%= __('What was the result?') %></legend>
-
+                    <legend><%= __('What was the result?') %>
+                        <span class="text-red-700">*</span>
+                    </legend>
                     <p>
                         <input type="radio" id="test-response-positive" name="test-response" value="positive"
                             <%= testResult === 'POSITIVE' ? 'checked' : '' %>>
@@ -430,7 +442,9 @@ function numberWithSpaces(x) {
             </fieldset>
 
             <fieldset>
-                <legend><%= __('Do you smoke?') %></legend>
+                <legend><%= __('Do you smoke?') %>
+                    <span class="text-red-700">*</span>
+                </legend>
                 <p class="mb-2">
                     <input required type="radio" id="currently-smoking" name="smoking-habits" value="currently-smoking"
                         <%= smokingHabit === 'CURRENTLY' ? 'checked' : '' %>>
@@ -444,7 +458,9 @@ function numberWithSpaces(x) {
             </fieldset>
 
             <fieldset>
-                <legend><%= __('Why are you in isolation?') %></legend>
+                <legend><%= __('Why are you in isolation?') %>
+                    <span class="text-red-700">*</span>
+                </legend>
                 <p class="mb-2">
                     <input required type="radio" id="not-in-isolation" name="isolation-status" value="not-in-isolation"
                         <%= isolationStatus === 'NOT_IN_ISOLATION' ? 'checked' : '' %>>
@@ -482,12 +498,16 @@ function numberWithSpaces(x) {
                 class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 value="<%= patientId %>" name="patient-id-value" id="patient-id-value">
 
-            <label class="mb-0" for="name-value"><%= __('What is your name?') %></label>
+            <label class="mb-0" for="name-value"><%= __('What is your name?') %>
+                <span class="text-red-700">*</span>
+            </label>
             <input required type="text"
                 class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 value="<%= name %>" name="name-value" id="name-value">
 
-            <label class="mb-0" for="phone-number"><%= __('What is your phone number?') %></label>
+            <label class="mb-0" for="phone-number"><%= __('What is your phone number?') %>
+                <span class="text-red-700">*</span>
+            </label>
             <p class="text-base"> <%= __('Make sure that the entered phone number is correct') %></p>
             <p class="text-base font-thin text-gray-500"><%= __('Must contain only 10 numbers (ex: 30082584XX)') %></p>
             <input required type="tel" title="<%= __('Must contain only 10 numbers (ex: 30082584XX)') %>"

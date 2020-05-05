@@ -71,7 +71,7 @@
   "Demography and Geography": "Demografía y Geografía",
   "Your age": "Su edad",
   "Choose your age": "Elija su edad",
-  "Biological gender": "Sexo",
+  "Biological gender": "Género",
   "Female": "Femenino",
   "Male": "Masculino",
   "Zip code": "Código postal",
@@ -272,5 +272,6 @@
   "Watch tutorial": "Ver tutorial",
   "How do I enter the videocall?": "¿Cómo ingreso a la videollamada?",
   "Report your health condition from home": "Reporte su estado de salud desde casa",
-  "Help us to decongest health centers. Report your state of health, a doctor will contact you. It is free.": "Descongestionemos los centros de salud. Reporte su estado de salud en línea, un médico lo contactará. Es gratis."
+  "Help us to decongest health centers. Report your state of health, a doctor will contact you. It is free.": "Descongestionemos los centros de salud. Reporte su estado de salud en línea, un médico lo contactará. Es gratis.",
+  "* Required": "* Requerido"
 }
