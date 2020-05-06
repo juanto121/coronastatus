@@ -119,7 +119,7 @@ function numberWithSpaces(x) {
             <a href="${urls.profile}/${passcode}?clear=true" class="font-bold hover:text-cvs-red hover:underline"> ${ __(`clear this form`)}.</a>`,
             }) -%>
         <% } %>
-        <label class="text-base mt-4 text-red-700" for="Age"><%= __("* Required") %></label>
+        <label class="text-base mt-4 text-red-700"><%= __("* Required") %></label>
 
         <div class="flex flex-row items-center mt-2">
             <img src="/static/images/map.svg" alt="" class="h-16 w-16">
@@ -127,7 +127,7 @@ function numberWithSpaces(x) {
         </div>
 
 
-        <label class="text-h4" for="Age"><%= __("Your age")%> 
+        <label class="text-h4" for="Age" id="age-label"><%= __("Your age")%>
             <span class="text-red-700">*</span>
         </label>
         <select required name="age" id="Age">
@@ -140,7 +140,7 @@ function numberWithSpaces(x) {
         </select>
 
         <fieldset>
-            <legend><%= __("Biological gender") %>
+            <legend id="gender-label"><%= __("Biological gender") %>
                 <span class="text-red-700">*</span>
             </legend>
             <p class="mb-2">
@@ -163,7 +163,7 @@ function numberWithSpaces(x) {
         <!-- Adding is Pregnant-->
         <div id="pregnant-question" style="display: none;">
             <fieldset>
-                <legend><%= __("Are you pregnant?") %>
+                <legend id="is-pregnant-label"><%= __("Are you pregnant?") %>
                     <span class="text-red-700">*</span>
                 </legend>
                 <p>
@@ -191,7 +191,7 @@ function numberWithSpaces(x) {
         </div>
 
         <fieldset>
-            <legend>
+            <legend id="been-in-contact-with-label">
                 <%= __("Have you been in close contact with someone who was tested positive or is suspicious for COVID-19?") %>
                 <span class="text-red-700">*</span>
             </legend>
@@ -209,7 +209,7 @@ function numberWithSpaces(x) {
 
 
         <fieldset>
-            <legend><%= __('Have you been tested for COVID-19?') %>
+            <legend id="been-tested-label"><%= __('Have you been tested for COVID-19?') %>
                 <span class="text-red-700">*</span>
             </legend>
             <p>
@@ -224,7 +224,7 @@ function numberWithSpaces(x) {
 
             <div id="test-result-question" style="display: none;">
                 <fieldset>
-                    <legend><%= __('What was the result?') %>
+                    <legend id="test-response-label"><%= __('What was the result?') %>
                         <span class="text-red-700">*</span>
                     </legend>
                     <p>
@@ -450,8 +450,7 @@ function numberWithSpaces(x) {
                 </label>
 
                 <label class="checkbox" for="diagnosed-none-above">
-                    <input type="checkbox" id="diagnosed-none-above"
-                        name="diagnosed-none-above"
+                    <input type="checkbox" id="diagnosed-none-above" name="diagnosed-none-above"
                         <%= diagnosedWithNoneAbove ? 'checked' : '' %>>
                     <span><%= __('None of the above') %></span>
                     <span class="checkmark"></span>
@@ -459,7 +458,7 @@ function numberWithSpaces(x) {
             </fieldset>
 
             <fieldset>
-                <legend><%= __('Do you smoke?') %>
+                <legend id="smoking-habits-label"><%= __('Do you smoke?') %>
                     <span class="text-red-700">*</span>
                 </legend>
                 <p class="mb-2">
@@ -475,7 +474,7 @@ function numberWithSpaces(x) {
             </fieldset>
 
             <fieldset>
-                <legend><%= __('Why are you in isolation?') %>
+                <legend id="isolation-status-label"><%= __('Why are you in isolation?') %>
                     <span class="text-red-700">*</span>
                 </legend>
                 <p class="mb-2">
@@ -515,14 +514,14 @@ function numberWithSpaces(x) {
                 class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 value="<%= patientId %>" name="patient-id-value" id="patient-id-value">
 
-            <label class="mb-0" for="name-value"><%= __('What is your name?') %>
+            <label class="mb-0" id="name-value-label" for="name-value"><%= __('What is your name?') %>
                 <span class="text-red-700">*</span>
             </label>
             <input required type="text"
                 class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                value="<%= name %>" name="name-value" id="name-value">
+                name="name-value" id="name-value">
 
-            <label class="mb-0" for="phone-number"><%= __('What is your phone number?') %>
+            <label class="mb-0" for="phone-number" id="phone-number-label"><%= __('What is your phone number?') %>
                 <span class="text-red-700">*</span>
             </label>
             <p class="text-base"> <%= __('Make sure that the entered phone number is correct') %></p>
@@ -544,7 +543,8 @@ function numberWithSpaces(x) {
                                 <%= __('Upload a video of your index fingertip slightly pressing it against the lens of your phone camera for 25 seconds and with the flash turned on. Try not to move your finger too much during the recording and make sure that what you see when playing the video is a red background.') %>
                             </p>
                             <div class="w-auto flex flex-row justify-center mb-2 collapsible-obj">
-                                <a class="tutorial flex flex-row items-center text-center cursor-pointer bg-gray-500 rounded-full px-4">
+                                <a
+                                    class="tutorial flex flex-row items-center text-center cursor-pointer bg-gray-500 rounded-full px-4">
                                     <%= __('How to record the video?') %>
                                     <img class="h-4 w-4 ml-2" src="/static/images/expand-colored.svg" alt="">
                                 </a>
@@ -559,10 +559,10 @@ function numberWithSpaces(x) {
                                 </div>
                             </div>
                             <div class="w-4/5 md:w-64">
-                            <span id="video-upload-progress"></span>
-                            <input type="file"
-                                class="w-full appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline cursor-pointer m-1"
-                                name="video-file" id="video-file" accept="video/*">
+                                <span id="video-upload-progress"></span>
+                                <input type="file"
+                                    class="w-full appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline cursor-pointer m-1"
+                                    name="video-file" id="video-file" accept="video/*">
                             </div>
                         </div>
                         <video id="video-element" controls style="display: none;"></video>
@@ -629,7 +629,8 @@ function numberWithSpaces(x) {
             <ul class="mt-6">
                 <li>
                     <input type="hidden" name="passcode" value="<%= passcode %>" />
-                    <input id="submit-report" class="inverse" type="submit" value="<%= __('Submit report') %>">
+                    <input id="submit-report" class="inverse" onclick="formValidation()" type="submit"
+                        value="<%= __('Submit report') %>">
                 </li>
             </ul>
     </form>
@@ -705,9 +706,117 @@ function numberWithSpaces(x) {
     </div>
 </section>
 
-<!--Validation-->
+<!--Validation of form-->
 <script>
-
+    var radioGender = document.querySelectorAll(
+        'input[type=radio][name=gender]'
+    );
+    var radioBeenInContactWith = document.querySelectorAll(
+        'input[type=radio][name=been-in-contact-with]'
+    );
+    var radioBeenTested = document.querySelectorAll(
+        'input[type=radio][name=been-tested]'
+    );
+    var radioTestResponse = document.querySelectorAll(
+        'input[type=radio][name=test-response]'
+    );
+    var radioSmokingHabits = document.querySelectorAll(
+        'input[type=radio][name=smoking-habits]'
+    );
+    var radioIsolationStatus = document.querySelectorAll(
+        'input[type=radio][name=isolation-status]'
+    );
+    function isAtLeastOneCheckboxChecked(checkboxes) {
+        for (var i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].checked) {
+                return true;
+            }
+        }
+        return false;
+    }
+    function formValidation() {
+        //Age
+        ageVal = document.querySelector('[name=age]').value
+        if (ageVal!=null && ageVal==""){
+            console.log("ageVal")
+            document.getElementById('Age').style.borderColor = "red"; 
+        }
+        else {
+            document.getElementById('Age').style.border = null;
+        }
+        //Phone Number
+        phoneVal = document.querySelector('input[name=phone-number]').value
+        if (phoneVal!=null && phoneVal==""){
+            console.log("phoneVal")
+            document.getElementById('phone-number').style.borderColor = "red"; 
+        }
+        else {
+            document.getElementById('phone-number').style.border = null;
+        }
+        //Name
+        nameVal = document.querySelector('input[name=name-value]').value
+        if (nameVal!=null && nameVal==""){
+            console.log("nameVal")
+            document.getElementById('name-value').style.borderColor = "red"; 
+        }
+        else {
+            document.getElementById('name-value').style.border = null;
+        }
+        // Gender
+        genderChecked = isAtLeastOneCheckboxChecked(radioGender);
+        if (genderChecked){
+            document.getElementById('gender-label').style.color = "black"; 
+        }
+        else {
+            console.log("genderChecked")
+            document.getElementById('gender-label').style.color = "red"; 
+        }
+        // Been in contact with
+        beenInContactWithChecked = isAtLeastOneCheckboxChecked(radioBeenInContactWith);
+        if (beenInContactWithChecked){
+            document.getElementById('been-in-contact-with-label').style.color = "black"; 
+        }
+        else {
+            console.log("beenInContactWithChecked")
+            document.getElementById('been-in-contact-with-label').style.color = "red"; 
+        }
+        // Been tested
+        beenTestedChecked = isAtLeastOneCheckboxChecked(radioBeenTested);
+        if (beenTestedChecked){
+            document.getElementById('been-tested-label').style.color = "black"; 
+        }
+        else {
+            console.log("beenTestedChecked")
+            document.getElementById('been-tested-label').style.color = "red"; 
+        }
+        // Test Response
+        testResponseChecked = isAtLeastOneCheckboxChecked(radioTestResponse);
+        if (testResponseChecked){
+            document.getElementById('test-response-label').style.color = "black"; 
+        }
+        else {
+            console.log("testResponseChecked")
+            document.getElementById('test-response-label').style.color = "red"; 
+        }
+        // Smoking Habits
+        smokingHabitsChecked = isAtLeastOneCheckboxChecked(radioSmokingHabits);
+        if (smokingHabitsChecked){
+            document.getElementById('smoking-habits-label').style.color = "black"; 
+        }
+        else {
+            console.log("smokingHabitsChecked")
+            document.getElementById('smoking-habits-label').style.color = "red"; 
+        }
+        // Isolation Status
+        isolationStatusChecked = isAtLeastOneCheckboxChecked(radioIsolationStatus);
+        if (isolationStatusChecked){
+            document.getElementById('isolation-status-label').style.color = "black"; 
+        }
+        else {
+            console.log("isolationStatusChecked")
+            document.getElementById('isolation-status-label').style.color = "red"; 
+        }
+    }
 </script>
 
 <script src="/static/form.js?v=<%= locals.cacheKey %>"></script>
@@ -775,7 +884,7 @@ function numberWithSpaces(x) {
     var audioReady = true;
     var videoReady = true;
     var enableReportSubmit = () => {
-        if (audioReady&&videoReady){
+        if (audioReady && videoReady) {
             submitButtonElement.disabled = false
             submitButtonElement.value = "ENVIAR REPORTE"
         }
