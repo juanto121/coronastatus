@@ -37,6 +37,7 @@ const diagnosedWithVIH = diagnosedWith && diagnosedWith['VIH']
 const diagnosedWithCancer = diagnosedWith && diagnosedWith['CANCER']
 const diagnosedWithObesityOrMalnutrition = diagnosedWith && diagnosedWith['OBESITY_OR_MALNUTRITION']
 const diagnosedWithImmunosupression = diagnosedWith && diagnosedWith['IMMUNOSUPRESSION']
+const diagnosedWithNoneAbove = diagnosedWith && diagnosedWith['NONE_ABOVE']
 
 const symptoms = profile && locals.profile.symptoms;
 const symptomDryCough = symptoms && symptoms['DRY_COUGH'];
@@ -53,6 +54,7 @@ const symptomSlimeCough = symptoms && symptoms['SLIME_COUGH'];
 const symptomRunnyNose = symptoms && symptoms['RUNNY_NOSE'];
 const symptomChestPain = symptoms && symptoms['CHEST_PAIN'];
 const symptomNauseaOrVomiting = symptoms && symptoms['NAUSEA_OR_VOMITING'];
+const symptomNoneAbove = symptoms && symptoms['NONE_ABOVE']
 <!-- Ages New-->
 const newAges = ['0 - 5', '6 - 11', '12 - 18', '19 - 26', '27 - 59', '>=60'];
 
@@ -341,12 +343,19 @@ function numberWithSpaces(x) {
                     <span><%= __('Nausea or vomiting') %></span>
                     <span class="checkmark"></span>
                 </label>
+
+                <label class="checkbox" for="none-above-symptom">
+                    <input type="checkbox" id="none-above-symptom" name="none-above-symptom"
+                        <%= symptomNoneAbove ? 'checked' : '' %>>
+                    <span><%= __('None of the above') %></span>
+                    <span class="checkmark"></span>
+                </label>
             </fieldset>
 
             <div id="symptom-start-question" style="display: none;">
                 <label for="symptom-start"><%= __('When did the symptoms start?') %></label>
                 <input
-                    class="appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    class="appearance-none border rounded py-2 px-3 text-gray-700 bg-white leading-tight focus:outline-none focus:shadow-outline"
                     type="date" name="symptom-start" id="symptom-start" value="<%= symptomStart %>">
             </div>
 
@@ -437,6 +446,14 @@ function numberWithSpaces(x) {
                         name="diagnosed-obesity-or-malnutrition"
                         <%= diagnosedWithObesityOrMalnutrition ? 'checked' : '' %>>
                     <span><%= __('Obesity or Malnutrition') %></span>
+                    <span class="checkmark"></span>
+                </label>
+
+                <label class="checkbox" for="diagnosed-none-above">
+                    <input type="checkbox" id="diagnosed-none-above"
+                        name="diagnosed-none-above"
+                        <%= diagnosedWithNoneAbove ? 'checked' : '' %>>
+                    <span><%= __('None of the above') %></span>
                     <span class="checkmark"></span>
                 </label>
             </fieldset>
@@ -766,7 +783,7 @@ function numberWithSpaces(x) {
 
     videoInputElement.onchange = () => {
         submitButtonElement.disabled = true
-        submitButtonElement.value = "Cargando archivo..."
+        submitButtonElement.value = "Espere. Cargando archivo..."
         const files = videoInputElement.files
         if (files && files.length > 0) {
             videoReady = false;
@@ -793,7 +810,7 @@ function numberWithSpaces(x) {
 
     audioInputElement.onchange = () => {
         submitButtonElement.disabled = true
-        submitButtonElement.value = "Cargando archivo..."
+        submitButtonElement.value = "Espere. Cargando archivo..."
         const files = audioInputElement.files
         if (files && files.length > 0) {
             audioReady = false;
