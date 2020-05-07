@@ -248,7 +248,7 @@ function numberWithSpaces(x) {
                 <p class="mb-4"><%- __('Select only those you have experienced since you started to feel ill') %></p>
 
                 <label class="checkbox" for="symptom-cough">
-                    <input type="checkbox" id="symptom-cough" name="symptom-cough"
+                    <input type="checkbox" id="symptom-cough" name="symptom-cough" onchange="isNoneAboveChecked()"
                         <%= symptomDryCough ? 'checked' : '' %>>
                     <span><%= __('Dry cough') %></span>
                     <span class="checkmark"></span>
@@ -256,26 +256,27 @@ function numberWithSpaces(x) {
 
                 <label class="checkbox" for="symptom-slime-cough">
                     <input type="checkbox" id="symptom-slime-cough" name="symptom-slime-cough"
-                        <%= symptomSlimeCough ? 'checked' : '' %>>
+                        onchange="isNoneAboveChecked()" <%= symptomSlimeCough ? 'checked' : '' %>>
                     <span><%= __('Mucus cough (Expectoration)') %></span>
                     <span class="checkmark"></span>
                 </label>
 
                 <label class="checkbox" for="symptom-fever">
-                    <input type="checkbox" id="symptom-fever" name="symptom-fever" <%= symptomFever ? 'checked' : '' %>>
+                    <input type="checkbox" id="symptom-fever" name="symptom-fever" onchange="isNoneAboveChecked()"
+                        <%= symptomFever ? 'checked' : '' %>>
                     <span><%= __('Fever') %></span>
                     <span class="checkmark"></span>
                 </label>
 
                 <label class="checkbox" for="symptom-heavy-breath">
                     <input type="checkbox" id="symptom-heavy-breath" name="symptom-heavy-breath"
-                        <%= symptomHeavyBreathing ? 'checked' : '' %>>
+                        onchange="isNoneAboveChecked()" <%= symptomHeavyBreathing ? 'checked' : '' %>>
                     <span><%= __('Shortness of breath') %></span>
                     <span class="checkmark"></span>
                 </label>
 
                 <label class="checkbox" for="symptom-fatigue">
-                    <input type="checkbox" id="symptom-fatigue" name="symptom-fatigue"
+                    <input type="checkbox" id="symptom-fatigue" name="symptom-fatigue" onchange="isNoneAboveChecked()"
                         <%= symptomFatigue ? 'checked' : '' %>>
                     <span><%= __('Fatigue and exhaustion') %></span>
                     <span class="checkmark"></span>
@@ -283,27 +284,27 @@ function numberWithSpaces(x) {
 
                 <label class="checkbox" for="symptom-muscle-pain">
                     <input type="checkbox" id="symptom-muscle-pain" name="symptom-muscle-pain"
-                        <%= symptomMuscleAching ? 'checked' : '' %>>
+                        onchange="isNoneAboveChecked()" <%= symptomMuscleAching ? 'checked' : '' %>>
                     <span><%= __('Muscle pain') %></span>
                     <span class="checkmark"></span>
                 </label>
 
                 <label class="checkbox" for="symptom-chest-pain">
                     <input type="checkbox" id="symptom-chest-pain" name="symptom-chest-pain"
-                        <%= symptomChestPain ? 'checked' : '' %>>
+                        onchange="isNoneAboveChecked()" <%= symptomChestPain ? 'checked' : '' %>>
                     <span><%= __('Chest pain') %></span>
                     <span class="checkmark"></span>
                 </label>
 
                 <label class="checkbox" for="symptom-diarrhea">
-                    <input type="checkbox" id="symptom-diarrhea" name="symptom-diarrhea"
+                    <input type="checkbox" id="symptom-diarrhea" name="symptom-diarrhea" onchange="isNoneAboveChecked()"
                         <%= symptomDiarrhea ? 'checked' : '' %>>
                     <span><%= __('Diarrhea') %></span>
                     <span class="checkmark"></span>
                 </label>
 
                 <label class="checkbox" for="symptom-headache">
-                    <input type="checkbox" id="symptom-headache" name="symptom-headache"
+                    <input type="checkbox" id="symptom-headache" name="symptom-headache" onchange="isNoneAboveChecked()"
                         <%= symptomHeadache ? 'checked' : '' %>>
                     <span><%= __('Headache') %></span>
                     <span class="checkmark"></span>
@@ -311,20 +312,20 @@ function numberWithSpaces(x) {
 
                 <label class="checkbox" for="symptom-sore-throat">
                     <input type="checkbox" id="symptom-sore-throat" name="symptom-sore-throat"
-                        <%= symptomSoreThroat ? 'checked' : '' %>>
+                        onchange="isNoneAboveChecked()" <%= symptomSoreThroat ? 'checked' : '' %>>
                     <span><%= __('Sore throat') %></span>
                     <span class="checkmark"></span>
                 </label>
 
                 <label class="checkbox" for="symptom-no-smell">
-                    <input type="checkbox" id="symptom-no-smell" name="symptom-no-smell"
+                    <input type="checkbox" id="symptom-no-smell" name="symptom-no-smell" onchange="isNoneAboveChecked()"
                         <%= symptomNoSmell ? 'checked' : '' %>>
                     <span><%= __('Loss of sense of smell') %></span>
                     <span class="checkmark"></span>
                 </label>
 
                 <label class="checkbox" for="symptom-no-taste">
-                    <input type="checkbox" id="symptom-no-taste" name="symptom-no-taste"
+                    <input type="checkbox" id="symptom-no-taste" name="symptom-no-taste" onchange="isNoneAboveChecked()"
                         <%= symptomNoTaste ? 'checked' : '' %>>
                     <span><%= __('Loss of sense of taste') %></span>
                     <span class="checkmark"></span>
@@ -332,22 +333,22 @@ function numberWithSpaces(x) {
 
                 <label class="checkbox" for="symptom-runny-nose">
                     <input type="checkbox" id="symptom-runny-nose" name="symptom-runny-nose"
-                        <%= symptomRunnyNose ? 'checked' : '' %>>
+                        onchange="isNoneAboveChecked()" <%= symptomRunnyNose ? 'checked' : '' %>>
                     <span><%= __('Stuffy or runny nose') %></span>
                     <span class="checkmark"></span>
                 </label>
 
                 <label class="checkbox" for="symptom-nausea-or-vomiting">
                     <input type="checkbox" id="symptom-nausea-or-vomiting" name="symptom-nausea-or-vomiting"
-                        <%= symptomNauseaOrVomiting ? 'checked' : '' %>>
+                        onchange="isNoneAboveChecked()" <%= symptomNauseaOrVomiting ? 'checked' : '' %>>
                     <span><%= __('Nausea or vomiting') %></span>
                     <span class="checkmark"></span>
                 </label>
 
                 <label class="checkbox" for="none-above-symptom">
                     <input type="checkbox" id="none-above-symptom" name="none-above-symptom"
-                        <%= symptomNoneAbove ? 'checked' : '' %>>
-                    <span><%= __('None of the above') %></span>
+                        onchange="isNoneAboveChecked()" <%= symptomNoneAbove ? 'checked' : '' %>>
+                    <span><%= __('None of the above ') %></span>
                     <span class="checkmark"></span>
                 </label>
             </fieldset>
@@ -706,6 +707,25 @@ function numberWithSpaces(x) {
     </div>
 </section>
 
+<script>
+    var symptomNoneAboveCheckbox = document.querySelector(
+        'input[type=checkbox][name=none-above-symptom]'
+    );
+    var symptomCheckboxes = document.querySelectorAll(
+        'input[type=checkbox][name^=symptom-]'
+    );
+    function isNoneAboveChecked() {
+        if (symptomNoneAboveCheckbox.checked) {
+            for (var i = 0; i < symptomCheckboxes.length; i++) {
+                symptomCheckboxes[i].checked = false;
+            }
+            document.getElementById('symptom-start-question').required = false;
+            document.getElementById('symptom-start-question').value = null;
+            document.getElementById('symptom-start-question').style.display = 'none';
+        }
+    }
+</script>
+
 <!--Validation of form-->
 <script>
     var radioGender = document.querySelectorAll(
@@ -737,84 +757,84 @@ function numberWithSpaces(x) {
     function formValidation() {
         //Age
         ageVal = document.querySelector('[name=age]').value
-        if (ageVal!=null && ageVal==""){
+        if (ageVal != null && ageVal == "") {
             console.log("ageVal")
-            document.getElementById('Age').style.borderColor = "red"; 
+            document.getElementById('Age').style.borderColor = "red";
         }
         else {
             document.getElementById('Age').style.border = null;
         }
         //Phone Number
         phoneVal = document.querySelector('input[name=phone-number]').value
-        if (phoneVal!=null && phoneVal==""){
+        if (phoneVal != null && phoneVal == "") {
             console.log("phoneVal")
-            document.getElementById('phone-number').style.borderColor = "red"; 
+            document.getElementById('phone-number').style.borderColor = "red";
         }
         else {
             document.getElementById('phone-number').style.border = null;
         }
         //Name
         nameVal = document.querySelector('input[name=name-value]').value
-        if (nameVal!=null && nameVal==""){
+        if (nameVal != null && nameVal == "") {
             console.log("nameVal")
-            document.getElementById('name-value').style.borderColor = "red"; 
+            document.getElementById('name-value').style.borderColor = "red";
         }
         else {
             document.getElementById('name-value').style.border = null;
         }
         // Gender
         genderChecked = isAtLeastOneCheckboxChecked(radioGender);
-        if (genderChecked){
-            document.getElementById('gender-label').style.color = "black"; 
+        if (genderChecked) {
+            document.getElementById('gender-label').style.color = "black";
         }
         else {
             console.log("genderChecked")
-            document.getElementById('gender-label').style.color = "red"; 
+            document.getElementById('gender-label').style.color = "red";
         }
         // Been in contact with
         beenInContactWithChecked = isAtLeastOneCheckboxChecked(radioBeenInContactWith);
-        if (beenInContactWithChecked){
-            document.getElementById('been-in-contact-with-label').style.color = "black"; 
+        if (beenInContactWithChecked) {
+            document.getElementById('been-in-contact-with-label').style.color = "black";
         }
         else {
             console.log("beenInContactWithChecked")
-            document.getElementById('been-in-contact-with-label').style.color = "red"; 
+            document.getElementById('been-in-contact-with-label').style.color = "red";
         }
         // Been tested
         beenTestedChecked = isAtLeastOneCheckboxChecked(radioBeenTested);
-        if (beenTestedChecked){
-            document.getElementById('been-tested-label').style.color = "black"; 
+        if (beenTestedChecked) {
+            document.getElementById('been-tested-label').style.color = "black";
         }
         else {
             console.log("beenTestedChecked")
-            document.getElementById('been-tested-label').style.color = "red"; 
+            document.getElementById('been-tested-label').style.color = "red";
         }
         // Test Response
         testResponseChecked = isAtLeastOneCheckboxChecked(radioTestResponse);
-        if (testResponseChecked){
-            document.getElementById('test-response-label').style.color = "black"; 
+        if (testResponseChecked) {
+            document.getElementById('test-response-label').style.color = "black";
         }
         else {
             console.log("testResponseChecked")
-            document.getElementById('test-response-label').style.color = "red"; 
+            document.getElementById('test-response-label').style.color = "red";
         }
         // Smoking Habits
         smokingHabitsChecked = isAtLeastOneCheckboxChecked(radioSmokingHabits);
-        if (smokingHabitsChecked){
-            document.getElementById('smoking-habits-label').style.color = "black"; 
+        if (smokingHabitsChecked) {
+            document.getElementById('smoking-habits-label').style.color = "black";
         }
         else {
             console.log("smokingHabitsChecked")
-            document.getElementById('smoking-habits-label').style.color = "red"; 
+            document.getElementById('smoking-habits-label').style.color = "red";
         }
         // Isolation Status
         isolationStatusChecked = isAtLeastOneCheckboxChecked(radioIsolationStatus);
-        if (isolationStatusChecked){
-            document.getElementById('isolation-status-label').style.color = "black"; 
+        if (isolationStatusChecked) {
+            document.getElementById('isolation-status-label').style.color = "black";
         }
         else {
             console.log("isolationStatusChecked")
-            document.getElementById('isolation-status-label').style.color = "red"; 
+            document.getElementById('isolation-status-label').style.color = "red";
         }
     }
 </script>
@@ -856,6 +876,7 @@ function numberWithSpaces(x) {
     } else {
         document.getElementById('symptom-start-question').required = false;
         document.getElementById('symptom-start-question').value = null;
+        document.getElementById('symptom-start-question').style.display = 'none';
     }
 
     changeTestResultDisplay(document.getElementById("been-tested-yes").checked);
