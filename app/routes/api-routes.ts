@@ -112,8 +112,7 @@ const extractSymptomsAsZeroOrOne = (
   [Symptom.SLIME_COUGH]: toZeroOrOne(symptoms.SLIME_COUGH),
   [Symptom.RUNNY_NOSE]: toZeroOrOne(symptoms.RUNNY_NOSE),
   [Symptom.CHEST_PAIN]: toZeroOrOne(symptoms.RUNNY_NOSE),
-  [Symptom.NAUSEA_OR_VOMITING]: toZeroOrOne(symptoms.NAUSEA_OR_VOMITING),
-  [Symptom.NONE_ABOVE]: toZeroOrOne(symptoms.NONE_ABOVE)
+  [Symptom.NAUSEA_OR_VOMITING]: toZeroOrOne(symptoms.NAUSEA_OR_VOMITING)
 });
 
 const reportToExposedCsvFormat = (

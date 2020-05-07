@@ -177,8 +177,7 @@ router.post('/', createReportRateLimit, async (req, res) => {
       [Symptom.SLIME_COUGH]: req.body['symptom-slime-cough'] === 'on',
       [Symptom.RUNNY_NOSE]: req.body['symptom-runny-nose'] === 'on',
       [Symptom.CHEST_PAIN]: req.body['symptom-chest-pain'] === 'on',
-      [Symptom.NAUSEA_OR_VOMITING]: req.body['symptom-nausea-or-vomiting'] === 'on',
-      [Symptom.NONE_ABOVE]: req.body['none-above-symptom'] === 'on',
+      [Symptom.NAUSEA_OR_VOMITING]: req.body['symptom-nausea-or-vomiting'] === 'on'
     },
     symptomStart: req.body['symptom-start'],
     hasBeenInContactWithInfected: req.body['been-in-contact-with'] === 'yes',
@@ -197,8 +196,7 @@ router.post('/', createReportRateLimit, async (req, res) => {
       [Diagnosed.CANCER]: req.body['diagnosed-cancer'] === 'on',
       [Diagnosed.VIH]: req.body['diagnosed-vih'] === 'on',
       [Diagnosed.OBESITY_OR_MALNUTRITION]: req.body['diagnosed-obesity-or-malnutrition'] === 'on',
-      [Diagnosed.IMMUNOSUPRESSION]: req.body['diagnosed-immunosupression'] === 'on',
-      [Diagnosed.NONE_ABOVE]: req.body['diagnosed-none-above'] === 'on'
+      [Diagnosed.IMMUNOSUPRESSION]: req.body['diagnosed-immunosupression'] === 'on'
     },
     submissionTimestamp: new Date().getTime(),
     phone: req.body['phone-number'],

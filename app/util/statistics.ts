@@ -28,8 +28,7 @@ const symptomToLabelMap = {
   [Symptom.SLIME_COUGH]: 'Mucus cough',
   [Symptom.RUNNY_NOSE]: 'Stuffy or runny nose',
   [Symptom.CHEST_PAIN]: 'Chest pain',
-  [Symptom.NAUSEA_OR_VOMITING]: 'Nausea or vomiting',
-  [Symptom.NONE_ABOVE]: 'None of the above',
+  [Symptom.NAUSEA_OR_VOMITING]: 'Nausea or vomiting'
 };
 
 const symptomKeyToLabel = (symptomKey: Symptom): string =>
