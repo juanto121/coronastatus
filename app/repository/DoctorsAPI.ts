@@ -18,7 +18,7 @@ export class DoctorsAPI {
         contacted: contacted
       };
     } catch (err) {
-      console.log('Failed to get contacted', err);
+      console.log('Failed to get contacted patients', err);
       return {
         contacted: null
       };
