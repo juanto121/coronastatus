@@ -57,7 +57,12 @@ const symptomNauseaOrVomiting = symptoms && symptoms['NAUSEA_OR_VOMITING'];
 const newAges = ['0 - 5', '6 - 11', '12 - 18', '19 - 26', '27 - 59', '>=60'];
 
 function numberWithSpaces(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    if (typeof(x) == 'number'){
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    }
+    else {
+        return "-"
+    }
 }
 %>
 <%- include('partials/header', { home: true, menu: false }) -%>
@@ -649,25 +654,25 @@ function numberWithSpaces(x) {
             <%- include('partials/app-stats-block', {
             image: '/static/images/napkin.svg',
             title: __('Total reports'),
-            number: numberWithSpaces(aggregated.numberOfReports)
+            number: numberWithSpaces(totalReports)
             }) -%>
             <!-- Contacted / Reported Fix equiation -->
             <%- include('partials/app-stats-block', {
             image: '/static/images/temperature-check.svg',
             title: __('Contacted / Reported'),
-            number: `${numberWithSpaces(contacted)}/${numberWithSpaces(aggregated.numberOfTested)}`
+            number: `${numberWithSpaces(contacted)}/${numberWithSpaces(totalReports)}`
             }) -%>
 
             <%- include('partials/app-stats-block', {
             image: '/static/images/transfer.svg',
             title: __(`In close contact with someone who's infected`),
-            number: numberWithSpaces(aggregated.numberOfContacts)
+            number: numberWithSpaces(reportsWithCloseContact)
             }) -%>
 
             <%- include('partials/app-stats-block', {
             image: '/static/images/symptoms.svg',
             title: __('Have symptoms'),
-            number: numberWithSpaces(aggregated.numberOfPeopleShowingSymptoms)
+            number: numberWithSpaces(reportsWithSymptoms)
             }) -%>
         </ul>
     </div>
