@@ -45,11 +45,18 @@ router.get('/', async (req, res) => {
   const reports = await reportRepo.getLatestCovidReports();
   const aggregated = aggregateCovidReports(reports);
   const response = await DoctorsAPI.aggregateContacted();
+  const responseStats = await ReportsAPI.getReportStatistics();
   const contacted = response.contacted;
+  const totalReports =  responseStats.totalReports;
+  const reportsWithCloseContact = responseStats.reportsWithCloseContact;
+  const reportsWithSymptoms = responseStats.reportsWithSymptoms;
   return res.render('pages/report', {
     patientId,
     aggregated,
     contacted,
+    totalReports,
+    reportsWithCloseContact,
+    reportsWithSymptoms,
     cleared: req.query?.cleared === 'true' || false
   });
 });
@@ -177,8 +184,7 @@ router.post('/', createReportRateLimit, async (req, res) => {
       [Symptom.SLIME_COUGH]: req.body['symptom-slime-cough'] === 'on',
       [Symptom.RUNNY_NOSE]: req.body['symptom-runny-nose'] === 'on',
       [Symptom.CHEST_PAIN]: req.body['symptom-chest-pain'] === 'on',
-      [Symptom.NAUSEA_OR_VOMITING]:
-      req.body['symptom-nausea-or-vomiting'] === 'on'
+      [Symptom.NAUSEA_OR_VOMITING]: req.body['symptom-nausea-or-vomiting'] === 'on'
     },
     symptomStart: req.body['symptom-start'],
     hasBeenInContactWithInfected: req.body['been-in-contact-with'] === 'yes',

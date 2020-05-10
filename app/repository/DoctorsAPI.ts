@@ -18,9 +18,9 @@ export class DoctorsAPI {
         contacted: contacted
       };
     } catch (err) {
-      console.log('Failed to create report', err);
+      console.log('Failed to get contacted patients', err);
       return {
-        contacted: 0
+        contacted: null
       };
     }
   }
