@@ -1003,9 +1003,11 @@ function numberWithSpaces(x) {
             const getUrl = (filename, type = 'video') => {
                 return new Promise((res, rej) => {
                     let req = new XMLHttpRequest()
-                    req.open("POST", type === 'video' ? "https://86pw37zri7.execute-api.us-west-2.amazonaws.com/prod/file/urls" : " https://rgibwk9o1a.execute-api.us-west-2.amazonaws.com/prod/file/urls")
+                    const uploadApiUrl = 'https://0dq255f3x3.execute-api.us-east-1.amazonaws.com/prod/file/urls'
+                    const bucket = type === 'video' ? '5vid-videos-prod' : '5vid-audios'
+                    req.open("POST", uploadApiUrl)
                     req.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
-                    req.send(JSON.stringify({ filename: filename }))
+                    req.send(JSON.stringify({ filename: filename, bucket: bucket }))
                     req.onload = () => {
                         res(JSON.parse(req.responseText))
                     }
