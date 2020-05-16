@@ -50,6 +50,7 @@ router.get('/', async (req, res) => {
   const totalReports =  responseStats.totalReports;
   const reportsWithCloseContact = responseStats.reportsWithCloseContact;
   const reportsWithSymptoms = responseStats.reportsWithSymptoms;
+  return res.render('pages/maintenance');
   return res.render('pages/report', {
     patientId,
     aggregated,
