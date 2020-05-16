@@ -41,25 +41,7 @@ const reportRepo = new CovidReportRepository();
 const passcodeCreator = getPasscodeCreator();
 
 router.get('/', async (req, res) => {
-  const patientId = req.cookies.patientId;
-  const reports = await reportRepo.getLatestCovidReports();
-  const aggregated = aggregateCovidReports(reports);
-  const response = await DoctorsAPI.aggregateContacted();
-  const responseStats = await ReportsAPI.getReportStatistics();
-  const contacted = response.contacted;
-  const totalReports =  responseStats.totalReports;
-  const reportsWithCloseContact = responseStats.reportsWithCloseContact;
-  const reportsWithSymptoms = responseStats.reportsWithSymptoms;
   return res.render('pages/maintenance');
-  return res.render('pages/report', {
-    patientId,
-    aggregated,
-    contacted,
-    totalReports,
-    reportsWithCloseContact,
-    reportsWithSymptoms,
-    cleared: req.query?.cleared === 'true' || false
-  });
 });
 
 router.get(`${urls.profile}/:passcode`, async (req, res) => {
